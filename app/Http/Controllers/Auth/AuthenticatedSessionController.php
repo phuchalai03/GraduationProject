@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::user()->role === 'admin') {
             return redirect()->route('admin.home'); // Trang dành cho admin
         } else {
-            return redirect()->route('user.home'); // Trang dành cho user
+            return redirect()->route('home.index'); // Trang dành cho user
         }
     }
 
@@ -57,6 +57,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
