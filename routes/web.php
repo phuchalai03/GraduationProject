@@ -32,7 +32,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Trang user
     Route::middleware('role:user')->group(function () {
-        Route::get('/user/home', [UserController::class, 'index'])->name('user.home');
         Route::get('/home', [HomeController::class, 'index'])->name('home.index');
         Route::get('/about', [HomeController::class, 'about'])->name('about.index');
         Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
