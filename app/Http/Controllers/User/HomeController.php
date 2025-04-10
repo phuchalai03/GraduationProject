@@ -31,8 +31,8 @@ class HomeController extends Controller
     public function index(){
         $tours = $this->homeTours->getHomeTour();
 
-        dd($tours);
-        return view('user.home');
+        //dd($tours);
+        return view('user.home', compact('tours'));
     }
 
     public function tour(){

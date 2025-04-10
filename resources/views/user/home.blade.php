@@ -3,7 +3,7 @@
 @section('content')
     <!--Form Back Drop-->
     <div class="form-back-drop"></div>
-        
+
     <!-- Hidden Sidebar -->
     <section class="hidden-bar">
         <div class="inner-box text-center">
@@ -35,7 +35,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-dropdown-link>
@@ -52,12 +52,13 @@
         </div>
     </section>
     <!--End Hidden Sidebar -->
-   
-    
+
+
     <!-- Hero Area Start -->
     <section class="hero-area bgc-black pt-200 rpt-120 rel z-2">
         <div class="container-fluid">
-            <h1 class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">tour & Travel</h1>
+            <h1 class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">tour
+                & Travel</h1>
             <div class="main-hero-image bgs-cover" style="background-image: url(assets/images/hero/hero.jpg);"></div>
         </div>
         <div class="container container-1400">
@@ -108,109 +109,70 @@
         </div>
     </section>
     <!-- Hero Area End -->
-    
-    
+
+
     <!-- Destinations Area start -->
     <section class="destinations-area bgc-black pt-100 pb-70 rel z-1">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <div class="section-title text-white text-center counter-text-wrap mb-70" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="section-title text-white text-center counter-text-wrap mb-70" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <h2>Discover the World's Treasures with Ravelo</h2>
-                        <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most popular experience you’ll remember</p>
+                        <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most
+                            popular experience you’ll remember</p>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-xxl-3 col-xl-4 col-md-6">
-                    <div class="destination-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <div class="ratting"><i class="fas fa-star"></i> 4.8</div>
-                            <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                            <img src="assets/images/destinations/visiting-place1.jpg" alt="Destination">
-                        </div>
-                        <div class="content">
-                            <span class="location"><i class="fal fa-map-marker-alt"></i> Tours, France</span>
-                            <h5><a href="destination-details.html">Brown Concrete Building Basilica St Martin</a></h5>
-                            <span class="time">3 days 2 nights - Couple</span>
-                        </div>
-                        <div class="destination-footer">
-                            <span class="price"><span>$58.00</span>/per person</span>
-                            <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-xl-4 col-md-6">
-                    <div class="destination-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <div class="ratting"><i class="fas fa-star"></i> 4.8</div>
-                            <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                            <img src="assets/images/destinations/visiting-place2.jpg" alt="Destination">
-                        </div>
-                        <div class="content">
-                            <span class="location"><i class="fal fa-map-marker-alt"></i> Wildest, Italy</span>
-                            <h5><a href="destination-details.html">Blue lake water view taken travel with daytime</a></h5>
-                            <span class="time">3 days 2 nights - Couple</span>
-                        </div>
-                        <div class="destination-footer">
-                            <span class="price"><span>$63.00</span>/per person</span>
-                            <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
+                @foreach ($tours as $tour)
+                    <div class="col-xxl-3 col-xl-4 col-md-6">
+                        <div class="destination-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="image">
+                                <div class="ratting"><i class="fas fa-star"></i> {{ $tour->rating ?? '4.8' }}</div>
+                                <a href="#" class="heart"><i class="fas fa-heart"></i></a>
+                                <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}" alt="Destination"
+                                style="width: 100%; height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="content">
+                                <span class="location">
+                                    <i class="fal fa-map-marker-alt"></i> {{ $tour->destination ?? 'Unknown Location' }}
+                                </span>
+                                <h5>
+                                    <a href="destination-details.html">{{ $tour->title ?? 'Tour Title' }}</a>
+                                </h5>
+                                <span class="time"> {{ ($tour->description) }} </span>
+                            </div>
+                            <div class="destination-footer">
+                                <span class="price">
+                                    <span>{{ number_format($tour->priceAdult, 0 , ',', '.') }}</span><span>VND / Người</span>
+                                </span>
+                                <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xxl-3 col-xl-4 col-md-6">
-                    <div class="destination-item" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <div class="ratting"><i class="fas fa-star"></i> 4.8</div>
-                            <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                            <img src="assets/images/destinations/visiting-place3.jpg" alt="Destination">
-                        </div>
-                        <div class="content">
-                            <span class="location"><i class="fal fa-map-marker-alt"></i> Rome, Italy</span>
-                            <h5><a href="destination-details.html">Woman standing near Colosseum, Rome</a></h5>
-                            <span class="time">3 days 2 nights - Couple</span>
-                        </div>
-                        <div class="destination-footer">
-                            <span class="price"><span>$42</span>/per person</span>
-                            <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-xl-4 col-md-6">
-                    <div class="destination-item" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <div class="ratting"><i class="fas fa-star"></i> 4.8</div>
-                            <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                            <img src="assets/images/destinations/visiting-place4.jpg" alt="Destination">
-                        </div>
-                        <div class="content">
-                            <span class="location"><i class="fal fa-map-marker-alt"></i> Rome, Italy</span>
-                            <h5><a href="destination-details.html">Woman standing near Colosseum, Rome</a></h5>
-                            <span class="time">3 days 2 nights - Couple</span>
-                        </div>
-                        <div class="destination-footer">
-                            <span class="price"><span>$52.00</span>/per person</span>
-                            <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- Destinations Area end -->
-     
-     
+
+
     <!-- About Us Area start -->
     <section class="about-us-area py-100 rpb-90 rel z-1">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-5 col-lg-6">
-                    <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="section-title mb-25">
                             <h2>Travel with Confidence Top Reasons to Choose Our Agency</h2>
                         </div>
-                        <p>We go above and beyond to make your travel dreams reality hidden gems and must-see attractions</p>
-                        <div class="divider counter-text-wrap mt-45 mb-55"><span>We have <span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span> of experience</span></div>
+                        <p>We go above and beyond to make your travel dreams reality hidden gems and must-see attractions
+                        </p>
+                        <div class="divider counter-text-wrap mt-45 mb-55"><span>We have <span><span
+                                        class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span> of
+                                experience</span></div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="counter-item counter-text-wrap">
@@ -247,24 +209,27 @@
         </div>
     </section>
     <!-- About Us Area end -->
-     
-     
+
+
     <!-- Popular Destinations Area start -->
     <section class="popular-destinations-area rel z-1">
         <div class="container-fluid">
             <div class="popular-destinations-wrap br-20 bgc-lighter pt-100 pb-70">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50">
                             <h2>Explore Popular Destinations</h2>
-                            <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most popular experience</p>
+                            <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most
+                                popular experience</p>
                         </div>
                     </div>
                 </div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-3 col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination1.jpg" alt="Destination">
@@ -277,7 +242,8 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="100"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination2.jpg" alt="Destination">
@@ -290,7 +256,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="200"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination3.jpg" alt="Destination">
@@ -303,7 +270,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination4.jpg" alt="Destination">
@@ -316,7 +284,8 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="100"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination5.jpg" alt="Destination">
@@ -329,7 +298,8 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="destination-item style-two" data-aos="flip-up" data-aos-delay="200"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     <img src="assets/images/destinations/destination6.jpg" alt="Destination">
@@ -347,14 +317,15 @@
         </div>
     </section>
     <!-- Popular Destinations Area end -->
-    
-    
+
+
     <!-- Features Area start -->
     <section class="features-area pt-100 pb-45 rel z-1">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-6">
-                    <div class="features-content-part mb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="features-content-part mb-55" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="section-title mb-60">
                             <h2>The Ultimate Travel Experience Features That Set Our Agency Apart</h2>
                         </div>
@@ -370,7 +341,8 @@
                                     <span>4k+</span>
                                 </div>
                                 <h6>850K+ Happy Customer</h6>
-                                <div class="divider style-two counter-text-wrap my-25"><span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span></div>
+                                <div class="divider style-two counter-text-wrap my-25"><span><span class="count-text plus"
+                                            data-speed="3000" data-stop="25">0</span> Years</span></div>
                                 <p>We pride ourselves offering personalized itineraries</p>
                             </div>
                         </div>
@@ -416,17 +388,19 @@
         </div>
     </section>
     <!-- Features Area end -->
-     
+
     <!-- Mobile App Area start -->
     <section class="mobile-app-area py-100 rel z-1">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <div class="mobile-app-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="mobile-app-content rmb-55" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="section-title mb-30">
                             <h2>We Are Available On the Store Get Our Mobile Apps Very Easily</h2>
                         </div>
-                        <p>We go above and beyond to make your travel dreams a reality. Trust us to handle the details so you can creating unforgettable memories. Explore the world with confidence</p>
+                        <p>We go above and beyond to make your travel dreams a reality. Trust us to handle the details so
+                            you can creating unforgettable memories. Explore the world with confidence</p>
                         <ul class="list-style-two mt-35 mb-30">
                             <li>Experience Agency</li>
                             <li>Professional Team</li>
@@ -443,9 +417,11 @@
                     <div class="mobile-app-images">
                         <div class="bg"><img src="assets/images/mobile-app/phone-bg.png" alt="BG"></div>
                         <div class="images">
-                            <img src="assets/images/mobile-app/phone2.png" alt="Phone" data-aos="fade-down-left" data-aos-duration="1500" data-aos-offset="50">
+                            <img src="assets/images/mobile-app/phone2.png" alt="Phone" data-aos="fade-down-left"
+                                data-aos-duration="1500" data-aos-offset="50">
                             <img src="assets/images/mobile-app/phone.png" alt="Phone">
-                            <img src="assets/images/mobile-app/phone3.png" alt="Phone" data-aos="fade-up-right" data-aos-duration="1500" data-aos-offset="50">
+                            <img src="assets/images/mobile-app/phone3.png" alt="Phone" data-aos="fade-up-right"
+                                data-aos-duration="1500" data-aos-offset="50">
                         </div>
                     </div>
                 </div>
@@ -453,20 +429,22 @@
         </div>
     </section>
     <!-- Mobile App Area end -->
-    
-    
+
+
     <!-- Testimonials Area start -->
     <section class="testimonials-area rel z-1">
         <div class="container">
             <div class="testimonials-wrap bgc-lighter">
                 <div class="row">
                     <div class="col-lg-5 rel" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="testimonial-left-image rmb-55" style="background-image: url(assets/images/testimonials/testimonial-left.jpg);"></div>
+                        <div class="testimonial-left-image rmb-55"
+                            style="background-image: url(assets/images/testimonials/testimonial-left.jpg);"></div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="testimonial-right-content" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="testimonial-right-content" data-aos="fade-left" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <div class="section-title mb-55">
-                                <h2><span>5280</span>  Global Clients Say About Us Services</h2>
+                                <h2><span>5280</span> Global Clients Say About Us Services</h2>
                             </div>
                             <div class="testimonials-active">
                                 <div class="testimonial-item">
@@ -481,9 +459,12 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They took care of every detail, from to accommodations, and even suggested incredible experiences"</div>
+                                    <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They
+                                        took care of every detail, from to accommodations, and even suggested incredible
+                                        experiences"</div>
                                     <div class="author">
-                                        <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author"></div>
+                                        <div class="image"><img src="assets/images/testimonials/author.jpg"
+                                                alt="Author"></div>
                                         <div class="content">
                                             <h5>Randall V. Vasquez</h5>
                                             <span>Graphics Designer</span>
@@ -502,9 +483,12 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They took care of every detail, from to accommodations, and even suggested incredible experiences"</div>
+                                    <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They
+                                        took care of every detail, from to accommodations, and even suggested incredible
+                                        experiences"</div>
                                     <div class="author">
-                                        <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author"></div>
+                                        <div class="image"><img src="assets/images/testimonials/author.jpg"
+                                                alt="Author"></div>
                                         <div class="content">
                                             <h5>Randall V. Vasquez</h5>
                                             <span>Graphics Designer</span>
@@ -519,8 +503,8 @@
         </div>
     </section>
     <!-- Testimonials Area end -->
-     
-     
+
+
     <!-- CTA Area start -->
     <section class="cta-area pt-100 rel z-1">
         <div class="container-fluid">
@@ -535,7 +519,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="50" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="cta-item" style="background-image: url(assets/images/cta/cta2.jpg);">
                         <span class="category">Sea Beach</span>
                         <h2>World largest Sea Beach in Thailand</h2>
@@ -545,7 +530,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="cta-item" style="background-image: url(assets/images/cta/cta3.jpg);">
                         <span class="category">Water Falls</span>
                         <h2>Largest Water falls Bali, Indonesia</h2>

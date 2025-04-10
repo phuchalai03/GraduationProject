@@ -13,11 +13,18 @@ class Home extends Model
     protected $table = 'tours';
 
     public function getHomeTour(){
-        $getTour = DB::table($this->table)
-        ->leftJoin('images', 'tours.tourId', 'images.tourId')
-        ->leftJoin('timeline', 'tours.tourId', 'timeline.tourId')
-        ->get();
+        $tours = DB::table($this->table)->get();
 
-        return $getTour;
+        foreach ($tours as $tour){
+            $tour->images =  DB::table('images')
+                ->where('tourId', $tour->tourId)
+                ->pluck('imgURL');
+
+            $tour->timeline =  DB::table('timeline')
+                ->where('tourId', $tour->tourId)
+                ->pluck('title');
+        }
+
+        return $tours;
     }
 }
