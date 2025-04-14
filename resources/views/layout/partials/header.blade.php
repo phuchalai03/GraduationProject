@@ -5,19 +5,23 @@
 
             <div class="header-inner rel d-flex align-items-center">
                 <div class="logo-outer">
-                    <div class="logo"><a href="index.html"><img src="assets/images/logos/logo-two.png" alt="Logo" title="Logo"></a></div>
+                    <div class="logo">
+                        <a href="{{ route('home.index') }}">
+                            <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo">
+                        </a>
+                    </div>
                 </div>
 
                 <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
                     <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-lg">
                         <div class="navbar-header">
-                           <div class="mobile-logo">
-                               <a href="index.html">
-                                    <img src="assets/images/logos/logo-two.png" alt="Logo" title="Logo">
-                               </a>
-                           </div>
-                           
+                            <div class="mobile-logo">
+                                <a href="{{ route('home.index') }}">
+                                    <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo">
+                                </a>
+                            </div>
+
                             <!-- Toggle Button -->
                             <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                                 <span class="icon-bar"></span>
@@ -40,18 +44,17 @@
                                 <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                             </ul>
                         </div>
-
                     </nav>
                     <!-- Main Menu End-->
                 </div>
-                
+
                 <!-- Menu Button -->
                 <div class="menu-btns py-10">
-                    <a href="contact.html" class="theme-btn style-two bgc-secondary">
+                    <a href="{{ route('contact.index') }}" class="theme-btn style-two bgc-secondary">
                         <span data-hover="Book Now">Book Now</span>
                         <i class="fal fa-arrow-right"></i>
                     </a>
-                    <!-- menu sidbar -->
+                    <!-- menu sidebar -->
                     <div class="menu-sidebar">
                         <button class="bg-transparent">
                             <span class="icon-bar"></span>

@@ -1,11 +1,11 @@
-<footer class="main-footer footer-two bgp-bottom bgc-black rel z-15 pt-100 pb-115" style="background-image: url(assets/images/backgrounds/footer-two.png);">
+<footer class="main-footer footer-two bgp-bottom bgc-black rel z-15 pt-100 pb-115" style="background-image: url('{{ asset('assets/images/backgrounds/footer-two.png') }}');">
     <div class="widget-area">
         <div class="container">
             <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2">
                 <div class="col col-small" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
                         <div class="footer-logo mb-40">
-                            <a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="{{ asset('assets/images/logos/logo.png') }}" alt="Logo"></a>
                         </div>
                         <div class="footer-map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

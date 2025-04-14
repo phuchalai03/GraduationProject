@@ -67,23 +67,23 @@
         <div class="row gap-10 justify-content-center rel">
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details1.jpg" alt="Destination">
+                    <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[0] ?? 'thanhhoa1.jpg')) }}" alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details4.jpg" alt="Destination">
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details2.jpg" alt="Destination">
+                    <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[1] ?? 'thanhhoa1.jpg')) }}" alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details3.jpg" alt="Destination">
+                    <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[2] ?? 'thanhhoa1.jpg')) }}" alt="Destination" style="width:100%; height:410px; object-fit:cover; border-radius:10px;">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-item">
+                    <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[3] ?? 'thanhhoa1.jpg')) }}" alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details5.jpg" alt="Destination">
+                    <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[4] ?? 'thanhhoa1.jpg')) }}" alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                 </div>
             </div>
             <div class="col-lg-12">

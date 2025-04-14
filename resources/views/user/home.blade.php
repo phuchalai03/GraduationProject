@@ -147,7 +147,7 @@
                                 <span class="price">
                                     <span>{{ number_format($tour->priceAdult, 0 , ',', '.') }}</span><span>VND / Người</span>
                                 </span>
-                                <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
+                                <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
