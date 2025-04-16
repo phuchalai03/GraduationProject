@@ -15,18 +15,13 @@ class TourController extends Controller
         $this->tours = new Tour();
     }
 
-    public function tourList(){
-        return view('user.tour');
+    public function index(){
+        $tours = $this->tours->getAllTours();
+        return view('user.tour', compact('tours'));
     }
 
-    public function index($id){
-
+    public function tour_detail($id){
         $tourDetail = $this->tours->getTourDetail($id);
-        //dd($tourDetail);
         return view('user.tour_detail', compact('tourDetail'));
-    }
-
-    public function tour_detail(){
-
     }
 }

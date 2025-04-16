@@ -588,8 +588,12 @@
                         <h5 class="widget-title">Tour Booking</h5>
                         <form action="#">
                             <div class="date mb-25">
-                                <b>From Date</b>
-                                <input type="date">
+                                <b>Ngày bắt đầu</b>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail[0]->startDate)) }}" disabled>
+                            </div>
+                            <div class="date mb-25">
+                                <b>Ngày kết thúc</b>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail[0]->endDate)) }}" disabled>
                             </div>
                             <hr>
                             <div class="time py-5">

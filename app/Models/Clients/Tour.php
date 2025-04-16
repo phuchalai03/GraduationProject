@@ -12,6 +12,17 @@ class Tour extends Model
 
     protected $table = 'tours';
 
+    public function getAllTours(){
+
+        $allTours = DB::table($this->table)->get();
+        foreach ($allTours as $tour){
+            $tour->images =  DB::table('images')
+                ->where('tourId', $tour->tourId)
+                ->pluck('imgURL');
+        }
+        return $allTours;
+    }
+
     public function getTourDetail($id){
         $getTourDetail = DB::table($this->table)
         ->where('tourId', $id)

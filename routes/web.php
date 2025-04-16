@@ -39,9 +39,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/about', [AboutController::class, 'index'])->name('about.index');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
         Route::get('/destination', [DestinationController::class, 'index'])->name('destination.index');
-        Route::get('/tour', [TourController::class, 'tourList'])->name('tour.index');
+        Route::get('/tour', [TourController::class, 'index'])->name('tour.index');
         Route::get('/tour_guide', [TourGuideController::class, 'index'])->name('tour_guide.index');
-        Route::get('/tour_detail/{id}', [TourController::class, 'index'])->name('tour_detail');
+        Route::get('/tour_detail/{id}', [TourController::class, 'tour_detail'])->name('tour_detail');
     });
 });
 

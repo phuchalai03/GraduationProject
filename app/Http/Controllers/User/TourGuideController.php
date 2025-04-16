@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TourGuideController extends Controller
 {
-    public function tour_guide(){
+    public function index(){
         return view('user.tour_guide');
     }
 }
