@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\DestinationController;
@@ -43,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/tour_guide', [TourGuideController::class, 'index'])->name('tour_guide.index');
         Route::get('/tour_detail/{id}', [TourController::class, 'tour_detail'])->name('tour_detail');
     });
+
+    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');
+    Route::get('auth/callback/google', [GoogleController::class, 'handleGoogleCallback'])->withoutMiddleware('auth');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

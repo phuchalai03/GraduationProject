@@ -193,7 +193,7 @@
                     </div>
                     
                     <div class="d-grid gap-2 mb-4">
-                        <a href="#" class="btn btn-outline-secondary">
+                        <a href="{{ route('login-google') }}" class="btn btn-outline-secondary">
                             <i class="bi bi-google me-2"></i>Đăng nhập bằng Google
                         </a>
                         <a href="#" class="btn btn-outline-secondary">
