@@ -41,7 +41,9 @@
 
         <!-- main header -->
         @include('layout.partials.header_home')
-       
+
+        <!-- banner -->
+        @include('layout.partials.banner_home')
 
         @yield('content')
           

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +33,8 @@ class AuthenticatedSessionController extends Controller
 
         // Chuyển hướng dựa trên vai trò
         if (Auth::user()->role === 'admin') {
-            return redirect()->route('admin.home'); // Trang dành cho admin
-        } else {
-            return redirect()->route('home.index'); // Trang dành cho user
+            return redirect()->route('admin.home');
+            return redirect()->route('home.index');
         }
     }
 

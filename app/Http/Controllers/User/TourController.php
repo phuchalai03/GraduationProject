@@ -17,11 +17,53 @@ class TourController extends Controller
 
     public function index(){
         $tours = $this->tours->getAllTours();
-        return view('user.tour', compact('tours'));
+        $domain = $this->tours->getDomain();
+        $domain_count = [
+            'mien_bac' => optional($domain->firstWhere('domain', 'b'))->count,
+            'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
+            'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
+        ];
+        return view('user.tour', compact('tours', 'domain_count'));
     }
 
     public function tour_detail($id){
         $tourDetail = $this->tours->getTourDetail($id);
         return view('user.tour_detail', compact('tourDetail'));
+    }
+
+    public function filterTours(Request $request)
+    {
+        $conditions = [];
+        if ($request->filled('min_price')) {
+            $min_price = $request->input('min_price');
+            $conditions[] = ['priceAdult', '>=', $min_price];
+        }
+
+        if ($request->filled('max_price')) {
+            $max_price = $request->input('max_price');
+            $conditions[] = ['priceAdult', '<=', $max_price];
+        }
+
+        if ($request->filled('domain')){
+            $domain = $request->domain;
+            $conditions[] = ['domain', '=', $domain];
+        }
+
+        if ($request->filled('star')){
+            $star = (int) $request->star;
+            $conditions[] = ['averageRating', '>=', $star];
+        }
+
+        if ($request->filled('duration')){
+            $time = $request->duration;
+            $duration = [
+                '2n1d' => '2 ngày 1 đêm',
+                '3n2d' => '3 ngày 2 đêm',
+                '3n' => '3 ngày',
+            ];
+            $conditions[] = ['duration', '=', $duration[$time]];
+        }
+        $filterTours = $this->tours->filterTours($conditions);
+        return view('user.filter_tour', compact('filterTours'));
     }
 }

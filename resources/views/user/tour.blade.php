@@ -118,42 +118,38 @@
                             data-aos-duration="1500" data-aos-offset="50">
                             <h6 class="widget-title">Filter by Price</h6>
                             <div class="price-filter-wrap">
-                                {{-- <div class="price-slider-range"></div> --}}
-                                <div class="price">
-                                    <span>Price </span>
-                                    <input type="text" id="price" readonly>
+                                <div class="price-filter-wrap">
+                                    <div class="price">
+                                        <span>Price: </span>
+                                        <input type="number" id="min_price" placeholder="Min price"
+                                            style="width: 80px; color:#f6931f;">
+                                        <span> - </span>
+                                        <input type="number" id="max_price" placeholder="Max price"
+                                            style="width: 80px; color:#f6931f;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
-                            <h6 class="widget-title">By Activities</h6>
+                            <h6 class="widget-title">Điểm đến</h6>
                             <ul class="radio-filter">
                                 <li>
-                                    <input class="form-check-input" type="radio" checked name="ByActivities"
-                                        id="activity1">
-                                    <label for="activity1">Sea Beach <span>18</span></label>
+                                    <input class="form-check-input" type="radio" name="domain" id="id_mien_bac"
+                                        value="b">
+                                    <label for="activity1">Miền Bắc <span> {{ $domain_count['mien_bac'] }} </span></label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByActivities" id="activity2">
-                                    <label for="activity2">Car Parking <span>29</span></label>
+                                    <input class="form-check-input" type="radio" name="domain" id="id_mien_trung"
+                                        value="t">
+                                    <label for="activity2">Miền Trung <span> {{ $domain_count['mien_trung'] }}
+                                        </span></label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByActivities" id="activity3">
-                                    <label for="activity3">Laundry Service <span>23</span></label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByActivities" id="activity4">
-                                    <label for="activity4">Outdoor Seating <span>25</span></label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByActivities" id="activity5">
-                                    <label for="activity5">Reservations <span>26</span></label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByActivities" id="activity6">
-                                    <label for="activity6">Smoking Allowed <span>28</span></label>
+                                    <input class="form-check-input" type="radio" name="domain" id="id_mien_nam"
+                                        value="n">
+                                    <label for="activity3">Miền Nam <span> {{ $domain_count['mien_nam'] }} </span></label>
                                 </li>
                             </ul>
                         </div>
@@ -163,9 +159,9 @@
                             <h6 class="widget-title">By Reviews</h6>
                             <ul class="radio-filter">
                                 <li>
-                                    <input class="form-check-input" type="radio" checked name="ByReviews"
-                                        id="review1">
-                                    <label for="review1">
+                                    <input class="form-check-input" type="radio" name="star" id="5star"
+                                        value="5">
+                                    <label for="5star">
                                         <span class="ratting">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -176,8 +172,9 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByReviews" id="review2">
-                                    <label for="review2">
+                                    <input class="form-check-input" type="radio" name="star" id="4star"
+                                        value="4">
+                                    <label for="4star">
                                         <span class="ratting">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -188,8 +185,9 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByReviews" id="review3">
-                                    <label for="review3">
+                                    <input class="form-check-input" type="radio" name="star" id="3star"
+                                        value="3">
+                                    <label for="3star">
                                         <span class="ratting">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -200,8 +198,9 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByReviews" id="review4">
-                                    <label for="review4">
+                                    <input class="form-check-input" type="radio" name="star" id="2star"
+                                        value="2">
+                                    <label for="2star">
                                         <span class="ratting">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -212,8 +211,9 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="ByReviews" id="review5">
-                                    <label for="review5">
+                                    <input class="form-check-input" type="radio" name="star" id="1star"
+                                        value="1">
+                                    <label for="1star">
                                         <span class="ratting">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star white"></i>
@@ -222,38 +222,6 @@
                                             <i class="fas fa-star-half-alt white"></i>
                                         </span>
                                     </label>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="widget widget-languages" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="50">
-                            <h6 class="widget-title">By Languages</h6>
-                            <ul class="radio-filter">
-                                <li>
-                                    <input class="form-check-input" type="radio" checked name="ByLanguages"
-                                        id="language1">
-                                    <label for="language1">American</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByLanguages" id="language2">
-                                    <label for="language2">English</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByLanguages" id="language3">
-                                    <label for="language3">German</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByLanguages" id="language4">
-                                    <label for="language4">Japanese</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByLanguages" id="language5">
-                                    <label for="language5">Vietnamese</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="ByLanguages" id="language6">
-                                    <label for="language6">French</label>
                                 </li>
                             </ul>
                         </div>
@@ -263,25 +231,19 @@
                             <h6 class="widget-title">Duration</h6>
                             <ul class="radio-filter">
                                 <li>
-                                    <input class="form-check-input" type="radio" checked name="Duration"
-                                        id="duration1">
-                                    <label for="duration1">0 - 2 hours</label>
+                                    <input class="form-check-input" type="radio" name="duration" id="duration1"
+                                        value="2n1d">
+                                    <label for="duration1">2 ngày 1 đêm</label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="Duration" id="duration2">
-                                    <label for="duration2">2 - 4 hours</label>
+                                    <input class="form-check-input" type="radio" name="duration" id="duration2"
+                                        value="3n2d">
+                                    <label for="duration2">3 ngày 2 đêm</label>
                                 </li>
                                 <li>
-                                    <input class="form-check-input" type="radio" name="Duration" id="duration3">
-                                    <label for="duration3">4 - 8 hours</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="Duration" id="duration4">
-                                    <label for="duration4">Fulda (+8 hours)</label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="Duration" id="duration5">
-                                    <label for="duration5">Multi days</label>
+                                    <input class="form-check-input" type="radio" name="duration" id="duration3"
+                                        value="3n">
+                                    <label for="duration3">3 ngày</label>
                                 </li>
                             </ul>
                         </div>
@@ -365,7 +327,7 @@
                     </div>
 
                     <div class="tour-grid-wrap">
-                        <div class="row">
+                        <div class="row" id="tours-container">
                             @foreach ($tours as $tour)
                                 <div class="col-xl-4 col-md-6">
                                     <div class="destination-item tour-grid style-three bgc-lighter" data-aos="fade-up"
@@ -373,12 +335,14 @@
                                         <div class="image">
                                             {{-- <span class="badge bgc-pink">Featured</span> --}}
                                             <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                            <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}" alt="Tour List"
-                                            style="width: 100%; height: 250px; object-fit: cover; object-position: center; border-radius: 10px;">
+                                            <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}"
+                                                alt="Tour List"
+                                                style="width: 100%; height: 250px; object-fit: cover; object-position: center; border-radius: 10px;">
                                         </div>
                                         <div class="content">
                                             <div class="destination-header">
-                                                <span class="location"><i class="fal fa-map-marker-alt"></i> {{ $tour->destination }}</span>
+                                                <span class="location"><i class="fal fa-map-marker-alt"></i>
+                                                    {{ $tour->destination }}</span>
                                                 <div class="ratting">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
@@ -387,14 +351,17 @@
                                                     <i class="fas fa-star"></i>
                                                 </div>
                                             </div>
-                                            <h6><a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}"> {{ $tour->title }} </a></h6>
+                                            <h6><a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}">
+                                                    {{ $tour->title }} </a></h6>
                                             <ul class="blog-meta">
-                                                <li><i class="far fa-clock"></i> {{ $tour->description}}</li>
-                                                <li><i class="far fa-user"></i> {{ $tour->quantity}} guest</li>
+                                                <li><i class="far fa-clock"></i> {{ $tour->description }}</li>
+                                                <li><i class="far fa-user"></i> {{ $tour->quantity }} guest</li>
                                             </ul>
                                             <div class="destination-footer">
-                                                <span class="price"><span>{{ number_format($tour->priceAdult, 0 , ',', '.') }}</span>/Người</span>
-                                                <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}" class="theme-btn style-two style-three">
+                                                <span
+                                                    class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span>/Người</span>
+                                                <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}"
+                                                    class="theme-btn style-two style-three">
                                                     <i class="fal fa-arrow-right"></i>
                                                 </a>
                                             </div>
