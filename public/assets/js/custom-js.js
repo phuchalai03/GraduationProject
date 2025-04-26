@@ -19,19 +19,25 @@ $(document).ready(function() {
     $('input[type="checkbox"]').on('change', function() {
         filterTours();
     });
-    function filterTours(){
+
+    $('#sorting_tours').on('change', function () {
+        filterTours($(this).val()); 
+    });
+
+    function filterTours(sorting = 'default'){
         var min_price = $('#min_price').val();
         var max_price = $('#max_price').val();
         var domain = $('input[name="domain"]:checked').val();
         var star = $('input[name="star"]:checked').val();
         var duration = $('input[name="duration"]:checked').val();
-
+        var sorting = $('#sorting_tours').val();
         formDataFilter = { 
             'min_price': min_price,
             'max_price': max_price,
             'domain': domain,
             'star': star,
             'duration': duration,
+            'sorting': sorting,
         };
 
         $.ajax({

@@ -37,3 +37,23 @@
         </div>
     </div>
 @endforeach
+<div class="col-lg-12">
+    <ul class="pagination justify-content-center pt-15 flex-wrap destination-item" data-aos="fade-up"
+        data-aos-duration="1500" data-aos-offset="50" style="background: none">
+        <li class="page-item disabled">
+            <span class="page-link"><i class="far fa-chevron-left"></i></span>
+        </li>
+        <li class="page-item active">
+            <span class="page-link">
+                1
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">...</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#"><i class="far fa-chevron-right"></i></a>
+        </li>
+    </ul>
+</div>

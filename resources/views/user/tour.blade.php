@@ -317,11 +317,9 @@
                         <div class="sort-text mb-15 me-4">
                             Sort By
                         </div>
-                        <select>
+                        <select id="sorting_tours">
                             <option value="default" selected="">Short By</option>
-                            <option value="new">Newness</option>
-                            <option value="old">Oldest</option>
-                            <option value="hight-to-low">High To Low</option>
+                            <option value="high-to-low">High To Low</option>
                             <option value="low-to-high">Low To High</option>
                         </select>
                     </div>
@@ -371,8 +369,8 @@
                             @endforeach
 
                             <div class="col-lg-12">
-                                <ul class="pagination justify-content-center pt-15 flex-wrap" data-aos="fade-up"
-                                    data-aos-duration="1500" data-aos-offset="50">
+                                <ul class="pagination justify-content-center pt-15 flex-wrap destination-item" data-aos="fade-up"
+                                    data-aos-duration="1500" data-aos-offset="50" style="background: none">
                                     <li class="page-item disabled">
                                         <span class="page-link"><i class="far fa-chevron-left"></i></span>
                                     </li>

@@ -50,18 +50,19 @@ class Tour extends Model
             ->get();
     }
 
-    public function filterTours($filters =[], )
+    public function filterTours($filters =[], $sorting = [])
     {
         $getTours = DB::table($this->table);
 
         if (!empty($filters)){
-            foreach ($filters as $filter) {
-                if (count($filter) === 4) {
-                    $getTours = $getTours->where($filter[0], $filter[1], $filter[2], $filter[3]);
-                }
-            }
             $getTours = $getTours->where($filters);
         }
+        //$tours = $getTours->get();
+
+        if (!empty($sorting) && isset($sorting[0][0]) && isset($sorting[0][1])){
+            $getTours = $getTours->orderBy($sorting[0][0], $sorting[0][1]);
+        }
+
         $tours = $getTours->get();
 
         foreach ($tours as $tour){

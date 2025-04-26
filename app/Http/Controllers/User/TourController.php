@@ -34,6 +34,7 @@ class TourController extends Controller
     public function filterTours(Request $request)
     {
         $conditions = [];
+        $sorting = [];
         if ($request->filled('min_price')) {
             $min_price = $request->input('min_price');
             $conditions[] = ['priceAdult', '>=', $min_price];
@@ -63,7 +64,18 @@ class TourController extends Controller
             ];
             $conditions[] = ['duration', '=', $duration[$time]];
         }
-        $filterTours = $this->tours->filterTours($conditions);
+
+        if ($request->filled('sorting')){
+            $sortingOption = trim($request->sorting);
+
+            if ($sortingOption == "high-to-low") {
+                $sorting[] = ['priceAdult', 'desc'];
+            } elseif ($sortingOption == "low-to-high") {
+                $sorting[] = ['priceAdult', 'asc'];
+            }
+        }
+        //dd($sorting);
+        $filterTours = $this->tours->filterTours($conditions, $sorting);
         return view('user.filter_tour', compact('filterTours'));
     }
 }
