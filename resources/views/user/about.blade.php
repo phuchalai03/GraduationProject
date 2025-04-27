@@ -1,55 +1,15 @@
 @extends('layout.master')
 
 @section('content')
-        
-    <!-- Hidden Sidebar -->
-    <section class="hidden-bar">
-        <div class="inner-box text-center">
-            <div class="cross-icon"><span class="fa fa-times"></span></div>
-            <div class="title">
-                <h4>Get Appointment</h4>
-            </div>
-
-            <!--Appointment Form-->
-            <div class="appointment-form">
-                <form method="post" action="https://webtendtheme.net/html/2024/ravelo/contact.html">
-                    <div class="form-group">
-                        <input type="text" name="text" value="" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" value="" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Message" rows="5"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="theme-btn style-two">
-                            <span data-hover="Submit now">Submit now</span>
-                            <i class="fal fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!--Social Icons-->
-            <div class="social-style-one">
-                <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-        </div>
-    </section>
-    <!--End Hidden Sidebar -->
-   
-    
     <!-- Page Banner Start -->
-    <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(assets/images/banner/banner.jpg);">
+    <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover"
+        style="background-image: url(assets/images/banner/banner.jpg);">
         <div class="container">
             <div class="banner-inner text-white">
                 <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">About Us</h2>
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                    <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li class="breadcrumb-item active">About Us</li>
                     </ol>
@@ -58,8 +18,8 @@
         </div>
     </section>
     <!-- Page Banner End -->
-    
-    
+
+
     <!-- About Area start -->
     <section class="about-area-two py-100 rel z-1">
         <div class="container">
@@ -83,7 +43,9 @@
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <p>We specialize in crafting unforgettable city experiences for travelers seeking discover the heart and soul of urban landscapes. Our expertly guided tours take journey through vibrant streets, historic landmarks, and hidden gems of each city.</p>
+                                <p>We specialize in crafting unforgettable city experiences for travelers seeking discover
+                                    the heart and soul of urban landscapes. Our expertly guided tours take journey through
+                                    vibrant streets, historic landmarks, and hidden gems of each city.</p>
                                 <ul class="list-style-two mt-35">
                                     <li>Experience Agency</li>
                                     <li>Professional Team</li>
@@ -102,8 +64,8 @@
         </div>
     </section>
     <!-- About Area end -->
-    
-    
+
+
     <!-- Features Area start -->
     <section class="about-features-area">
         <div class="container">
@@ -114,12 +76,14 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6">
-                    <div class="about-feature-image" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="about-feature-image" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <img src="assets/images/about/about-feature2.jpg" alt="About">
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-8">
-                    <div class="about-feature-boxes" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="about-feature-boxes" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="feature-item style-three bgc-secondary">
                             <div class="icon-title">
                                 <div class="icon"><i class="flaticon-award-symbol"></i></div>
@@ -144,8 +108,8 @@
         </div>
     </section>
     <!-- Features Area end -->
-    
-    
+
+
     <!-- About Us Area start -->
     <section class="about-us-area pt-70 pb-100 rel z-1">
         <div class="container">
@@ -155,7 +119,8 @@
                         <div class="section-title mb-25">
                             <h2>Travel with Confidence Top Reasons to Choose Our Agency</h2>
                         </div>
-                        <p>We work closely with our clients to understand challenges and objectives, providing customized solutions to enhance efficiency boost profitability, and foster sustainable growth.</p>
+                        <p>We work closely with our clients to understand challenges and objectives, providing customized
+                            solutions to enhance efficiency boost profitability, and foster sustainable growth.</p>
                         <div class="row pt-25">
                             <div class="col-6">
                                 <div class="counter-item counter-text-wrap">
@@ -185,22 +150,25 @@
         </div>
     </section>
     <!-- About Us Area end -->
-     
-     
+
+
     <!-- Team Area start -->
     <section class="about-team-area pb-70 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <div class="section-title text-center counter-text-wrap mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="section-title text-center counter-text-wrap mb-50" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <h2>Meet Our Experience Travel Guides</h2>
-                        <p>One site <span class="count-text plus bgc-primary" data-speed="3000" data-stop="34500">0</span> most popular experience you’ll remember</p>
+                        <p>One site <span class="count-text plus bgc-primary" data-speed="3000"
+                                data-stop="34500">0</span> most popular experience you’ll remember</p>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="team-item hover-content" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="team-item hover-content" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <img src="assets/images/team/guide1.jpg" alt="Guide">
                         <div class="content">
                             <h6>John L. Simmons</h6>
@@ -215,7 +183,8 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <img src="assets/images/team/guide2.jpg" alt="Guide">
                         <div class="content">
                             <h6>Andrew K. Manley</h6>
@@ -230,7 +199,8 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="100"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <img src="assets/images/team/guide3.jpg" alt="Guide">
                         <div class="content">
                             <h6>Drew J. Bridges</h6>
@@ -245,7 +215,8 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="150"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <img src="assets/images/team/guide4.jpg" alt="Guide">
                         <div class="content">
                             <h6>Byron F. Simpson</h6>
@@ -263,17 +234,20 @@
         </div>
     </section>
     <!-- Team Area end -->
-    
-    
+
+
     <!-- Features Area start -->
     <section class="about-feature-two bgc-black pt-100 pb-45 rel z-1">
         <div class="container">
-            <div class="section-title text-center text-white counter-text-wrap mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+            <div class="section-title text-center text-white counter-text-wrap mb-50" data-aos="fade-up"
+                data-aos-duration="1500" data-aos-offset="50">
                 <h2>How to Benefit Our Ravelo Tours & Travels</h2>
-                <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most popular experience you’ll remember</p>
+                <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most popular
+                    experience you’ll remember</p>
             </div>
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="feature-item style-two">
                         <div class="icon"><i class="flaticon-save-money"></i></div>
                         <div class="content">
@@ -282,7 +256,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="feature-item style-two">
                         <div class="icon"><i class="flaticon-travel-1"></i></div>
                         <div class="content">
@@ -291,7 +266,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="feature-item style-two">
                         <div class="icon"><i class="flaticon-booking"></i></div>
                         <div class="content">
@@ -300,7 +276,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500"
+                    data-aos-offset="50">
                     <div class="feature-item style-two">
                         <div class="icon"><i class="flaticon-guidepost"></i></div>
                         <div class="content">
@@ -316,14 +293,15 @@
         </div>
     </section>
     <!-- Features Area end -->
-    
-    
+
+
     <!-- Video Area start -->
     <div class="video-area pt-25 rel z-1">
         <div class="container">
             <div class="video-wrap" data-aos="zoom-in" data-aos-duration="1500" data-aos-offset="50">
                 <img src="assets/images/video/video-bg.jpg" alt="Video">
-                <a href="https://www.youtube.com/watch?v=9Y7ma241N8k" class="mfp-iframe video-play" tabindex="-1"><i class="fas fa-play"></i></a>
+                <a href="https://www.youtube.com/watch?v=9Y7ma241N8k" class="mfp-iframe video-play" tabindex="-1"><i
+                        class="fas fa-play"></i></a>
             </div>
         </div>
         <div class="for-bg bgc-black">
@@ -333,14 +311,15 @@
         </div>
     </div>
     <!-- Video Area end -->
-    
-    
+
+
     <!-- Testimonials Area start -->
     <section class="testimonials-area py-100 rel z-1">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="testimonial-left-content rmb-50" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="testimonial-left-content rmb-50" data-aos="fade-right" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <img src="assets/images/testimonials/testimonial-left2.png" alt="Testimonial">
                         <div class="happy-customer text-white bgc-primary">
                             <h6>850K+ Happy Customer</h6>
@@ -365,9 +344,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="testimonial-right-content" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="testimonial-right-content" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="section-title mb-55">
-                            <h2><span>5280</span>  Global Clients Say About Us Services</h2>
+                            <h2><span>5280</span> Global Clients Say About Us Services</h2>
                         </div>
                         <div class="testimonials-active">
                             <div class="testimonial-item">
@@ -382,9 +362,12 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                 </div>
-                                <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They took care of every detail, from to accommodations, and even suggested incredible experiences"</div>
+                                <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They
+                                    took care of every detail, from to accommodations, and even suggested incredible
+                                    experiences"</div>
                                 <div class="author">
-                                    <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author"></div>
+                                    <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author">
+                                    </div>
                                     <div class="content">
                                         <h5>Randall V. Vasquez</h5>
                                         <span>Graphics Designer</span>
@@ -403,9 +386,12 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                 </div>
-                                <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They took care of every detail, from to accommodations, and even suggested incredible experiences"</div>
+                                <div class="text">"Our trip was absolutely a perfect, thanks this travel agency! They
+                                    took care of every detail, from to accommodations, and even suggested incredible
+                                    experiences"</div>
                                 <div class="author">
-                                    <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author"></div>
+                                    <div class="image"><img src="assets/images/testimonials/author.jpg" alt="Author">
+                                    </div>
                                     <div class="content">
                                         <h5>Randall V. Vasquez</h5>
                                         <span>Graphics Designer</span>
@@ -419,8 +405,8 @@
         </div>
     </section>
     <!-- Testimonials Area end -->
-    
-    
+
+
     <!-- Client Logo Area start -->
     <div class="client-logo-area mb-100">
         <div class="container">
@@ -432,16 +418,20 @@
                     <div class="client-logo-item" data-aos="flip-up" data-aos-duration="1500" data-aos-offset="50">
                         <a href="#"><img src="assets/images/client-logos/client-logo1.png" alt="Client Logo"></a>
                     </div>
-                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <a href="#"><img src="assets/images/client-logos/client-logo2.png" alt="Client Logo"></a>
                     </div>
-                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <a href="#"><img src="assets/images/client-logos/client-logo3.png" alt="Client Logo"></a>
                     </div>
-                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="150" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <a href="#"><img src="assets/images/client-logos/client-logo4.png" alt="Client Logo"></a>
                     </div>
-                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="client-logo-item" data-aos="flip-up" data-aos-delay="200" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <a href="#"><img src="assets/images/client-logos/client-logo5.png" alt="Client Logo"></a>
                     </div>
                 </div>

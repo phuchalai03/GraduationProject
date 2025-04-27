@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-css.css') }}">
 
 </head>
 
@@ -32,7 +32,7 @@
     <div class="page-wrapper">
         <!-- main header -->
         @include('layout.partials.header')
-
+        @include('layout.partials.hidden_bar')
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
 

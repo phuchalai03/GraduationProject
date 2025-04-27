@@ -52,13 +52,6 @@
         </div>
     </section>
     <!--End Hidden Sidebar -->
-
-
-    <!-- Hero Area Start -->
-
-    <!-- Hero Area End -->
-
-
     <!-- Destinations Area start -->
     <section class="destinations-area bgc-black pt-100 pb-70 rel z-1">
         <div class="container-fluid">
@@ -79,8 +72,8 @@
                             <div class="image">
                                 <div class="ratting"><i class="fas fa-star"></i> {{ $tour->rating ?? '4.8' }}</div>
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}" alt="Destination"
-                                style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}"
+                                    alt="Destination" style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
                             <div class="content">
                                 <span class="location">
@@ -89,13 +82,14 @@
                                 <h5>
                                     <a href="destination-details.html">{{ $tour->title ?? 'Tour Title' }}</a>
                                 </h5>
-                                <span class="time"> {{ ($tour->timeline->first()) }} </span>
+                                <span class="time"> {{ $tour->timeline->first() }} </span>
                             </div>
                             <div class="destination-footer">
                                 <span class="price">
-                                    <span>{{ number_format($tour->priceAdult, 0 , ',', '.') }}</span>VND / Người
+                                    <span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span>VND / Người
                                 </span>
-                                <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
+                                <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}" class="read-more">Book Now <i
+                                        class="fal fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -111,15 +105,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-5 col-lg-6">
-                    <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500"
-                        data-aos-offset="50">
+                    <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-25">
                             <h2>Travel with Confidence Top Reasons to Choose Our Agency</h2>
                         </div>
                         <p>We go above and beyond to make your travel dreams reality hidden gems and must-see attractions
                         </p>
-                        <div class="divider counter-text-wrap mt-45 mb-55"><span>We have <span><span
-                                        class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span> of
+                        <div class="divider counter-text-wrap mt-45 mb-55"><span>We have <span><span class="count-text plus"
+                                        data-speed="3000" data-stop="25">0</span> Years</span> of
                                 experience</span></div>
                         <div class="row">
                             <div class="col-6">

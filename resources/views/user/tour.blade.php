@@ -1,47 +1,6 @@
 @extends('layout.master')
 
 @section('content')
-    <!-- Hidden Sidebar -->
-    <section class="hidden-bar">
-        <div class="inner-box text-center">
-            <div class="cross-icon"><span class="fa fa-times"></span></div>
-            <div class="title">
-                <h4>Get Appointment</h4>
-            </div>
-
-            <!--Appointment Form-->
-            <div class="appointment-form">
-                <form method="post" action="https://webtendtheme.net/html/2024/ravelo/contact.html">
-                    <div class="form-group">
-                        <input type="text" name="text" value="" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" value="" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Message" rows="5"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="theme-btn style-two">
-                            <span data-hover="Submit now">Submit now</span>
-                            <i class="fal fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!--Social Icons-->
-            <div class="social-style-one">
-                <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-        </div>
-    </section>
-    <!--End Hidden Sidebar -->
-
-
     <!-- Page Banner Start -->
     <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover"
         style="background-image: url(assets/images/banner/banner.jpg);">
@@ -114,8 +73,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-10 rmb-75">
                     <div class="shop-sidebar">
-                        <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
+                        <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <h6 class="widget-title">Filter by Price</h6>
                             <div class="price-filter-wrap">
                                 <div class="price-filter-wrap">
@@ -369,8 +328,9 @@
                             @endforeach
 
                             <div class="col-lg-12">
-                                <ul class="pagination justify-content-center pt-15 flex-wrap destination-item" data-aos="fade-up"
-                                    data-aos-duration="1500" data-aos-offset="50" style="background: none">
+                                <ul class="pagination justify-content-center pt-15 flex-wrap destination-item"
+                                    data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50"
+                                    style="background: none">
                                     <li class="page-item disabled">
                                         <span class="page-link"><i class="far fa-chevron-left"></i></span>
                                     </li>

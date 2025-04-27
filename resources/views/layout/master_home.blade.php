@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-css.css') }}">
     
 </head>
 <body>

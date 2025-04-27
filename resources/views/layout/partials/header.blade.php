@@ -18,12 +18,14 @@
                         <div class="navbar-header">
                             <div class="mobile-logo">
                                 <a href="{{ route('home.index') }}">
-                                    <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo">
+                                    <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo"
+                                        title="Logo">
                                 </a>
                             </div>
 
                             <!-- Toggle Button -->
-                            <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                            <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
+                                data-bs-target=".navbar-collapse">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -57,9 +59,22 @@
                     <!-- menu sidebar -->
                     <div class="menu-sidebar">
                         <button class="bg-transparent">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            <li class="drop-down">
+                                <i class="far fa-user-circle" style="font-size: 26px; color: #333;"></i>
+                                <ul class="dropdown-menu" id="dropdownMenu">
+                                    <li><a href="{{ route('contact.index') }}">Thông tin người dùng</a></li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                                {{ __('Log Out') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
                         </button>
                     </div>
                 </div>
