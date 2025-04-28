@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\User\AboutController;
@@ -33,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Trang admin
     Route::middleware('role:admin')->group(function () {
-        Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+        Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin.home');
     });
 
     // Trang user
