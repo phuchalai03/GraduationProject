@@ -9,7 +9,7 @@
                     <div class="card-header">Ảnh đại diện</div>
                     <div class="card-body text-center">
                         <img id="avatarPreview" class="img-account-profile rounded-circle mb-2"
-                            src="{{ asset('storage/images/1.2.jpg')}}"
+                            src="{{ asset('storage/images/' . $user[0]->avatar) }}"
                             style="width:160px; height: 160px;" alt="Ảnh đại diện ">
 
                         <div class="small font-italic text-muted mb-4">JPG hoặc PNG không lớn hơn 5 MB</div>
@@ -28,16 +28,17 @@
                 <div class="card mb-4">
                     <div class="card-header">Thông tin tài khoản</div>
                     <div class="card-body">
-                        <form action="" method="POST" name="updateUser"
+                        <form action="{{ route('update-user-profile') }}" method="POST" name="updateUser"
                             class="updateUser">
+                            @csrf
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputFullName">Họ và tên</label>
                                     <input class="form-control" id="inputFullName" type="text"
-                                        placeholder="Họ và tên" value="{{ $user[0]->name }}" required>
+                                        placeholder="Họ và tên" value="{{ $user[0]->fullName }}" required>
                                 </div>
                             </div>
-                            @csrf
+                            
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputLocation">Địa chỉ</label>
@@ -63,9 +64,9 @@
                     </div>
                 </div>
                 <div class="card mb-4 ">
-                    <div class="card-body" id="card_change_password">
+                    <div class="card-body" id="card_change_password" style="display: none;">
                         <div class="invalid-feedback" style="margin-top:-15px" id="validate_password"></div>
-                        <form action="" method="post" class="change_password_profile">
+                        <form action="{{ route('change-password') }}" method="post" class="change_password_profile">
                             @csrf
                             <div class="row gx-3">
                                 <div class="col-md-4">

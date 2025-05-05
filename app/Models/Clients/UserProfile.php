@@ -19,4 +19,13 @@ class UserProfile extends Model
         
         return $users;
     }
+
+    public function updateUser($id, $data)
+    {
+        $update = DB::table($this->table)
+            ->where('id', $id)
+            ->update($data);
+
+        return $update;
+    }
 }

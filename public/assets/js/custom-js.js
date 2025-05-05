@@ -50,4 +50,63 @@ $(document).ready(function() {
             }
         });
     }
+
+    //Update user profile
+    $('.updateUser').on('submit', function(e) {
+        e.preventDefault();
+        var fullName = $('#inputFullName').val();
+        var address = $('#inputLocation').val();
+        var email = $('#inputEmailAddress').val();
+        var phone = $('#inputPhone').val();
+
+        var dataUpdate = {
+            'fullName': fullName,
+            'address': address,
+            'email': email,
+            'phone': phone,
+            '_token': $('input[name="_token"]').val(),
+        }
+        console.log(dataUpdate);
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: dataUpdate,
+            success: function(response) {
+                alert(response.message);
+                console.log(response.message);
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra!");
+            }
+        });
+    });
+
+    $('#update_password_profile').click(function() {
+        $("#card_change_password").toggle();
+    });
+
+    $('.change_password_profile').on('submit', function(e) {
+        e.preventDefault();
+        var oldPass = $('#inputOldPass').val();
+        var newPass = $('#inputNewPass').val();
+
+        var updatePass = {
+            'oldPass': oldPass,
+            'newPass': newPass,
+            '_token': $('input[name="_token"]').val(),
+        }
+        console.log(updatePass);
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: updatePass,
+            success: function(response) {
+                alert(response.message);
+                console.log(response.message);
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra!");
+            }
+        });
+    });
 });

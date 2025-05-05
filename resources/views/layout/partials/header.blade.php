@@ -62,7 +62,7 @@
                             <li class="drop-down">
                                 <i class="far fa-user-circle" style="font-size: 26px; color: #333;"></i>
                                 <ul class="dropdown-menu" id="dropdownMenu">
-                                    <li><a href="{{ route('user_profile.index') }}">Thông tin người dùng</a></li>
+                                    <li><a href="{{ route('user-profile') }}">Thông tin người dùng</a></li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

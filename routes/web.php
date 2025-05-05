@@ -49,7 +49,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
         Route::get('/filter-tours', [TourController::class, 'filterTours'])->name('filter-tours');
-        Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user_profile.index');
+        Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
+        Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
+        Route::post('/change_password_profile', [UserProfileController::class, 'changePassword'])->name('change-password');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');
