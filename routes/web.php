@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
         Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
         Route::post('/change_password_profile', [UserProfileController::class, 'changePassword'])->name('change-password');
+        Route::post('/change_avatar_profile', [UserProfileController::class, 'changeAvatar'])->name('change-avatar');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');

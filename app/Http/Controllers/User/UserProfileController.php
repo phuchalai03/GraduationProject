@@ -15,7 +15,8 @@ class UserProfileController extends Controller
         $this->user = new UserProfile();
     }
 
-    public function index(){
+    public function index()
+    {
         $id = auth()->user()->id;
         $user = $this->user->getUser($id);
         //dd($user);
@@ -24,10 +25,6 @@ class UserProfileController extends Controller
 
     public function update(Request $request)
     {
-        // $id = auth()->user()->id;
-        // $data = $request->all();
-        // $this->user->updateUser($id, $data);
-        // return redirect()->route('user-profile')->with('success', 'Cập nhật thành công');
         $fullName = $request->fullName;
         $address = $request->address;
         $email = $request->email;
@@ -47,7 +44,6 @@ class UserProfileController extends Controller
                 'message' => 'Cập nhật thất bại',
             ]);
         }
-        //dd($update);
         return response()->json([
             'success' => true,
             'message' => 'Cập nhật thành công',
@@ -56,11 +52,7 @@ class UserProfileController extends Controller
 
     public function changePassword(Request $request)
     {
-        //$oldPass = bycrypt($request->oldPass);
-        //$newPass = md5($request->newPass);
-
         $user = $this->user->getUser(auth()->user()->id);
-        //dd($user[0]->password, $oldPass);
         if (!password_verify($request->oldPass, $user[0]->password)) {
             return response()->json([
                 'fail' => false,
@@ -78,6 +70,42 @@ class UserProfileController extends Controller
                 'message' => 'Cập nhật thất bại',
             ]);
         }
+        return response()->json([
+            'success' => true,
+            'message' => 'Cập nhật thành công',
+        ]);
+    }
+
+    public function changeAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+        ]);
+
+        $file = $request->file('avatar');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+
+        $user = $this->user->getUser(auth()->user()->id);
+        if ($user[0]->avatar) {
+            $oldAvatarPath = public_path('storage/images/avatars/' . $user[0]->avatar);
+            if (file_exists($oldAvatarPath)) {
+                unlink($oldAvatarPath);
+            }
+        }
+
+        $file->move(public_path('storage/images/avatars/'), $fileName);
+        $dataAvatar = [
+            'avatar' => $fileName,
+        ];
+
+        $update = $this->user->updateUser(auth()->user()->id, $dataAvatar);
+        if (!$update) {
+            return response()->json([
+                'fail' => false,
+                'message' => 'Cập nhật thất bại',
+            ]);
+        }
+
         return response()->json([
             'success' => true,
             'message' => 'Cập nhật thành công',
