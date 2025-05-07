@@ -72,4 +72,23 @@ class Tour extends Model
         }
         return $tours;
     }
+
+    public function updateTours($id, $data)
+    {
+        return DB::table($this->table)
+            ->where('tourId', $id)
+            ->update($data);
+    }
+
+    public function tourBooked($bookingId, $checkoutId)
+    {
+        $booked = DB::table($this->table)
+            ->join('bookings', 'tours.tourId', '=', 'bookings.tourId')
+            ->join('checkouts', 'bookings.bookingId', '=', 'checkouts.bookingId')
+            ->where('bookings.bookingId', '=', $bookingId)
+            ->where('checkouts.checkoutId', '=', $checkoutId)
+            ->first();
+
+        return $booked;
+    }
 }

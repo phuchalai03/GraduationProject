@@ -4,10 +4,13 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\DestinationController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\PaypalController;
 use App\Http\Controllers\User\SearchController;
+use App\Http\Controllers\User\TourBookedController;
 use App\Http\Controllers\User\TourController;
 use App\Http\Controllers\User\TourGuideController;
 use App\Http\Controllers\User\UserProfileController;
@@ -53,6 +56,18 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
         Route::post('/change_password_profile', [UserProfileController::class, 'changePassword'])->name('change-password');
         Route::post('/change_avatar_profile', [UserProfileController::class, 'changeAvatar'])->name('change-avatar');
+
+        Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking');
+        Route::post('/submit-booking', [BookingController::class, 'createBooking'])->name('create-booking');
+
+        //Payment with paypal
+        Route::get('create-transaction', [PaypalController::class, 'createTransaction'])->name('createTransaction');
+        Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+        Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+        Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+        Route::get('/tour-booked', [TourBookedController::class, 'index'])->name('tour-booked');
+        Route::post('/cancel-booking', [TourBookedController::class, 'cancelBooking'])->name('cancel-booking');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');

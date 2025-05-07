@@ -60,7 +60,9 @@
                     <div class="menu-sidebar">
                         <button class="bg-transparent">
                             <li class="drop-down">
-                                <i class="far fa-user-circle" style="font-size: 26px; color: #333;"></i>
+                                <img src="{{ auth()->user()->avatar ? asset('storage/images/avatars/' . auth()->user()->avatar) : asset('assets/images/default-avatar.png') }}"
+                                    alt="User Avatar" class="rounded-circle"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="{{ route('user-profile') }}">Thông tin người dùng</a></li>
                                     <li>

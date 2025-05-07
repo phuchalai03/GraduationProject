@@ -154,10 +154,331 @@ $(document).ready(function() {
                     }
                 },
                 error: function (xhr, status, error) {
-                    toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                    alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
                 },
             });
         }
     });
 
+    let discount = 0;
+    let totalPrice = 0;
+
+    function updateSummary() {
+        const numAdults = parseInt($("#numAdults").val());
+        const numChildren = parseInt($("#numChildren").val());
+
+        const adultPrice = parseInt($("#numAdults").data("price-adults"));
+        const childPrice = parseInt($("#numChildren").data("price-children"));
+
+        const adultsTotal = numAdults * adultPrice;
+        const childrenTotal = numChildren * childPrice;
+
+        $(".quantity__adults").text(numAdults);
+        $(".quantity__children").text(numChildren);
+        $(".summary-item:nth-child(1) .total-price").text(
+            adultPrice.toLocaleString() + " VNĐ"
+        );
+        $(".summary-item:nth-child(2) .total-price").text(
+            childPrice.toLocaleString() + " VNĐ"
+        );
+
+        // Tính tổng giá trị
+        totalPrice = adultsTotal + childrenTotal - discount;
+        $(".summary-item.total-price span:last").text(
+            totalPrice.toLocaleString() + " VNĐ"
+        );
+
+        $(".totalPrice").val(totalPrice);
+    }
+
+    // Sự kiện tăng/giảm số lượng người lớn và trẻ em
+    $(".quantity-selector").on("click", ".quantity-btn", function () {
+        const input = $(this).siblings("input");
+        const min = parseInt(input.attr("min"));
+        let value = parseInt(input.val());
+        const quantityAvailable = parseInt(
+            $(".quantityAvailable").text().match(/\d+/)[0]
+        );
+
+        const totalAdults = parseInt($("#numAdults").val());
+        const totalChildren = parseInt($("#numChildren").val());
+
+        // Kiểm tra nút tăng hay giảm
+        if ($(this).text() === "+") {   
+            // Kiểm tra nếu đang tăng số lượng người lớn
+            if (input.attr("id") === "numAdults") {
+                // Kiểm tra nếu tổng số người lớn và trẻ em không vượt quá số chỗ còn nhận
+                if (totalAdults + totalChildren < quantityAvailable) {
+                    value++;
+                } else {
+                    alert(
+                        "Không thể thêm số người lớn vượt quá số chỗ còn nhận!"
+                    );
+                }
+            }
+            // Kiểm tra nếu đang tăng số lượng trẻ em
+            else if (input.attr("id") === "numChildren") {
+                // Kiểm tra nếu tổng số người lớn và trẻ em không vượt quá số chỗ còn nhận
+                if (totalAdults + totalChildren < quantityAvailable) {
+                    value++;
+                } else {
+                    alert(
+                        "Không thể thêm số trẻ em vượt quá số chỗ còn nhận!"
+                    ); // Thông báo nếu vượt quá
+                }
+            }
+        } else if (value > min) {
+            value--;
+        }
+
+        // Cập nhật số lượng vào input
+        input.val(value);
+
+        // Cập nhật lại tổng giá
+        updateSummary();
+    });
+
+    // Áp dụng mã giảm giá
+    $(".btn-coupon").on("click", function (e) {
+        e.preventDefault();
+        const couponCode = $(".order-coupon input").val();
+
+        // Giả sử mã giảm giá là "DISCOUNT10" giảm 10%
+        if (couponCode === "DISCOUNT10") {
+            discount =
+                0.1 *
+                (parseInt($("#numAdults").val()) *
+                    $("#numAdults").data("price-adults") +
+                    parseInt($("#numChildren").val()) *
+                        $("#numChildren").data("price-children"));
+            alert("Áp dụng mã giảm giá thành công!");
+        } else {
+            discount = 0;
+            alert("Mã giảm giá không hợp lệ!");
+        }
+
+        $(".summary-item:nth-child(3) .total-price").text(
+            discount.toLocaleString() + " VNĐ"
+        );
+        updateSummary();
+    });
+
+    // Sự kiện khi thay đổi trạng thái checkbox
+    $("#agree").on("change", function () {
+        toggleButtonState();
+    });
+
+    // Hàm thay đổi trạng thái của nút
+    function toggleButtonState() {
+        if ($("#agree").is(":checked")) {
+            $(".btn-submit-booking")
+                .removeClass("inactive")
+                .css("pointer-events", "auto");
+        } else {
+            $(".btn-submit-booking")
+                .addClass("inactive")
+                .css("pointer-events", "none");
+        }
+    }
+
+    function validateBookingForm() {
+        let isValid = true;
+
+        // Xóa thông báo lỗi cũ
+        $(".error-message").hide();
+
+        // Kiểm tra họ và tên (không được để trống)
+        const username = $("#username").val().trim();
+        if (username === "") {
+            $("#usernameError").text("Họ và tên không được để trống").show();
+            isValid = false;
+        }
+
+        // Kiểm tra email (phải đúng định dạng email)
+        const email = $("#email").val().trim();
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+        if (email === "") {
+            $("#emailError").text("Email không được để trống").show();
+            isValid = false;
+        } else if (!emailPattern.test(email)) {
+            $("#emailError").text("Email không đúng định dạng").show();
+            isValid = false;
+        }
+
+        // Kiểm tra số điện thoại (phải là số và từ 10-11 ký tự)
+        const tel = $("#tel").val().trim();
+        const telPattern = /^[0-9]{10,11}$/;
+        if (tel === "") {
+            $("#telError").text("Số điện thoại không được để trống").show();
+            isValid = false;
+        } else if (!telPattern.test(tel)) {
+            $("#telError").text("Số điện thoại phải có 10-11 chữ số").show();
+            isValid = false;
+        }
+
+        // Kiểm tra địa chỉ (không được để trống)
+        const address = $("#address").val().trim();
+        if (address === "") {
+            $("#addressError").text("Địa chỉ không được để trống").show();
+            isValid = false;
+        }
+
+        const paymentMethod = $("input[name='payment']:checked").val();
+        if (!paymentMethod) {
+            alert("Vui lòng chọn phương thức thanh toán.");
+            isValid = false;
+        }
+        return isValid; // Trả về kết quả kiểm tra
+    }
+    // Kiểm tra tính hợp lệ khi nhấn nút submit
+    $(".btn-submit-booking").on("click", function (e) {
+        e.preventDefault();
+
+        // Nếu tất cả đều hợp lệ, gửi form
+        if (validateBookingForm()) {
+            $(".booking-container").submit();
+        }
+    });
+
+    // Hàm kiểm tra giá trị lựa chọn thanh toán
+    $('input[name="payment"]').change(function () {
+        const paymentMethod = $(this).val();
+        $("#payment_hidden").val(paymentMethod);
+        const isPaymentSelected =
+            paymentMethod === "paypal-payment" ||
+            paymentMethod === "momo-payment";
+
+        $(".btn-submit-booking").toggle(!isPaymentSelected); // Ẩn hoặc hiện nút xác nhận
+        if (paymentMethod === "paypal-payment") {
+            var totalPricePayment = totalPrice / 25000; //switch to USD
+            paypal
+                .Buttons({
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [
+                                {
+                                    amount: {
+                                        value: totalPricePayment.toFixed(2), // Số tiền thanh toán
+                                    },
+                                },
+                            ],
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            // Hiển thị thông tin thanh toán thành công
+                            console.log(
+                                "Transaction completed by " +
+                                    details.payer.name.given_name
+                            );
+                            // Tạo input hidden mới
+                            var hiddenInput = $("<input>", {
+                                type: "hidden", // Loại input là hidden
+                                name: "transactionIdPaypal", // Tên của input
+                                value: details.id, // Giá trị là transactionId
+                            });
+
+                            // Thêm input hidden vào form
+                            $('input[name="payment"]:checked')
+                                .closest("form")
+                                .append(hiddenInput);
+                            alert("Thanh toán thành công!");
+                            $("#paypal-button-container").hide(); // Ẩn nút PayPal
+
+                            // Vô hiệu hóa tất cả các radio button
+                            $('input[name="payment"]').prop("disabled", true);
+
+                            $(".btn-submit-booking").show(); // Hiện nút xác nhận
+                        });
+                    },
+                    onError: function (err) {
+                        console.error(err);
+                        alert(
+                            "Có lỗi xảy ra trong quá trình thanh toán."
+                        );
+                    },
+                })
+                .render("#paypal-button-container"); // Render nút PayPal vào thẻ chứa
+        } else {
+            // Nếu không phải là PayPal, ẩn nút chứa button PayPal
+            $("#paypal-button-container").empty(); // Xóa nút PayPal nếu có
+        }
+        if (paymentMethod === "momo-payment") {
+            $("#btn-momo-payment").show();
+        } else {
+            $("#btn-momo-payment").hide();
+        }
+    });
+
+    // Save form data to localStorage before payment
+    $("#btn-momo-payment").click(function (e) {
+        e.preventDefault();
+        var urlMomo = $(this).data("urlmomo");
+
+        if (validateBookingForm()) {
+            // Gather form data
+            var bookingData = {
+                fullName: $("#username").val(),
+                email: $("#email").val(),
+                tel: $("#tel").val(),
+                address: $("#address").val(),
+                numAdults: $("#numAdults").val(),
+                numChildren: $("#numChildren").val(),
+                payment: $("input[name='payment']:checked").val(),
+                payment_hidden: $("#payment_hidden").val(),
+            };
+            console.log(bookingData);
+
+            // Save to localStorage
+            localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+            $.ajax({
+                url: urlMomo, // Route tạo yêu cầu thanh toán Momo
+                method: "POST",
+                data: {
+                    amount: totalPrice,
+                    tourId: $("input[name='tourId']").val(),
+                    _token: $('input[name="_token"]').val(),
+                },
+                success: function (response) {
+                    if (response && response.payUrl) {
+                        // Mở popup thanh toán hoặc chuyển hướng người dùng đến URL thanh toán Momo
+                        window.location.href = response.payUrl;
+                    } else {
+                        alert("Không thể tạo thanh toán Momo.");
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra khi kết nối đến Momo.");
+                },
+            });
+        }
+    });
+
+    var savedData = localStorage.getItem("bookingData");
+    if (savedData) {
+        var bookingData = JSON.parse(savedData);
+        console.log(bookingData);
+
+        $("#username").val(bookingData.fullName);
+        $("#email").val(bookingData.email);
+        $("#tel").val(bookingData.tel);
+        $("#address").val(bookingData.address);
+        $("#numAdults").val(bookingData.numAdults);
+        $("#numChildren").val(bookingData.numChildren);
+        $("input[name='payment'][value='" + bookingData.payment + "']").prop(
+            "checked",
+            true
+        );
+        $("#payment_hidden").val(bookingData.payment_hidden);
+        $("#agree").prop("checked", true);
+        // Vô hiệu hóa tất cả các radio button
+        $('input[name="payment"]').prop("disabled", true);
+
+        // Clear booking data after populating the form
+        localStorage.removeItem("bookingData");
+    }
+    // Khởi tạo tổng giá khi trang vừa tải
+    updateSummary();
+    toggleButtonState();
 });

@@ -605,68 +605,32 @@
                         <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
                             <h5 class="widget-title">Tour Booking</h5>
-                            <form action="#">
+                            <form action="{{route('booking', ['id' => $tourDetail[0]->tourId])}}" method="POST">
+                                @csrf
                                 <div class="date mb-25">
                                     <b>Ngày bắt đầu</b>
                                     <input type="text"
-                                        value="{{ date('d-m-Y', strtotime($tourDetail[0]->startDate)) }}" disabled>
+                                        value="{{ date('d-m-Y', strtotime($tourDetail[0]->startDate)) }}" name="startdate" disabled>
                                 </div>
                                 <div class="date mb-25">
                                     <b>Ngày kết thúc</b>
-                                    <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail[0]->endDate)) }}"
-                                        disabled>
+                                    <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail[0]->endDate)) }}" name="enddate" disabled>
                                 </div>
                                 <hr>
                                 <div class="time py-5">
-                                    <b>Time :</b>
-                                    <ul class="radio-filter">
-                                        <li>
-                                            <input class="form-check-input" checked type="radio" name="time"
-                                                id="time1">
-                                            <label for="time1">12:00</label>
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input" type="radio" name="time"
-                                                id="time2">
-                                            <label for="time2">08:00</label>
-                                        </li>
-                                    </ul>
+                                    <b>Thời Gian :</b> {{ $tourDetail[0]->duration }}
                                 </div>
                                 <hr class="mb-25">
-                                <h6>Tickets:</h6>
+                                <h6>Vé:</h6>
                                 <ul class="tickets clearfix">
                                     <li>
-                                        Adult (18- years) <span class="price">$28.50</span>
-                                        <select name="18-" id="18-">
-                                            <option value="value1">01</option>
-                                            <option value="value1">02</option>
-                                            <option value="value1" selected>03</option>
-                                        </select>
+                                        Trẻ em<span class="price">{{ number_format($tourDetail[0]->priceChild, 0, ',', '.') }}VND</span>
                                     </li>
                                     <li>
-                                        Adult (18+ years) <span class="price">$50.40</span>
-                                        <select name="18+" id="18+">
-                                            <option value="value1">01</option>
-                                            <option value="value1">02</option>
-                                            <option value="value1">03</option>
-                                        </select>
+                                        Người lớn<span class="price">{{ number_format($tourDetail[0]->priceAdult, 0, ',', '.') }}VND</span>
                                     </li>
-                                </ul>
-                                <hr class="mb-25">
-                                <h6>Add Extra:</h6>
-                                <ul class="radio-filter pt-5">
-                                    <li>
-                                        <input class="form-check-input" checked type="radio" name="AddExtra"
-                                            id="add-extra1">
-                                        <label for="add-extra1">Add service per booking <span>$50</span></label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" type="radio" name="AddExtra" id="add-extra2">
-                                        <label for="add-extra2">Add service per personal <span>$24</span></label>
-                                    </li>
-                                </ul>
                                 <hr>
-                                <h6>Total: <span class="price">$74</span></h6>
+                                <h6>Tổng tiền: <span class="price">$74</span></h6>
                                 <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
                                     <span data-hover="Book Now">Book Now</span>
                                     <i class="fal fa-arrow-right"></i>
