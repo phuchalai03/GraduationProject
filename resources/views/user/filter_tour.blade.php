@@ -13,11 +13,13 @@
                     <span class="location"><i class="fal fa-map-marker-alt"></i>
                         {{ $tour->destination }}</span>
                     <div class="ratting">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        @for ($i = 0; $i < 5; $i++)
+                            @if ($tour->rating && $i < $tour->rating)
+                                <i class="fas fa-star"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
                 </div>
                 <h6><a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}">

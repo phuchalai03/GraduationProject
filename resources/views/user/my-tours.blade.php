@@ -25,7 +25,7 @@
                                                 </div>
                                             </div>
                                             <h6><a
-                                                    href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                                                    href="{{ route('tour_detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
                                             </h6>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                 <div class="destination-footer">
                                     <span class="price"><span>{{ number_format($tour->totalPrice, 0) }}</span>/vnđ</span>
                                     @if ($tour->bookingStatus == 'f')
-                                        <a href="{{ route('tour-detail', ['id' => $tour->tourId]) }}"
+                                        <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}"
                                             class="theme-btn style-two style-three">
                                             @if ($tour->rating)
                                                 <span data-hover="Đã đánh giá">Đã đánh giá</span>

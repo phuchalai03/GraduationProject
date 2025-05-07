@@ -19,6 +19,7 @@ class Tour extends Model
             $tour->images =  DB::table('images')
                 ->where('tourId', $tour->tourId)
                 ->pluck('imgURL');
+            $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
         }
         return $allTours;
     }
@@ -52,13 +53,12 @@ class Tour extends Model
 
     public function filterTours($filters =[], $sorting = [])
     {
+        //Chưa xử lý lọc theo đánh giá
         $getTours = DB::table($this->table);
 
         if (!empty($filters)){
             $getTours = $getTours->where($filters);
         }
-        //$tours = $getTours->get();
-
         if (!empty($sorting) && isset($sorting[0][0]) && isset($sorting[0][1])){
             $getTours = $getTours->orderBy($sorting[0][0], $sorting[0][1]);
         }
@@ -69,6 +69,7 @@ class Tour extends Model
             $tour->images =  DB::table('images')
                 ->where('tourId', $tour->tourId)
                 ->pluck('imgURL');
+            $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
         }
         return $tours;
     }
@@ -102,9 +103,9 @@ class Tour extends Model
      public function getReviews($id)
      {
          $getReviews = DB::table('reviews')
-             ->join('users', 'users.userId', '=', 'reviews.userId')
+             ->join('users', 'users.id', '=', 'reviews.userId')
              ->where('tourId', $id)
-             ->orderBy('reviews.timestamp', 'desc')
+             ->orderBy('reviews.created_at', 'desc')
              ->take(3)
              ->get();
  
@@ -168,7 +169,7 @@ class Tour extends Model
              // Lấy danh sách hình ảnh thuộc về tour
              $tour->images = DB::table('tbl_images')
                  ->where('tourId', $tour->tourId)
-                 ->pluck('imageURL');
+                 ->pluck('imgURL');
              // Lấy số lượng đánh giá và số sao trung bình của tour
              $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
          }
@@ -193,7 +194,7 @@ class Tour extends Model
              // Lấy danh sách hình ảnh thuộc về tour
              $tour->images = DB::table('images')
                  ->where('tourId', $tour->tourId)
-                 ->pluck('imageURL');
+                 ->pluck('imgURL');
              // Lấy số lượng đánh giá và số sao trung bình của tour
              $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
          }
@@ -237,7 +238,7 @@ class Tour extends Model
              // Lấy danh sách hình ảnh thuộc về tour
              $tour->images = DB::table('images')
                  ->where('tourId', $tour->tourId)
-                 ->pluck('imageURL');
+                 ->pluck('imgURL');
              // Lấy số lượng đánh giá và số sao trung bình của tour
              $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
          }
@@ -262,7 +263,7 @@ class Tour extends Model
              // Lấy danh sách hình ảnh thuộc về tour
              $tour->images = DB::table('images')
                  ->where('tourId', $tour->tourId)
-                 ->pluck('imageURL');
+                 ->pluck('imgURL');
              // Lấy số lượng đánh giá và số sao trung bình của tour
              $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
          }

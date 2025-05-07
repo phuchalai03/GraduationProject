@@ -194,7 +194,7 @@ class BookingController extends Controller
     //Kiểm tra người dùng đã đặt và hoàn thành tour hay chưa để đánh giá
     public function checkBooking(Request $req){
         $tourId = $req->tourId;
-        $userId = $this->getUserId();
+        $userId = auth()->user()->id;
         $check = $this->booking->checkBooking($tourId,$userId);
         if (!$check) {
             return response()->json(['success' => false]);

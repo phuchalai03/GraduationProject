@@ -481,4 +481,112 @@ $(document).ready(function() {
     // Khởi tạo tổng giá khi trang vừa tải
     updateSummary();
     toggleButtonState();
+
+
+    let currentRating = 0;
+
+    $("#rating-stars i").on("mouseover", function () {
+        let rating = $(this).data("value");
+        highlightStars(rating);
+    });
+
+    $("#rating-stars i").on("click", function () {
+        currentRating = $(this).data("value");
+        console.log("Sao đã chọn :", currentRating);
+    });
+
+    $("#rating-stars i").on("mouseout", function () {
+        resetStars();
+        if (currentRating > 0) {
+            highlightStars(currentRating);
+        }
+    });
+
+    // Hàm tô màu các sao được chọn
+    function highlightStars(rating) {
+        $("#rating-stars i").each(function () {
+            if ($(this).data("value") <= rating) {
+                $(this).removeClass("far").addClass("fas active");
+            } else {
+                $(this).removeClass("fas active").addClass("far");
+            }
+        });
+    }
+
+    // Hàm đặt lại tất cả sao về trạng thái chưa chọn
+    function resetStars() {
+        $("#rating-stars i").each(function () {
+            $(this).removeClass("fas active").addClass("far");
+        });
+    }
+    let urlCheckBooking = $("#submit-reviews").attr("data-url-checkBooking");
+    let urlSubmitReview = $("#comment-form").attr("action");
+    let tourIdReview = $("#submit-reviews").attr("data-tourId-reviews");
+
+    $("#comment-form").on("submit", function (e) {
+        e.preventDefault();
+
+        let message = $("#message").val().trim();
+
+        // Kiểm tra số sao và nội dung
+        if (currentRating === 0) {
+            toastr.warning("Vui lòng chọn số sao để đánh giá.");
+            return;
+        } else if (message === "") {
+            toastr.warning("Vui lòng nhập nội dung phản hồi.");
+            return;
+        }
+
+        $.ajax({
+            url: urlCheckBooking,
+            method: "POST",
+            data: {
+                tourId: tourIdReview,
+                _token: $('input[name="_token"]').val(),
+            },
+            success: function (response) {
+                if (response.success) {
+                    formReviews = {
+                        tourId: tourIdReview,
+                        rating: currentRating,
+                        message: message,
+                        _token: $('input[name="_token"]').val(),
+                    };
+
+                    // Gửi AJAX request
+                    $.ajax({
+                        url: urlSubmitReview, // Lấy URL từ action của form
+                        method: "POST",
+                        data: formReviews,
+                        success: function (response) {
+                            if (response.success) {
+                                toastr.success(response.message);
+                                $("#partials_reviews").html(response.data);
+                                $("#partials_reviews .comment-body").addClass(
+                                    "aos-animate"
+                                );
+                                // Xử lý reset form hoặc thông báo
+                                $("#message").val("");
+                                $('#comment-form').hide();
+                                resetStars();
+                                currentRating = 0;
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            toastr.error("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                            console.error("Error:", error);
+                        },
+                    });
+                } else {
+                    toastr.error(
+                        "Vui lòng đặt tour và trải nghiệm để có thể đánh giá!"
+                    );
+                }
+            },
+            error: function (xhr, status, error) {
+                toastr.error("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                console.error("Error:", error);
+            },
+        });
+    });
 });

@@ -13,6 +13,7 @@ use App\Http\Controllers\User\PaypalController;
 use App\Http\Controllers\User\SearchController;
 use App\Http\Controllers\User\TourBookedController;
 use App\Http\Controllers\User\TourController;
+use App\Http\Controllers\User\TourDetailController;
 use App\Http\Controllers\User\TourGuideController;
 use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/destination', [DestinationController::class, 'index'])->name('destination.index');
         Route::get('/tour', [TourController::class, 'index'])->name('tour.index');
         Route::get('/tour_guide', [TourGuideController::class, 'index'])->name('tour_guide.index');
-        Route::get('/tour_detail/{id}', [TourController::class, 'tour_detail'])->name('tour_detail');
+        //Route::get('/tour_detail/{id}', [TourController::class, 'tour_detail'])->name('tour_detail');
         Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
         Route::get('/filter-tours', [TourController::class, 'filterTours'])->name('filter-tours');
@@ -74,6 +75,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/cancel-booking', [TourBookedController::class, 'cancelBooking'])->name('cancel-booking');
 
         Route::get('/my-tours', [MyTourController::class, 'index'])->name('my-tours');
+
+        Route::get('/tour_detail/{id?}', [TourDetailController::class, 'index'])->name('tour_detail');
+        Route::post('/checkBooking', [BookingController::class, 'checkBooking'])->name('checkBooking');
+        Route::post('/reviews', [TourDetailController::class, 'reviews'])->name('reviews');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');
