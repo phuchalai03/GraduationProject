@@ -63,9 +63,25 @@
                     <!-- menu sidbar -->
                     <div class="menu-sidebar">
                         <button class="bg-transparent">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            <li class="drop-down">
+                                <img src="{{ auth()->user()->avatar ? asset('storage/images/avatars/' . auth()->user()->avatar) : asset('assets/images/default-avatar.png') }}"
+                                    alt="User Avatar" class="rounded-circle"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
+                                <ul class="dropdown-menu" id="dropdownMenu">
+                                    <li><a href="{{ route('user-profile') }}">Thông tin người dùng</a></li>
+                                    <li><a href="{{ route('my-tours') }}">Tour đã đặt</a></li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                                {{ __('Log Out') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
                         </button>
                     </div>
                 </div>

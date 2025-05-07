@@ -8,6 +8,7 @@ use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\DestinationController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\MyTourController;
 use App\Http\Controllers\User\PaypalController;
 use App\Http\Controllers\User\SearchController;
 use App\Http\Controllers\User\TourBookedController;
@@ -66,8 +67,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
         Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
+        //Payment with Momo
+        Route::post('/create-momo-payment', [BookingController::class, 'createMomoPayment'])->name('createMomoPayment');
+
         Route::get('/tour-booked', [TourBookedController::class, 'index'])->name('tour-booked');
         Route::post('/cancel-booking', [TourBookedController::class, 'cancelBooking'])->name('cancel-booking');
+
+        Route::get('/my-tours', [MyTourController::class, 'index'])->name('my-tours');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');

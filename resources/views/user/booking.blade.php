@@ -90,7 +90,7 @@
                 <img src="{{ asset('storage/images/icons/logo-momo.jpg') }}" alt="MoMo">
                 Thanh toán bằng Momo
                 {{-- @if (!is_null($transIdMomo))
-                    <input type="hidden" name="transactionIdMomo" value="">
+                    <input type="hidden" name="transactionIdMomo" value="{{ $transIdMomo }}">
                 @endif --}}
             </label>
 

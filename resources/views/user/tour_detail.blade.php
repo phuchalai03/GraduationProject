@@ -148,42 +148,6 @@
                         </div>
                     </div>
 
-                    <h3>Activities</h3>
-                    <div class="tour-activities mt-30 mb-45">
-                        <div class="tour-activity-item">
-                            <i class="flaticon-hiking"></i>
-                            <b>Hiking</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-fishing"></i>
-                            <b>Fishing</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-man"></i>
-                            <b>Kayak shooting</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-kayak-1"></i>
-                            <b>Kayak</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-bonfire"></i>
-                            <b>Campfire</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-flashlight"></i>
-                            <b>Night Exploring</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-cycling"></i>
-                            <b>Biking</b>
-                        </div>
-                        <div class="tour-activity-item">
-                            <i class="flaticon-meditation"></i>
-                            <b>Yoga</b>
-                        </div>
-                    </div>
-
                     <h3>Itinerary</h3>
                     <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
                         <div class="accordion-item">
@@ -265,89 +229,13 @@
                         </div>
                     </div>
 
-                    <h3>Frequently Asked Questions</h3>
-                    <div class="accordion-one mt-25 mb-60" id="faq-accordion">
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne">
-                                    01_How do I book a tour or travel package?
-                                </button>
-                            </h5>
-                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                    02_What is included in the travel package?
-                                </button>
-                            </h5>
-                            <div id="collapseTwo" class="accordion-collapse collapse show"
-                                data-bs-parent="#faq-accordion">
-                                <div class="accordion-body">
-                                    <p>The early start ensures you can fully immerse yourself in the tranquility of nature
-                                        before the world fully awakens. As the morning light filters through the trees,
-                                        you'll experience the crisp, fresh air and the peaceful sounds of the forest. The
-                                        trail ahead offers both a physical challenge promise of breathtaking.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree">
-                                    03_What is your cancellation and refund policy?
-                                </button>
-                            </h5>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour">
-                                    04_Can I customize my tour or travel package?
-                                </button>
-                            </h5>
-                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFive">
-                                    05_What documents do I need to travel?
-                                </button>
-                            </h5>
-                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3>Maps</h3>
+                    {{-- <h3>Maps</h3>
                     <div class="tour-map mt-30 mb-50">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
                             style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    </div> --}}
 
                     <h3>Clients Reviews</h3>
                     <div class="clients-reviews bgc-black mt-30 mb-60">
@@ -498,56 +386,7 @@
                         action="#" method="post" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="comment-review-wrap">
                             <div class="comment-ratting-item">
-                                <span class="title">Services</span>
-                                <div class="ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                            <div class="comment-ratting-item">
-                                <span class="title">Guides</span>
-                                <div class="ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                            <div class="comment-ratting-item">
-                                <span class="title">Price</span>
-                                <div class="ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                            <div class="comment-ratting-item">
-                                <span class="title">Safety</span>
-                                <div class="ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                            <div class="comment-ratting-item">
-                                <span class="title">Foods</span>
-                                <div class="ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                            <div class="comment-ratting-item">
-                                <span class="title">Hotels</span>
+                                <span class="title">Đánh giá</span>
                                 <div class="ratting">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>

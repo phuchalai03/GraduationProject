@@ -65,6 +65,7 @@
                                     style="width: 40px; height: 40px; object-fit: cover;">
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="{{ route('user-profile') }}">Thông tin người dùng</a></li>
+                                    <li><a href="{{ route('my-tours') }}">Tour đã đặt</a></li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
