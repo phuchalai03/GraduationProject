@@ -49,7 +49,7 @@
             @include('layoutAdmin.partials.footer')
         </div>
         
-        @include('layoutAdmin.partials.custom')
+        {{-- @include('layoutAdmin.partials.custom') --}}
     </div>
     <script src="{{ asset('assets_admin/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets_admin/js/core/popper.min.js') }}"></script>
@@ -64,6 +64,7 @@
     <script src="{{ asset('assets_admin/js/plugin/jsvectormap/world.js') }}"></script>
     <script src="{{ asset('assets_admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets_admin/js/kaiadmin.min.js') }}"></script>
+    <script src="{{ asset('assets_admin/js/custom.js') }}"></script>
 </body>
 
 </html>
