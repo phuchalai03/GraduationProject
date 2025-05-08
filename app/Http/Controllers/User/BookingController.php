@@ -83,7 +83,7 @@ class BookingController extends Controller
          */
         $tour = $this->tour->getTourDetail($tourId);
         $dataUpdate = [
-            'quantity' => $tour[0]->quantity - ($numAdults + $numChildren)
+            'quantity' => $tour->quantity - ($numAdults + $numChildren)
         ];
 
         $updateQuantity = $this->tour->updateTours($tourId, $dataUpdate);

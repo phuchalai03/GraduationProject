@@ -44,7 +44,7 @@
                     <div class="input__quanlity">
                         <button type="button" class="quantity-btn">-</button>
                         <input type="number" class="quantity-input" value="1" min="1" id="numAdults"
-                            name="numAdults" data-price-adults="{{ $tour[0]->priceAdult }}" readonly>
+                            name="numAdults" data-price-adults="{{ $tour->priceAdult }}" readonly>
                         <button type="button" class="quantity-btn">+</button>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="input__quanlity">
                         <button type="button" class="quantity-btn">-</button>
                         <input type="number" class="quantity-input" value="0" min="0" id="numChildren"
-                            name="numChildren" data-price-children="{{ $tour[0]->priceChild  }}" readonly>
+                            name="numChildren" data-price-children="{{ $tour->priceChild  }}" readonly>
                         <button type="button" class="quantity-btn">+</button>
                     </div>
                 </div>
@@ -101,12 +101,12 @@
         <div class="booking-summary">
             <div class="summary-section">
                 <div>
-                    <p>Mã tour : {{ $tour[0]->tourId }}</p>
-                    <input type="hidden" name="tourId" id="tourId" value="{{ $tour[0]->tourId }}">
-                    <h5 class="widget-title">{{ $tour[0]->title }}</h5>
-                    <p>Ngày khởi hành : {{ $tour[0]->startDate }}</p>
-                    <p>Ngày kết thúc : {{ $tour[0]->endDate }}</p>
-                    <p class="quantityAvailable">Số chỗ còn nhận : {{ $tour[0]->quantity }}</p>
+                    <p>Mã tour : {{ $tour->tourId }}</p>
+                    <input type="hidden" name="tourId" id="tourId" value="{{ $tour->tourId }}">
+                    <h5 class="widget-title">{{ $tour->title }}</h5>
+                    <p>Ngày khởi hành : {{ $tour->startDate }}</p>
+                    <p>Ngày kết thúc : {{ $tour->endDate }}</p>
+                    <p class="quantityAvailable">Số chỗ còn nhận : {{ $tour->quantity }}</p>
                 </div>
 
                 <div class="order-summary">
