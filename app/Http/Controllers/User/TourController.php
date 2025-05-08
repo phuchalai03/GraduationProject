@@ -15,14 +15,19 @@ class TourController extends Controller
         $this->tours = new Tour();
     }
 
-    public function index(){
-        $tours = $this->tours->getAllTours();
+    public function index(Request $request){
+        $tours = $this->tours->getAllTours(9);
         $domain = $this->tours->getDomain();
         $domain_count = [
             'mien_bac' => optional($domain->firstWhere('domain', 'b'))->count,
             'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
             'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
         ];
+        if ($request->ajax()) {
+            return response()->json([
+                'tours' => view('user.filter_tour', compact('tours'))->render(),
+            ]);
+        }
         return view('user.tour', compact('tours', 'domain_count'));
     }
 
@@ -74,8 +79,8 @@ class TourController extends Controller
                 $sorting[] = ['priceAdult', 'asc'];
             }
         }
-        //dd($sorting);
-        $filterTours = $this->tours->filterTours($conditions, $sorting);
-        return view('user.filter_tour', compact('filterTours'));
+
+        $tours = $this->tours->filterTours($conditions, $sorting, 9);
+        return view('user.filter_tour', compact('tours'));
     }
 }

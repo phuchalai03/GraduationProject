@@ -36,7 +36,7 @@
                     @endfor
 
                 </div>
-                <span class="time">{{ $tourDetail[0]->duration }}</span>
+                <span class="time">{{ $tourDetail->duration }}</span>
                 <p>{{ $review->comment }}</p>
             </div>
         </div>

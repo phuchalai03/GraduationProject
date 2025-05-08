@@ -45,11 +45,34 @@ $(document).ready(function() {
             method: 'GET',
             data: formDataFilter,
             success: function(res) {
-                $('#tours-container').html(res);
+                $("#tours-container").html(res);
                 $('#tours-container .destination-item').addClass('aos-animate');
+                $("#tours-container .pagination-tours").addClass("aos-animate");
             }
         });
     }
+
+    $(document).on("click", ".pagination-tours a", function (e) {
+        e.preventDefault();
+        $("#tours-container").addClass("hidden-content");
+
+        var url = $(this).attr("href");
+        console.log(url);
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+            data: formDataFilter,
+            success: function(res) {
+                $("#tours-container").html(res);
+                $('#tours-container .destination-item').addClass('aos-animate');
+                $("#tours-container .pagination-tours").addClass("aos-animate");
+            },
+            error: function (xhr, status, error) {
+                console.log("Có lỗi xảy ra trong quá trình tải dữ liệu!");
+            },
+        });
+    });
 
     //Update user profile
     $('.updateUser').on('submit', function(e) {

@@ -12,9 +12,9 @@ class Tour extends Model
 
     protected $table = 'tours';
 
-    public function getAllTours(){
+    public function getAllTours($perPage = 9){
 
-        $allTours = DB::table($this->table)->get();
+        $allTours = DB::table($this->table)->paginate($perPage);
         foreach ($allTours as $tour){
             $tour->images =  DB::table('images')
                 ->where('tourId', $tour->tourId)
@@ -27,17 +27,19 @@ class Tour extends Model
     public function getTourDetail($id){
         $getTourDetail = DB::table($this->table)
         ->where('tourId', $id)
-        ->get();
+        ->first();
 
-        foreach ($getTourDetail as $tour){
-            $tour->images =  DB::table('images')
-                ->where('tourId', $tour->tourId)
-                ->limit(2)
+        if ($getTourDetail) {
+            // Lấy danh sách hình ảnh thuộc về tour
+            $getTourDetail->images = DB::table('images')
+                ->where('tourId', $getTourDetail->tourId)
+                ->limit(5)
                 ->pluck('imgURL');
 
-            $tour->timeline =  DB::table('timeline')
-                ->where('tourId', $tour->tourId)
-                ->pluck('title');
+            // Lấy danh sách timeline thuộc về tour
+            $getTourDetail->timeline = DB::table('timeline')
+                ->where('tourId', $getTourDetail->tourId)
+                ->get();
         }
 
         return $getTourDetail;
@@ -51,7 +53,7 @@ class Tour extends Model
             ->get();
     }
 
-    public function filterTours($filters =[], $sorting = [])
+    public function filterTours($filters =[], $sorting = [], $perPage = null)
     {
         //Chưa xử lý lọc theo đánh giá
         $getTours = DB::table($this->table);
@@ -63,7 +65,7 @@ class Tour extends Model
             $getTours = $getTours->orderBy($sorting[0][0], $sorting[0][1]);
         }
 
-        $tours = $getTours->get();
+        $tours = $getTours->paginate($perPage);
 
         foreach ($tours as $tour){
             $tour->images =  DB::table('images')

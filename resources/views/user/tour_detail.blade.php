@@ -29,27 +29,27 @@
             <div class="row gap-10 justify-content-center rel">
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[0] ?? 'thanhhoa1.jpg')) }}"
+                        <img src="{{ asset('storage/images/' . ($tourDetail->images[0] ?? 'thanhhoa1.jpg')) }}"
                             alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                     </div>
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[1] ?? 'thanhhoa1.jpg')) }}"
+                        <img src="{{ asset('storage/images/' . ($tourDetail->images[1] ?? 'thanhhoa1.jpg')) }}"
                             alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[2] ?? 'thanhhoa1.jpg')) }}"
+                        <img src="{{ asset('storage/images/' . ($tourDetail->images[2] ?? 'thanhhoa1.jpg')) }}"
                             alt="Destination" style="width:100%; height:410px; object-fit:cover; border-radius:10px;">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[3] ?? 'thanhhoa1.jpg')) }}"
+                        <img src="{{ asset('storage/images/' . ($tourDetail->images[3] ?? 'thanhhoa1.jpg')) }}"
                             alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                     </div>
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/images/' . ($tourDetail[0]->images[4] ?? 'thanhhoa1.jpg')) }}"
+                        <img src="{{ asset('storage/images/' . ($tourDetail->images[4] ?? 'thanhhoa1.jpg')) }}"
                             alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                     </div>
                 </div>
@@ -274,7 +274,7 @@
                                 <div class="form-group mb-0">
                                     <button type="submit" class="theme-btn bgc-secondary style-two" id="submit-reviews"
                                         data-url-checkBooking="{{ route('checkBooking') }}"
-                                        data-tourId-reviews="{{ $tourDetail[0]->tourId }}">
+                                        data-tourId-reviews="{{ $tourDetail->tourId }}">
                                         <span data-hover="Gửi đánh giá">Gửi đánh giá</span>
                                         <i class="fal fa-arrow-right"></i>
                                     </button>
@@ -290,33 +290,33 @@
                         <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
                             <h5 class="widget-title">Tour Booking</h5>
-                            <form action="{{ route('booking', ['id' => $tourDetail[0]->tourId]) }}" method="POST">
+                            <form action="{{ route('booking', ['id' => $tourDetail->tourId]) }}" method="POST">
                                 @csrf
                                 <div class="date mb-25">
                                     <b>Ngày bắt đầu</b>
                                     <input type="text"
-                                        value="{{ date('d-m-Y', strtotime($tourDetail[0]->startDate)) }}"
+                                        value="{{ date('d-m-Y', strtotime($tourDetail->startDate)) }}"
                                         name="startdate" disabled>
                                 </div>
                                 <div class="date mb-25">
                                     <b>Ngày kết thúc</b>
-                                    <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail[0]->endDate)) }}"
+                                    <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->endDate)) }}"
                                         name="enddate" disabled>
                                 </div>
                                 <hr>
                                 <div class="time py-5">
-                                    <b>Thời Gian :</b> {{ $tourDetail[0]->duration }}
+                                    <b>Thời Gian :</b> {{ $tourDetail->duration }}
                                 </div>
                                 <hr class="mb-25">
                                 <h6>Vé:</h6>
                                 <ul class="tickets clearfix">
                                     <li>
                                         Trẻ em<span
-                                            class="price">{{ number_format($tourDetail[0]->priceChild, 0, ',', '.') }}VND</span>
+                                            class="price">{{ number_format($tourDetail->priceChild, 0, ',', '.') }}VND</span>
                                     </li>
                                     <li>
                                         Người lớn<span
-                                            class="price">{{ number_format($tourDetail[0]->priceAdult, 0, ',', '.') }}VND</span>
+                                            class="price">{{ number_format($tourDetail->priceAdult, 0, ',', '.') }}VND</span>
                                     </li>
                                     <hr>
                                     <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
