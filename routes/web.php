@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/tour', [TourController::class, 'index'])->name('tour.index');
         Route::get('/tour_guide', [TourGuideController::class, 'index'])->name('tour_guide.index');
         //Route::get('/tour_detail/{id}', [TourController::class, 'tour_detail'])->name('tour_detail');
-        Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+
 
         Route::get('/filter-tours', [TourController::class, 'filterTours'])->name('filter-tours');
         Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
@@ -79,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/tour_detail/{id?}', [TourDetailController::class, 'index'])->name('tour_detail');
         Route::post('/checkBooking', [BookingController::class, 'checkBooking'])->name('checkBooking');
         Route::post('/reviews', [TourDetailController::class, 'reviews'])->name('reviews');
+
+        Route::get('/search', [SearchController::class, 'index'])->name('search');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');

@@ -1,3 +1,17 @@
+.datetimepicker-custom {
+    padding: 0;
+}
+
+.datetimepicker-custom:focus {
+    border: none;
+}
+
+#search_form .list {
+    width: 100%;
+    height: 250px;
+    overflow-y: auto;
+}
+
 .dropdown-menu {
     min-width: 200px;
     max-width: 250px;

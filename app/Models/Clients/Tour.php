@@ -164,12 +164,12 @@ class Tour extends Model
              });
          }
  
-         $tours = $tours->where('availability', 1);
+         //$tours = $tours->where('availability', 1);
          $tours = $tours->limit(12)->get();
  
          foreach ($tours as $tour) {
              // Lấy danh sách hình ảnh thuộc về tour
-             $tour->images = DB::table('tbl_images')
+             $tour->images = DB::table('images')
                  ->where('tourId', $tour->tourId)
                  ->pluck('imgURL');
              // Lấy số lượng đánh giá và số sao trung bình của tour
