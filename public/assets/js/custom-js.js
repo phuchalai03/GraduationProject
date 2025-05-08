@@ -54,7 +54,6 @@ $(document).ready(function() {
 
     $(document).on("click", ".pagination-tours a", function (e) {
         e.preventDefault();
-        $("#tours-container").addClass("hidden-content");
 
         var url = $(this).attr("href");
         console.log(url);
