@@ -30,11 +30,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                {{-- <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('admin.admin') }}">
                         <i class="fas fa-layer-group"></i>
@@ -42,25 +37,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
+                    <a href="{{ route('admin.users') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Quản lý người dùng</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
+                    <a href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Quản lý booking</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
+                    <a href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Liên hệ</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#submenu">
+                    <a href="#submenu">
                         <i class="fas fa-bars"></i>
                         <p>Quản lý tour</p>
                         <span class="caret"></span>

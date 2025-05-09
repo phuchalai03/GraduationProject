@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\User\AboutController;
@@ -44,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin', [AdminAdminController::class, 'index'])->name('admin.admin');
         Route::post('/update-admin', [AdminAdminController::class, 'updateAdmin'])->name('admin.update-admin');
         Route::post('/update-avatar', [AdminAdminController::class, 'updateAvatar'])->name('admin.update-avatar');
+
+        Route::get('/users', [UserManagementController::class, 'index'])->name('admin.users');
+        Route::post('/delete-user', [UserManagementController::class, 'deleteUser'])->name('admin.delete-user');
     });
 
     // Trang user
