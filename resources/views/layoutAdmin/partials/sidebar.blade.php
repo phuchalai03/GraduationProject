@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#submenu">
+                    <a data-bs-toggle="collapse" href="#submenu">
                         <i class="fas fa-bars"></i>
                         <p>Quản lý tour</p>
                         <span class="caret"></span>
@@ -68,7 +68,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#subnav2">
+                                <a href="{{ route('admin.tours') }}">
                                     <span class="sub-item">Danh sách tour</span>
                                 </a>
                             </li>
