@@ -60,16 +60,12 @@ class AdminController extends Controller
 
     public function updateAvatar(Request $req)
     {
-        // dd($req->all());
-        $avatar = $req->file('avatarAdmin');
-
-        // Tạo tên mới cho tệp ảnh
-        $filename = 'avt_admin.jpg'; // Tên tệp mới
+        $avatar = $req->file('avatar');
+        $filename = 'avt_admin.jpg';
         unlink(public_path('storage/images/avatars/avt_admin.jpg'));
 
         // Di chuyển ảnh vào thư mục public/admin/assets/images/user-profile/
-        $update = $avatar->move(public_path('storage/images/avatars'), $filename);
-
+        $update = $avatar->move(public_path('storage/images/avatars/'), $filename);
         if (!$update) {
             return response()->json(['error' => true, 'message' => 'Có vấn đề khi cập nhật ảnh!']);
         }

@@ -17,10 +17,15 @@
                                 <div class="form-group text-center">
                                     <label for="avatar">Ảnh đại diện</label>
                                     <div class="mb-3">
-                                        <img src="{{ asset('storage/images/' . $admin->avatar) }}" alt="Admin Avatar"
-                                            class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                        <img id="avatarPreview" src="{{ asset('storage/images/avatars/avt_admin.jpg') }}" alt="Admin Avatar"
+                                            class="rounded-circle img-account-profile" style="width: 150px; height: 150px; object-fit: cover;">
                                     </div>
-                                    <input type="file" class="form-control" id="avatar" name="avatar">
+                                    <input type="file" id="avatar" name="avatar" accept="image/*" style="display: none;">
+                                    <input type="hidden" class="__token" value="{{ csrf_token() }}">
+                                    <input type="hidden" class="label_avatar" value="{{ route('admin.update-avatar') }}">
+                                    <label for="avatar" class="btn btn-success" style="align-items: center; text-align: center; width: 78%; margin: 10px 24px;">
+                                        <i class="fa fa-edit m-right-xs"></i> Tải ảnh lên
+                                    </label>
                                 </div>
                             </div>
 
@@ -34,7 +39,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Mật khẩu</label>
-                                        <input type="password" class="form-control" id="password" name="password" value="{{ $admin->password }}" required>
+                                        <input type="password" class="form-control" id="password" name="password" value="{{ $admin->password }}" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
