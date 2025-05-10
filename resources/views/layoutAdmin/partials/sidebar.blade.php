@@ -63,7 +63,7 @@
                     <div class="collapse" id="submenu">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="#subnav1">
+                                <a href="{{ route('admin.page-add-tours') }}">
                                     <span class="sub-item">Thêm tour</span>
                                 </a>
                             </li>

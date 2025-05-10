@@ -65,6 +65,11 @@
     <script src="{{ asset('assets_admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets_admin/js/kaiadmin.min.js') }}"></script>
     <script src="{{ asset('assets_admin/js/custom.js') }}"></script>
+    <script src="{{ asset('assets_admin/js/custom-add.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
 </body>
 
 </html>

@@ -51,6 +51,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/delete-user', [UserManagementController::class, 'deleteUser'])->name('admin.delete-user');
 
         Route::get('/tours', [TourManagementController::class, 'index'])->name('admin.tours');
+        Route::get('/add-tours', [TourManagementController::class, 'pageAddTours'])->name('admin.page-add-tours');
+        Route::post('/add-tours', [TourManagementController::class, 'addTours'])->name('admin.add-tours');
+        Route::post('/add-images-tours', [TourManagementController::class, 'addImagesTours'])->name('admin.add-images-tours');
+        Route::post('/add-timeline', [TourManagementController::class, 'addTimeline'])->name('admin.add-timeline');
     });
 
     // Trang user
