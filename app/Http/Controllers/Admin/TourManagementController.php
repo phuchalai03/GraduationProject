@@ -133,64 +133,76 @@ class TourManagementController extends Controller
     }
 
     public function addTimeline(Request $request)
-{
-    $tourId = $request->input('tourId');
-    
-    // Tạo một mảng chứa các timeline
-    $timelines = [];
-    
-    // Lấy tất cả dữ liệu từ request
-    $allData = $request->all();
-    
-    // Xác định số lượng ngày dựa vào các field trong request
-    $dayCount = 0;
-    $continueParsing = true;
-    
-    // Duyệt qua để tìm tất cả các ngày
-    while ($continueParsing) {
-        $titleKey = "title-{$dayCount}";
-        $descriptionKey = "description-{$dayCount}";
-        
-        // Kiểm tra xem có dữ liệu cho ngày này không
-        if ($request->has($titleKey) && $request->has($descriptionKey)) {
-            $timeline = [
-                'tourId' => $tourId,
-                'title' => $request->input($titleKey),
-                'description' => $request->input($descriptionKey)
-            ];
-            
-            $timelines[] = $timeline;
-            $dayCount++;
-        } else {
-            $continueParsing = false;
+    {
+        $tourId = $request->input('tourId');
+
+        // Tạo một mảng chứa các timeline
+        $timelines = [];
+
+        // Lấy tất cả dữ liệu từ request
+        $allData = $request->all();
+
+        // Xác định số lượng ngày dựa vào các field trong request
+        $dayCount = 0;
+        $continueParsing = true;
+
+        // Duyệt qua để tìm tất cả các ngày
+        while ($continueParsing) {
+            $titleKey = "title-{$dayCount}";
+            $descriptionKey = "description-{$dayCount}";
+
+            // Kiểm tra xem có dữ liệu cho ngày này không
+            if ($request->has($titleKey) && $request->has($descriptionKey)) {
+                $timeline = [
+                    'tourId' => $tourId,
+                    'title' => $request->input($titleKey),
+                    'description' => $request->input($descriptionKey)
+                ];
+
+                $timelines[] = $timeline;
+                $dayCount++;
+            } else {
+                $continueParsing = false;
+            }
         }
-    }
-    
-    // Kiểm tra xem có dữ liệu timeline không
-    if (empty($timelines)) {
+
+        // Kiểm tra xem có dữ liệu timeline không
+        if (empty($timelines)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Không có dữ liệu lộ trình được gửi!'
+            ]);
+        }
+
+        // Lưu các timeline vào database
+        foreach ($timelines as $timeline) {
+            $this->tours->addTimeLine($timeline);
+        }
+
+        // Cập nhật trạng thái của tour
+        $dataUpdate = [
+            'availability' => 1
+        ];
+
+        $updateAvailability = $this->tours->updateTour($tourId, $dataUpdate);
+
+        // Trả về phản hồi thành công
         return response()->json([
-            'success' => false,
-            'message' => 'Không có dữ liệu lộ trình được gửi!'
+            'success' => true,
+            'message' => 'Thêm lộ trình tour thành công!',
+            'timelines' => $timelines
         ]);
     }
-    
-    // Lưu các timeline vào database
-    foreach ($timelines as $timeline) {
-        $this->tours->addTimeLine($timeline);
+
+    public function deleteTour(Request $request)
+    {
+        $tourId = $request->tourId;
+        $this->tours->deleteTour($tourId);
+        $this->tours->deleteTimeline($tourId);
+        $this->tours->deleteImage($tourId);
+        return response()->json([
+            'success' => true,
+            'message' => 'Xóa tour thành công!',
+        ]);
     }
-    
-    // Cập nhật trạng thái của tour
-    $dataUpdate = [
-        'availability' => 1
-    ];
-    
-    $updateAvailability = $this->tours->updateTour($tourId, $dataUpdate);
-    
-    // Trả về phản hồi thành công
-    return response()->json([
-        'success' => true,
-        'message' => 'Thêm lộ trình tour thành công!',
-        'timelines' => $timelines
-    ]);
-}
 }

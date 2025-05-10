@@ -46,4 +46,18 @@ class TourModel extends Model
 
         return $updated;
     }
+
+    public function deleteTour($tourId){
+        return DB::table($this->table)->where('tourId', $tourId)->delete();
+    }
+
+    public function deleteTimeline($tourId)
+    {
+        return DB::table('timeline')->where('tourId', $tourId)->delete();
+    }
+
+    public function deleteImage($tourId)
+    {
+        return DB::table('images')->where('tourId', $tourId)->delete();
+    }
 }

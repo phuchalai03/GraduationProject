@@ -28,6 +28,38 @@ $(document).ready(function () {
             },
         });
     });
+    $(document).ready(function() {
+    // Xử lý sự kiện click nút xóa
+    $(document).on('click', '.btn-delete', function() {
+        const tourId = $(this).data('id');
+        const token = $(this).siblings('input[name="_token"]').val();
+        
+        if(confirm('Bạn có chắc chắn muốn xóa tour này?')) {
+            $.ajax({
+                url: '/delete-tour',
+                type: 'POST',
+                data: {
+                    tourId: tourId,
+                    _token: token
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Xóa dòng trong bảng
+                        // $(`button[data-id="${tourId}"]`).closest('tr').remove();
+                        alert('Xóa tour thành công!');
+                        window.location.reload();
+                    } else {
+                        alert('Xóa tour thất bại!');
+                    }
+                },
+                error: function(xhr) {
+                    alert('Có lỗi xảy ra khi xóa tour!');
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+    });
+});
 });
 
 $(document).ready(function () {

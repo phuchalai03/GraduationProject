@@ -22,16 +22,26 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Tên</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Thời gian</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Mô tả</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Số lượng</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Giá người lớn</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Giá trẻ em</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Địa điểm</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Ngày bắt đầu</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Ngày kết thúc</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px" style="width: 5%">Action</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Tên
+                                            </th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Thời
+                                                gian</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Mô
+                                                tả</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Số
+                                                lượng</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Giá
+                                                người lớn</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Giá
+                                                trẻ em</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Địa
+                                                điểm</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Ngày
+                                                bắt đầu</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Ngày
+                                                kết thúc</th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px"
+                                                style="width: 5%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,10 +51,13 @@
                                                 <td style="padding: 7px">{{ $tour->duration }}</td>
                                                 <td style="padding: 7px">{{ $tour->description }}</td>
                                                 <td style="padding: 7px">{{ $tour->quantity }}</td>
-                                                <td style="padding: 7px">{{ number_format($tour->priceAdult, 0, ',', '.') }}</td>
-                                                <td style="padding: 7px">{{ number_format($tour->priceChild, 0, ',', '.') }}</td>
+                                                <td style="padding: 7px">{{ number_format($tour->priceAdult, 0, ',', '.') }}
+                                                </td>
+                                                <td style="padding: 7px">{{ number_format($tour->priceChild, 0, ',', '.') }}
+                                                </td>
                                                 <td style="padding: 7px">{{ $tour->destination }}</td>
-                                                <td style="padding: 7px">{{ date('d-m-Y', strtotime($tour->startDate)) }}</td>
+                                                <td style="padding: 7px">{{ date('d-m-Y', strtotime($tour->startDate)) }}
+                                                </td>
                                                 <td style="padding: 7px">{{ date('d-m-Y', strtotime($tour->endDate)) }}</td>
                                                 <td style="padding: 7px">
                                                     <div class="form-button-action">
@@ -53,10 +66,16 @@
                                                             data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
-                                                        <button type="button" data-bs-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-danger" data-original-title="Remove">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                        <div class="form-button-action">
+                                                            <input type="hidden" name="_token"
+                                                                value="{{ csrf_token() }}">
+                                                            <button type="button" data-id="{{ $tour->tourId }}"
+                                                                data-bs-toggle="tooltip" title="Xóa"
+                                                                class="btn btn-link btn-danger btn-delete"
+                                                                data-original-title="Remove">
+                                                                <i class="fa fa-times"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
