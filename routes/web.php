@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
+use App\Http\Controllers\Admin\BookingManagementController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\TourManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -57,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/add-timeline', [TourManagementController::class, 'addTimeline'])->name('admin.add-timeline');
 
         Route::post('/delete-tour', [TourManagementController::class, 'deleteTour'])->name('admin.delete-tour');
+
+        Route::get('/booking', [BookingManagementController::class, 'index'])->name('admin.booking');
     });
 
     // Trang user

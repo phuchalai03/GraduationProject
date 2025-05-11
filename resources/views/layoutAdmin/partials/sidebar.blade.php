@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#base">
+                    <a href="{{ route('admin.booking') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Quản lý booking</p>
                     </a>
