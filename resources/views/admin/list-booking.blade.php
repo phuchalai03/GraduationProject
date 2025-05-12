@@ -75,7 +75,7 @@
                         </li>
                     @endif
                     <li>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ route('admin.booking-detail',['id' => $booking->bookingId]) }}">
                             <i class="fa fa-eye text-primary me-2"></i> Xem chi tiết
                         </a>
                     </li>

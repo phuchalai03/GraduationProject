@@ -119,4 +119,19 @@ class BookingManagementController extends Controller
             ], 500);
         }
     }
+
+    public function showDetail($bookingId)
+    {
+
+        $invoice_booking = $this->booking->getInvoiceBooking($bookingId);
+        // dd($invoice_booking);
+        // $hide = 'hide';
+        if ($invoice_booking->transactionId == null) {
+            $invoice_booking->transactionId = 'Thanh toán tại công ty Travela';
+        }
+        // if ($invoice_booking->paymentStatus === 'n') {
+        //     $hide = '';
+        // }
+        return view('admin.booking-detail', compact('invoice_booking'));
+    }
 }
