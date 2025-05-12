@@ -61,9 +61,10 @@
                                                 <td style="padding: 7px">{{ date('d-m-Y', strtotime($tour->endDate)) }}</td>
                                                 <td style="padding: 7px">
                                                     <div class="form-button-action">
-                                                        <button type="button" data-bs-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-primary btn-lg"
-                                                            data-original-title="Edit Task">
+                                                        <button type="button" data-bs-toggle="tooltip" title="Chỉnh sửa"
+                                                            class="btn btn-link btn-primary btn-lg btn-edit"
+                                                            data-tour-id="{{ $tour->tourId }}"
+                                                            data-url="{{ route('admin.tour-edit') }}">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                         <div class="form-button-action">

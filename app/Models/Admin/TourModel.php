@@ -29,25 +29,39 @@ class TourModel extends Model
         return DB::table('images')->insert($data);
     }
 
-    public function uploadTempImages($data)
-    {
-        return DB::table('temp_images')->insert($data);
-    }
-
     public function addTimeLine($data)
     {
         return DB::table('timeline')->insert($data);
     }
 
-    public function updateTour($tourId,$data){
+    public function updateTimeline($timelineId, $data)
+    {
+        return DB::table('timeline')
+            ->where('timelineId', $timelineId)
+            ->update($data);
+    }
+
+    public function deleteTimelineById($timelineId)
+    {
+        return DB::table('timeline')->where('timelineId', $timelineId)->delete();
+    }
+
+    public function deleteImageById($imageId)
+    {
+        return DB::table('images')->where('imageId', $imageId)->delete();
+    }
+    
+    public function updateTour($tourId, $data)
+    {
         $updated = DB::table($this->table)
-        ->where('tourId',$tourId)
-        ->update($data);
+            ->where('tourId', $tourId)
+            ->update($data);
 
         return $updated;
     }
 
-    public function deleteTour($tourId){
+    public function deleteTour($tourId)
+    {
         return DB::table($this->table)->where('tourId', $tourId)->delete();
     }
 
@@ -59,5 +73,20 @@ class TourModel extends Model
     public function deleteImage($tourId)
     {
         return DB::table('images')->where('tourId', $tourId)->delete();
+    }
+
+    public function getTour($tourId)
+    {
+        return DB::table($this->table)->where('tourId', $tourId)->first();
+    }
+
+    public function getImages($tourId)
+    {
+        return DB::table('images')->where('tourId', $tourId)->get();
+    }
+
+    public function getTimeLine($tourId)
+    {
+        return DB::table('timeline')->where('tourId', $tourId)->get();
     }
 }

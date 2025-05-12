@@ -58,7 +58,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/add-timeline', [TourManagementController::class, 'addTimeline'])->name('admin.add-timeline');
 
         Route::post('/delete-tour', [TourManagementController::class, 'deleteTour'])->name('admin.delete-tour');
-
+        Route::get('/tour-edit', [TourManagementController::class, 'getTourEdit'])->name('admin.tour-edit');
+        Route::post('/edit-tour', [TourManagementController::class, 'updateTour'])->name('admin.edit-tour');
+        
         Route::get('/booking', [BookingManagementController::class, 'index'])->name('admin.booking');
     });
 

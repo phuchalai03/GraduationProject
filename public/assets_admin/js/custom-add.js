@@ -98,22 +98,27 @@ $(document).ready(function () {
                 return true;
 
             case 3:
-            // Validate step 3 (kiểm tra các trường lộ trình)
-            let isValid = true;
-            $('.timeline-day').each(function () {
-                const title = $(this).find('input[name^="title-"]').val();
-                const description = $(this).find('textarea[name^="description-"]').val();
-
-                if (!title || !description) {
-                    alert("Vui lòng điền đầy đủ thông tin cho tất cả các ngày trong lộ trình!");
-                    isValid = false;
-                    return false; // Thoát khỏi vòng lặp
+                // Validate step 3 (kiểm tra các trường lộ trình)
+                let isValid = true;
+                const timelineDays = $('.timeline-day');
+                if (timelineDays.length === 0) {
+                    alert("Vui lòng thêm ít nhất một ngày cho lộ trình!");
+                    return false;
                 }
-            });
-            return isValid;
+                timelineDays.each(function () {
+                    const title = $(this).find('input[name^="title-"]').val();
+                    const description = $(this).find('textarea[name^="description-"]').val();
 
-        default:
-            return true;
+                    if (!title || !description) {
+                        alert("Vui lòng điền đầy đủ thông tin cho tất cả các ngày trong lộ trình!");
+                        isValid = false;
+                        return false; // Thoát khỏi vòng lặp
+                    }
+                });
+                return isValid;
+
+            default:
+                return true;
         }
     }
 
@@ -176,49 +181,49 @@ $(document).ready(function () {
 
     // Hàm lưu thông tin lộ trình
     function saveTimelineData(tourId) {
-    // Tạo form data để lưu timeline
-    const formData = new FormData();
+        // Tạo form data để lưu timeline
+        const formData = new FormData();
 
-    // Thêm tour ID vào formData
-    formData.append('tourId', tourId);
-    
-    // Thu thập tất cả các thông tin timeline
-    $('.timeline-day').each(function(index) {
-        const title = $(this).find('input[name^="title-"]').val();
-        const description = $(this).find('textarea[name^="description-"]').val();
-        
-        formData.append(`title-${index}`, title);
-        formData.append(`description-${index}`, description);
-    });
-    
-    // Log dữ liệu để debug
-    for (let pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-    }
-    
-    // Gửi Ajax request
-    $.ajax({
-        url: '/add-timeline',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val()
-        },
-        success: function(response) {
-            console.log("Phản hồi từ server:", response);
-            if (response.success) {
-                console.log("Lưu lộ trình thành công!");
-            } else {
-                console.error("Lỗi lưu lộ trình:", response.message);
-            }
-        },
-        error: function(error) {
-            console.error("Lỗi khi lưu lộ trình:", error);
+        // Thêm tour ID vào formData
+        formData.append('tourId', tourId);
+
+        // Thu thập tất cả các thông tin timeline
+        $('.timeline-day').each(function (index) {
+            const title = $(this).find('input[name^="title-"]').val();
+            const description = $(this).find('textarea[name^="description-"]').val();
+
+            formData.append(`title-${index}`, title);
+            formData.append(`description-${index}`, description);
+        });
+
+        // Log dữ liệu để debug
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
         }
-    });
-}
+
+        // Gửi Ajax request
+        $.ajax({
+            url: '/add-timeline',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            },
+            success: function (response) {
+                console.log("Phản hồi từ server:", response);
+                if (response.success) {
+                    console.log("Lưu lộ trình thành công!");
+                } else {
+                    console.error("Lỗi lưu lộ trình:", response.message);
+                }
+            },
+            error: function (error) {
+                console.error("Lỗi khi lưu lộ trình:", error);
+            }
+        });
+    }
 
     // Thêm các trường cho lộ trình tour
     let dayCount = 1;
@@ -281,4 +286,53 @@ $(document).ready(function () {
         $('#add-timeline-day').before(dayHtml);
         dayCount++;
     }
+
+
+    //Cập nhật timeline
+    $(document).ready(function () {
+        let timelineIndex = window.timelineData.length || 0;
+
+        // Hàm render lại toàn bộ timeline
+        function renderTimeline() {
+            const container = $('#timeline-container');
+            container.empty();
+            window.timelineData.forEach(function (timeline, idx) {
+                container.append(`
+                <div class="timeline-day mb-4 border rounded p-3" data-index="${idx}">
+                    <input type="hidden" name="timeline[${idx}][timelineId]" value="${timeline.timelineId || ''}">
+                    <div class="row mb-2">
+                        <label class="col-sm-2 col-form-label">Tiêu đề ngày ${idx + 1}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="timeline[${idx}][title]" value="${timeline.title || ''}" required>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-2 col-form-label">Mô tả</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="timeline[${idx}][description]" rows="3" required>${timeline.description || ''}</textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-remove-timeline">Xóa ngày</button>
+                </div>
+            `);
+            });
+        }
+
+        // Render lần đầu
+        renderTimeline();
+
+        // Thêm ngày mới
+        $('#add-timeline-day-edit').on('click', function () {
+            window.timelineData.push({ title: '', description: '' });
+            renderTimeline();
+        });
+
+        // Xóa ngày
+        $('#timeline-container').on('click', '.btn-remove-timeline', function () {
+            const idx = $(this).closest('.timeline-day').data('index');
+            window.timelineData.splice(idx, 1);
+            renderTimeline();
+        });
+    });
+    
 });
