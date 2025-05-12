@@ -24,4 +24,99 @@ class BookingManagementController extends Controller
         return view('admin.booking', compact('list_booking'));
     }
 
+    public function confirmBooking(Request $request)
+    {
+        $bookingId = $request->bookingId;
+        $dataConfirm = [
+            'bookingStatus' => 'y'
+        ];
+
+        $result = $this->booking->updateBooking($bookingId, $dataConfirm);
+
+        if ($result) {
+            $list_booking = $this->booking->getBooking();
+            //$list_booking = $this->updateHideBooking($list_booking);
+            return response()->json([
+                'success' => true,
+                'message' => 'Cập nhật trạng thái thành công.',
+                'data' => view('admin.list-booking', compact('list_booking'))->render()
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cập nhật thất bại.'
+            ], 500);
+        }
+    }
+
+    public function confirmCheckout(Request $request)
+    {
+        $bookingId = $request->bookingId;
+        $dataConfirm = [
+            'paymentStatus' => 'y'
+        ];
+
+        $result = $this->booking->updateCheckout($bookingId, $dataConfirm);
+
+        if ($result) {
+            $list_booking = $this->booking->getBooking();
+            //$list_booking = $this->updateHideBooking($list_booking);
+            return response()->json([
+                'success' => true,
+                'message' => 'Cập nhật trạng thái thành công.',
+                'data' => view('admin.list-booking', compact('list_booking'))->render()
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cập nhật thất bại.'
+            ], 500);
+        }
+    }
+
+    public function finishBooking(Request $request)
+    {
+        $bookingId = $request->bookingId;
+
+        $dataConfirm = [
+            'bookingStatus' => 'f'
+        ];
+
+        $result = $this->booking->updateBooking($bookingId, $dataConfirm);
+
+        if ($result) {
+            $list_booking = $this->booking->getBooking();
+            //$list_booking = $this->updateHideBooking($list_booking);
+            return response()->json([
+                'success' => true,
+                'message' => 'Cập nhật trạng thái thành công.',
+                'data' => view('admin.list-booking', compact('list_booking'))->render()
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cập nhật thất bại.'
+            ], 500);
+        }
+    }
+
+    public function deleteBooking(Request $request)
+    {
+        $bookingId = $request->bookingId;
+        $result = $this->booking->deleteBooking($bookingId);
+
+        if ($result) {
+            $list_booking = $this->booking->getBooking();
+            return response()->json([
+                'success' => true,
+                'message' => 'Xóa tour thành công.',
+                'data' => view('admin.list-booking', compact('list_booking'))->render()
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Xóa thất bại thất bại.'
+            ], 500);
+        }
+    }
 }

@@ -62,6 +62,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/edit-tour', [TourManagementController::class, 'updateTour'])->name('admin.edit-tour');
         
         Route::get('/booking', [BookingManagementController::class, 'index'])->name('admin.booking');
+        Route::post('/confirm-booking', [BookingManagementController::class, 'confirmBooking'])->name('admin.confirm-booking');
+        Route::post('/confirm-checkout', [BookingManagementController::class, 'confirmCheckout'])->name('admin.confirm-checkout');
+        Route::get('/booking-detail/{id?}', [BookingManagementController::class, 'showDetail'])->name('admin.booking-detail');
+        Route::post('/delete-booking', [BookingManagementController::class, 'deleteBooking'])->name('admin.delete-booking');
+        Route::post('/finish-booking', [BookingManagementController::class, 'finishBooking'])->name('admin.finish-booking');
+        Route::post('/received-money', [BookingManagementController::class, 'receiviedMoney'])->name('admin.received');
     });
 
     // Trang user

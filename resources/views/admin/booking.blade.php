@@ -34,10 +34,12 @@
                                                 chỉ</th>
                                             <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Ngày
                                                 đặt</th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Người lớn
-                                                </th>
-                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Trẻ em
-                                                </th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">
+                                                Người lớn
+                                            </th>
+                                            <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Trẻ
+                                                em
+                                            </th>
                                             <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">Tổng
                                                 tiền</th>
                                             <th style="text-transform:none; letter-spacing:0; padding:7px 30px 7px 7px">
@@ -50,54 +52,8 @@
                                                 Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($list_booking as $booking)
-                                            <tr>
-                                                <td style="padding: 7px">{{ $booking->title }}</td>
-                                                <td style="padding: 7px">{{ $booking->fullName }}</td>
-                                                <td style="padding: 7px">{{ $booking->email }}</td>
-                                                <td style="padding: 7px">{{ $booking->phoneNumber }}</td>
-                                                <td style="padding: 7px">{{ $booking->address }}
-                                                </td>
-                                                <td style="padding: 7px">
-                                                    {{ date('d-m-Y', strtotime($booking->bookingDate)) }}
-                                                </td>
-                                                <td style="padding: 7px">{{ $booking->numAdults }}</td>
-                                                <td style="padding: 7px">{{ $booking->numChildren }}</td>
-                                                <td style="padding: 7px">
-                                                    {{ number_format($booking->totalPrice, 0, ',', '.') }}</td>
-                                                <td style="padding: 7px">
-                                                    @if ($booking->bookingStatus == 'c')
-                                                        <span class="badge badge-danger">Đã hủy</span>
-                                                    @elseif ($booking->bookingStatus == 'b')
-                                                        <span class="badge badge-warning">Chưa xác nhận</span>
-                                                    @elseif ($booking->bookingStatus == 'y')
-                                                        <span class="badge badge-primary">Đã xác nhận</span>
-                                                    @elseif ($booking->bookingStatus == 'f')
-                                                        <span class="badge badge-success">Đã hoàn thành</span>
-                                                    @endif
-                                                </td>
-                                                <td style="padding: 7px">
-                                                    @if ($booking->paymentMethod == 'momo-payment')
-                                                        <span>Momo</span>
-                                                    @elseif ($booking->paymentMethod == 'paypal-payment')
-                                                        <span>Paypal</span>
-                                                    @else
-                                                        <span>Tại văn phòng</span>
-                                                    @endif
-                                                </td>
-                                                <td style="padding: 7px">
-                                                    @if ($booking->paymentStatus == 'n')
-                                                        <span class="badge badge-danger">Chưa thanh toán</span>
-                                                    @else
-                                                        <span class="badge badge-success">Đã thanh toán</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <span>Action</span>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    <tbody id="tbody-booking">
+                                        @include('admin.list-booking')
                                     </tbody>
                                 </table>
                             </div>

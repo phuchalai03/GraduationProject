@@ -28,6 +28,12 @@ class BookingModel extends Model
         ->update($data);
     }
 
+    public function deleteBooking($bookingId){
+        return DB::table($this->table)
+        ->where('bookingId',$bookingId)
+        ->delete();
+    }
+
     public function getInvoiceBooking($bookingId){
 
         $invoice = DB::table($this->table)

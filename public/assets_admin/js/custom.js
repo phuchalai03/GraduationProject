@@ -152,20 +152,7 @@ $(document).ready(function () {
         pageLength: 5,
     });
 
-    var action =
-        '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-    $("#addRowButton").click(function () {
-        $("#add-row")
-            .dataTable()
-            .fnAddData([
-                $("#addName").val(),
-                $("#addPosition").val(),
-                $("#addOffice").val(),
-                action,
-            ]);
-        $("#addRowModal").modal("hide");
-    });
+    
     $('#btn-add-image').on('click', function () {
         $('#input-add-image').click();
     });
@@ -205,5 +192,140 @@ $(document).ready(function () {
         var imageId = $(this).data('image-id');
         $('#deleted-images').append('<input type="hidden" name="delete_images[]" value="' + imageId + '">');
         $(this).closest('.image-item').remove();
+    });
+
+    $(document).on("click", ".confirm-booking", function (e) {
+        e.preventDefault();
+
+        const bookingId = $(this).data("bookingid");
+        const urlConfirm = $(this).data("urlconfirm");
+
+        $.ajax({
+            url: urlConfirm,
+            method: "POST",
+            data: {
+                bookingId: bookingId,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    $("#tbody-booking").html(response.data);
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+    });
+
+    $(document).on("click", ".confirm-booking", function (e) {
+        e.preventDefault();
+
+        const bookingId = $(this).data("bookingid");
+        const urlConfirm = $(this).data("urlconfirm");
+
+        $.ajax({
+            url: urlConfirm,
+            method: "POST",
+            data: {
+                bookingId: bookingId,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    $("#tbody-booking").html(response.data);
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+    });
+
+    $(document).on("click", ".confirm-checkout", function (e) {
+        e.preventDefault();
+
+        const bookingId = $(this).data("bookingid");
+        const urlConfirm = $(this).data("urlconfirm-checkout");
+
+        $.ajax({
+            url: urlConfirm,
+            method: "POST",
+            data: {
+                bookingId: bookingId,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    $("#tbody-booking").html(response.data);
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+    });
+
+    $(document).on("click", ".finish-booking", function (e) {
+        e.preventDefault();
+
+        const bookingId = $(this).data("bookingid");
+        const urlFinish = $(this).data("urlfinish");
+
+        $.ajax({
+            url: urlFinish,
+            method: "POST",
+            data: {
+                bookingId: bookingId,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    $("#tbody-booking").html(response.data);
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+    });
+
+    $(document).on("click", ".delete-booking", function (e) {
+        e.preventDefault();
+
+        const bookingId = $(this).data("bookingid");
+        const urlDelete = $(this).data("urldelete");
+
+        $.ajax({
+            url: urlDelete,
+            method: "POST",
+            data: {
+                bookingId: bookingId,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    $("#tbody-booking").html(response.data);
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
     });
 });
