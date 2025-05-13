@@ -72,6 +72,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/list-contact', [ContactManagementController::class, 'index'])->name('admin.list-contact');
         Route::post('/reply-contact', [ContactManagementController::class, 'replyContact'])->name('admin.reply-contact');
+
+        Route::post('/admin/send-pdf', [BookingManagementController::class, 'sendPdf'])->name('admin.send.pdf');
     });
 
     // Trang user

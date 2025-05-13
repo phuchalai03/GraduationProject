@@ -130,7 +130,7 @@
                                     <i class="fa fa-print"></i> In hóa đơn
                                 </button>
                                 <button id="send-pdf-btn" data-bookingid="{{ $invoice_booking->bookingId }}"
-                                    data-email="{{ $invoice_booking->email }}" data-urlsendmail=""
+                                    data-email="{{ $invoice_booking->email }}" data-urlsendmail="{{ route('admin.send.pdf') }}"
                                     class="btn btn-primary ms-2">
                                     <i class="fa fa-paper-plane"></i> Gửi hóa đơn cho khách hàng
                                 </button>

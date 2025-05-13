@@ -401,4 +401,35 @@ $(document).ready(function () {
             },
         });
     });
+    $("#send-pdf-btn").click(function () {
+        // Lấy bookingId và email từ button
+        const bookingId = $(this).data("bookingid");
+        const email = $(this).data("email");
+        const urlSendPdf = $(this).data("urlsendmail");
+
+        // Gửi AJAX request
+        $.ajax({
+            url: urlSendPdf,
+            type: "POST",
+            data: {
+                bookingId: bookingId,
+                email: email,
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            beforeSend: function () {
+                alert("Đang gửi mail!!!");
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Đã xảy ra lỗi khi gửi email. Vui lòng thử lại!");
+                console.error(xhr.responseText); // Log lỗi chi tiết trong console
+            },
+        });
+    });
 });
