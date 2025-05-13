@@ -152,7 +152,7 @@ $(document).ready(function () {
         pageLength: 5,
     });
 
-    
+
     $('#btn-add-image').on('click', function () {
         $('#input-add-image').click();
     });
@@ -325,6 +325,79 @@ $(document).ready(function () {
             },
             error: function (error) {
                 alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+    });
+    $(document).ready(function () {
+        $('.contact-item').on('click', function () {
+            var fullName = $(this).data("name");
+            var email = $(this).data("email");
+            var message = $(this).data("message");
+            var contactId = $(this).data("contactid");
+            $('#contact-detail-card').show();
+            $('#contact-name').text(fullName);
+            $('#contact-email').text('<' + email + '>');
+            $('#contact-id').text('ID: ' + contactId);
+            $('#contact-message').text(message);
+            $(".send-reply-contact").attr("data-email", email);
+            $(".send-reply-contact").attr("data-contactid", contactId);
+        });
+    });
+    $('.btn-group').on('click', '#compose', function () {
+        $('#compose-contact').show();
+    });
+
+    // Đóng form phản hồi
+    $('#compose-contact').on('click', '.compose-close', function () {
+        $('#compose-contact').hide();
+    });
+
+    $(document).on("click", ".send-reply-contact", function (e) {
+        e.preventDefault();
+
+        // Lấy thông tin từ nút gửi
+        var email = $(this).attr("data-email");
+        var contactId = $(this).attr("data-contactid");
+        var editorContent = $('#editor-contact').text();
+
+        var urlReply = $(this).data("url");
+
+        if (!email) {
+            alert("Không có địa chỉ email để gửi.");
+            return;
+        }
+
+        // Gửi AJAX request
+        $.ajax({
+            url: urlReply,
+            type: "POST",
+            dataType: "json",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // CSRF Token
+            },
+            data: {
+                contactId: contactId,
+                email: email,
+                message: editorContent,
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                    // Xóa element contact-item sau khi phản hồi thành công
+                    $(
+                        ".contact-item[data-contactid='" + contactId + "']"
+                    ).remove();
+                    $(".mail_view").hide();
+                    $("#editor-contact").empty(); // Dọn sạch nội dung div nếu cần
+                    $(".compose").slideToggle();
+
+                    $(this)
+                        .removeAttr("data-email")
+                        .removeAttr("data-contactid");
+                }
+            },
+            error: function (xhr) {
+                alert("Đã xảy ra lỗi khi gửi email. Vui lòng thử lại.");
             },
         });
     });

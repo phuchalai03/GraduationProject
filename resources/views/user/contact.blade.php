@@ -107,61 +107,46 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="comment-form bgc-lighter z-1 rel mb-30 rmb-55">
-                        <form id="contactForm" class="contactForm" name="contactForm"
-                            action="https://webtendtheme.net/html/2024/ravelo/assets/php/form-process.php" method="post"
-                            data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                        <form id="contactForm" class="contactForm" name="contactForm" action="{{ route('create-contact') }}"
+                            method="post" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                            @csrf
                             <div class="section-title">
-                                <h2>Get In Touch</h2>
+                                <h2>Liên hệ</h2>
                             </div>
-                            <p>Your email address will not be published. Required fields are marked *</p>
+                            <p>Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu <span
+                                    style="color: red">*</span></p>
                             <div class="row mt-35">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Full Name</label>
+                                        <label for="name">Họ và tên <span style="color: red">*</span></label>
                                         <input type="text" id="name" name="name" class="form-control"
-                                            placeholder="Randy J. Thomas" value="" required
-                                            data-error="Please enter your Name">
-                                        <div class="help-block with-errors"></div>
+                                            placeholder="Họ và tên" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="phone_number">Phone Number</label>
+                                        <label for="phone_number">Số điện thoại <span style="color: red">*</span></label>
                                         <input type="text" id="phone_number" name="phone_number" class="form-control"
-                                            placeholder="Phone" value="" required
-                                            data-error="Please enter your Phone">
-                                        <div class="help-block with-errors"></div>
+                                            placeholder="Số điện thoại" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
+                                        <label for="email">Địa chỉ Email <span style="color: red">*</span></label>
                                         <input type="email" id="email" name="email" class="form-control"
-                                            placeholder="enter email" value="" required
-                                            data-error="Please enter your Email">
-                                        <div class="help-block with-errors"></div>
+                                            placeholder="Nhập email" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="message">Your Message</label>
-                                        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Message" required
-                                            data-error="Please enter your Message"></textarea>
-                                        <div class="help-block with-errors"></div>
+                                        <label for="message">Nội dung <span style="color: red">*</span></label>
+                                        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Nội dung" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-0">
-                                        <ul class="radio-filter mb-25">
-                                            <li>
-                                                <input class="form-check-input" type="radio" name="terms-condition"
-                                                    id="terms-condition">
-                                                <label for="terms-condition">Save my name, email, and website in this
-                                                    browser for the next time I comment.</label>
-                                            </li>
-                                        </ul>
                                         <button type="submit" class="theme-btn style-two">
-                                            <span data-hover="Send Comments">Send Comments</span>
+                                            <span data-hover="Send Comments">Gửi</span>
                                             <i class="fal fa-arrow-right"></i>
                                         </button>
                                         <div id="msgSubmit" class="hidden"></div>

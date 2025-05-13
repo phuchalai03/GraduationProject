@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\BookingManagementController;
+use App\Http\Controllers\Admin\ContactManagementController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\TourManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -60,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/delete-tour', [TourManagementController::class, 'deleteTour'])->name('admin.delete-tour');
         Route::get('/tour-edit', [TourManagementController::class, 'getTourEdit'])->name('admin.tour-edit');
         Route::post('/edit-tour', [TourManagementController::class, 'updateTour'])->name('admin.edit-tour');
-        
+
         Route::get('/booking', [BookingManagementController::class, 'index'])->name('admin.booking');
         Route::post('/confirm-booking', [BookingManagementController::class, 'confirmBooking'])->name('admin.confirm-booking');
         Route::post('/confirm-checkout', [BookingManagementController::class, 'confirmCheckout'])->name('admin.confirm-checkout');
@@ -68,6 +69,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/delete-booking', [BookingManagementController::class, 'deleteBooking'])->name('admin.delete-booking');
         Route::post('/finish-booking', [BookingManagementController::class, 'finishBooking'])->name('admin.finish-booking');
         Route::post('/received-money', [BookingManagementController::class, 'receiviedMoney'])->name('admin.received');
+
+        Route::get('/list-contact', [ContactManagementController::class, 'index'])->name('admin.list-contact');
+        Route::post('/reply-contact', [ContactManagementController::class, 'replyContact'])->name('admin.reply-contact');
     });
 
     // Trang user
@@ -107,6 +111,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/tour_detail/{id?}', [TourDetailController::class, 'index'])->name('tour_detail');
         Route::post('/checkBooking', [BookingController::class, 'checkBooking'])->name('checkBooking');
         Route::post('/reviews', [TourDetailController::class, 'reviews'])->name('reviews');
+
+        Route::post('/create-contact', [ContactController::class, 'createContact'])->name('create-contact');
 
         Route::get('/search', [SearchController::class, 'index'])->name('search');
     });

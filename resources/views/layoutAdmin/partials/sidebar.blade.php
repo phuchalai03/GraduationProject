@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#base">
+                    <a href="{{ route('admin.list-contact') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Liên hệ</p>
                     </a>

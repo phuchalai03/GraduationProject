@@ -47,10 +47,10 @@
             @include('layoutAdmin.partials.header')
 
             @yield('content')
-            
+
             @include('layoutAdmin.partials.footer')
         </div>
-        
+
         {{-- @include('layoutAdmin.partials.custom') --}}
     </div>
     <script src="{{ asset('assets_admin/js/core/jquery-3.7.1.min.js') }}"></script>
@@ -70,10 +70,12 @@
     <script src="{{ asset('assets_admin/js/custom-add.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
     <script>
-    window.timelineData = @json($getTimeLine ?? []);
+        window.timelineData = @json($getTimeLine ?? []);
     </script>
 </body>
 
