@@ -6,13 +6,12 @@
         style="background-image: url(assets/images/banner/banner.jpg);">
         <div class="container">
             <div class="banner-inner text-white mb-50">
-                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Tour Grid
-                    View</h2>
+                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Tour</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Tour Grid</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Tour</li>
                     </ol>
                 </nav>
             </div>
@@ -29,11 +28,11 @@
                     <div class="shop-sidebar">
                         <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
                             data-aos-offset="50">
-                            <h6 class="widget-title">Filter by Price</h6>
+                            <h6 class="widget-title">Lọc theo giá</h6>
                             <div class="price-filter-wrap">
                                 <div class="price-filter-wrap">
                                     <div class="price">
-                                        <span>Price: </span>
+                                        <span>Giá: </span>
                                         <input type="number" id="min_price" placeholder="Min price"
                                             style="width: 80px; color:#f6931f;">
                                         <span> - </span>
@@ -67,7 +66,7 @@
                             </ul>
                         </div>
 
-                        <div class="widget widget-reviews" data-aos="fade-up" data-aos-duration="1500"
+                        {{-- <div class="widget widget-reviews" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
                             <h6 class="widget-title">By Reviews</h6>
                             <ul class="radio-filter">
@@ -137,11 +136,11 @@
                                     </label>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="widget widget-duration" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
-                            <h6 class="widget-title">Duration</h6>
+                            <h6 class="widget-title">Thời gian</h6>
                             <ul class="radio-filter">
                                 <li>
                                     <input class="form-check-input" type="radio" name="duration" id="duration1"
@@ -164,7 +163,7 @@
                         @if (!$toursPopular->isEmpty())
                             <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
-                                <h6 class="widget-title">Phổ biến Tours</h6>
+                                <h6 class="widget-title">Tour phổ biến</h6>
                                 @foreach ($toursPopular as $tour)
                                     <div class="destination-item tour-grid style-three bgc-lighter">
                                         <div class="image">

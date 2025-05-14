@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Clients\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class TourDetailController extends Controller
 {
@@ -33,29 +35,28 @@ class TourDetailController extends Controller
             $checkDisplay = 'hide';
         }
 
-        // Gọi API Python để lấy danh sách tour liên quan
-        // try {
-        //     $apiUrl = 'http://127.0.0.1:5555/api/tour-recommendations';
-        //     $response = Http::get($apiUrl, [
-        //         'tour_id' => $id
-        //     ]);
+        //Gọi API Python để lấy danh sách tour liên quan
+        try {
+            $apiUrl = 'http://127.0.0.1:5555/api/tour-recommendations';
+            $response = Http::get($apiUrl, [
+                'tour_id' => $id
+            ]);
 
-        //     if ($response->successful()) {
-        //         $relatedTours = $response->json('related_tours');
-        //     } else {
-        //         $relatedTours = [];
-        //     }
-        // } catch (\Exception $e) {
-        //     // Xử lý lỗi khi gọi API
-        //     $relatedTours = [];
-        //     \Log::error('Lỗi khi gọi API liên quan: ' . $e->getMessage());
-        // }
+            if ($response->successful()) {
+                $relatedTours = $response->json('related_tours');
+            } else {
+                $relatedTours = [];
+            }
+        } catch (\Exception $e) {
+            // Xử lý lỗi khi gọi API
+            $relatedTours = [];
+            Log::error('Lỗi khi gọi API liên quan: ' . $e->getMessage());
+        }
 
-        //$id_toursRe = $relatedTours;
+        $id_toursRe = $relatedTours;
 
-        //$tourRecommendations = $this->tours->toursRecommendation($id_toursRe);
-        // dd($tourRecommendations);    
-        //dd($avgStar);
+        $tourRecommendations = $this->tours->toursRecommendation($id_toursRe);
+        
         $tourRecommendations = [];
         return view('user.tour_detail', compact('title', 'tourDetail', 'getReviews', 'avgStar', 'countReview', 'checkDisplay','tourRecommendations'));
     }

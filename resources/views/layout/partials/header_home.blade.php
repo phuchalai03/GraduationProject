@@ -5,7 +5,7 @@
 
             <div class="header-inner rel d-flex align-items-center">
                 <div class="logo-outer">
-                    <div class="logo"><a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"
+                    <div class="logo"><a href="{{ route('home.index') }}"><img src="assets/images/logos/logo.png" alt="Logo"
                                 title="Logo"></a></div>
                 </div>
 
@@ -14,7 +14,7 @@
                     <nav class="main-menu navbar-expand-lg">
                         <div class="navbar-header">
                             <div class="mobile-logo">
-                                <a href="index.html">
+                                <a href="{{ route('home.index') }}">
                                     <img src="assets/images/logos/logo.png" alt="Logo" title="Logo">
                                 </a>
                             </div>
@@ -30,16 +30,16 @@
 
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li><a href="{{ route('home.index') }}">Home</a></li>
+                                <li><a href="{{ route('home.index') }}">Trang chủ</a></li>
                                 <li><a href="{{ route('about.index') }}">About</a></li>
                                 <li class="dropdown"><a href="#">Tours</a>
                                     <ul>
                                         <li><a href="{{ route('tour.index') }}">Tour</a></li>
-                                        <li><a href="{{ route('tour_guide.index') }}">Tour Guide</a></li>
+                                        <li><a href="{{ route('tour_guide.index') }}">Hướng dẫn viên du lịch</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('destination.index') }}">Destinations</a></li>
-                                <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
+                                <li><a href="{{ route('destination.index') }}">Điểm đến</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
 
@@ -59,7 +59,7 @@
                 <!-- Menu Button -->
                 <div class="menu-btns py-10">
                     <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                        <span data-hover="Book Now">Book Now</span>
+                        <span data-hover="Book Now">Đặt ngay</span>
                         <i class="fal fa-arrow-right"></i>
                     </a>
                     <!-- menu sidbar -->
@@ -68,7 +68,7 @@
                             <li class="drop-down">
                                 <img src="{{ auth()->user()->avatar ? asset('storage/images/avatars/' . auth()->user()->avatar) : asset('assets/images/default-avatar.png') }}"
                                     alt="User Avatar" class="rounded-circle"
-                                    style="width: 40px; height: 40px; object-fit: cover;">
+                                    style="width: 45px; height: 45px; object-fit: cover;">
                                 <ul class="dropdown-menu" id="dropdownMenu">
                                     <li><a href="{{ route('user-profile') }}">Thông tin người dùng</a></li>
                                     <li><a href="{{ route('my-tours') }}">Tour đã đặt</a></li>

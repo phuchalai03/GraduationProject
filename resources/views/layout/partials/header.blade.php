@@ -34,16 +34,16 @@
 
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li><a href="{{ route('home.index') }}">Home</a></li>
+                                <li><a href="{{ route('home.index') }}">Trang chủ</a></li>
                                 <li><a href="{{ route('about.index') }}">About</a></li>
                                 <li class="dropdown"><a href="#">Tours</a>
                                     <ul>
                                         <li><a href="{{ route('tour.index') }}">Tour</a></li>
-                                        <li><a href="{{ route('tour_guide.index') }}">Tour Guide</a></li>
+                                        <li><a href="{{ route('tour_guide.index') }}">Hướng dẫn viên du lịch</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('destination.index') }}">Destinations</a></li>
-                                <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
+                                <li><a href="{{ route('destination.index') }}">Địa điểm</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -53,7 +53,7 @@
                 <!-- Menu Button -->
                 <div class="menu-btns py-10">
                     <a href="{{ route('contact.index') }}" class="theme-btn style-two bgc-secondary">
-                        <span data-hover="Book Now">Book Now</span>
+                        <span data-hover="Book Now">Đặt ngay</span>
                         <i class="fal fa-arrow-right"></i>
                     </a>
                     <!-- menu sidebar -->

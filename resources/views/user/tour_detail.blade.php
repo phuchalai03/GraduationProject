@@ -7,13 +7,13 @@
             <hr class="mt-0">
             <div class="container">
                 <div class="banner-inner pt-15 pb-25">
-                    <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Bali,
-                        Indonesia</h2>
+                    <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                        {{ $tourDetail->destination }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200"
                             data-aos-duration="1500" data-aos-offset="50">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">{{$title}}</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">{{ $title }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="col-lg-12">
                     <div class="gallery-more-btn">
                         <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                            <span data-hover="See All Photos">See All Photos</span>
+                            <span data-hover="See All Photos">Xem tất cả</span>
                             <i class="fal fa-arrow-right"></i>
                         </a>
                     </div>
@@ -74,17 +74,19 @@
                 <div class="col-xl-6 col-lg-7">
                     <div class="tour-header-content mb-15" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i> Bali,
-                            Indonesia</span>
+                        <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i>
+                            {{ $tourDetail->destination }}</span>
                         <div class="section-title pb-5">
-                            <h2>Relinking Beach in Nusa panada island, Bali, Indonesia</h2>
+                            <h2>{{ $tourDetail->title }}</h2>
                         </div>
                         <div class="ratting">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            @for ($i = 0; $i < 5; $i++)
+                                @if ($avgStar && $i < $avgStar)
+                                    <i class="fas fa-star"></i>
+                                @else
+                                    <i class="far fa-star"></i>
+                                @endif
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -108,16 +110,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="tour-details-content">
-                        <h3>Explore Tours</h3>
-                        <p>Bali, Indonesia, is a tropical paradise renowned for its breathtaking beaches, vibrant culture,
-                            and lush landscapes. Located at the westernmost end of the Lesser Sunda Islands, Bali boasts a
-                            warm, tropical climate that makes it a year-round destination. Visitors are drawn to its
-                            picturesque beaches like Kuta, Seminyak, and Nusa Dua, ideal for surfing, sunbathing, and
-                            diving. The island's rich cultural heritage is evident in its numerous temples, including the
-                            iconic Tanah Lot and Uluwatu Temple, as well as in Ubud, the cultural heart of Bali, known for
-                            its traditional dance performances and art markets. Nature enthusiasts can explore the terraced
-                            rice paddies in Tegallalang, hike up Mount Batur, or visit the stunning waterfalls of Tegenungan
-                            and Gitgit. </p>
+                        <h3>Khám phá tour</h3>
+                        <p>{!! $tourDetail->description !!}</p>
                         <div class="row pb-55">
                             <div class="col-md-6">
                                 <div class="tour-include-exclude mt-30">
@@ -148,94 +142,36 @@
                         </div>
                     </div>
 
-                    <h3>Itinerary</h3>
+                    <h3>Lịch trình</h3>
                     <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwoOne">
-                                    Day 1 - Arrive at campground
-                                </button>
-                            </h5>
-                            <div id="collapseTwoOne" class="accordion-collapse collapse"
-                                data-bs-parent="#faq-accordion-two">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
+                        @php
+                            $day = 1;
+                        @endphp
+                        @foreach ($tourDetail->timeline as $timeline)
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo{{ $timeline->timelineId }}">
+                                        Ngày {{ $day++ }}
+                                    </button>
+                                </h5>
+                                <div id="collapseTwo{{ $timeline->timelineId }}" class="accordion-collapse collapse"
+                                    data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>{!! $timeline->description !!}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwoTwo">
-                                    Day 2 - Wake up early and embark on a day hike
-                                </button>
-                            </h5>
-                            <div id="collapseTwoTwo" class="accordion-collapse collapse show"
-                                data-bs-parent="#faq-accordion-two">
-                                <div class="accordion-body">
-                                    <p>The early start ensures you can fully immerse yourself in the tranquility of nature
-                                        before the world fully awakens. As the morning light filters through the trees,
-                                        you'll experience the crisp, fresh air and the peaceful sounds of the forest. The
-                                        trail ahead offers both a physical challenge promise of breathtaking.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwoThree">
-                                    Day 3 - Join a guided ranger-led nature walk
-                                </button>
-                            </h5>
-                            <div id="collapseTwoThree" class="accordion-collapse collapse"
-                                data-bs-parent="#faq-accordion-two">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwoFour">
-                                    Day 4 - Take a break from hiking
-                                </button>
-                            </h5>
-                            <div id="collapseTwoFour" class="accordion-collapse collapse"
-                                data-bs-parent="#faq-accordion-two">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwoFive">
-                                    Day 5 - Pack a lunch and embark on a longer hike
-                                </button>
-                            </h5>
-                            <div id="collapseTwoFive" class="accordion-collapse collapse"
-                                data-bs-parent="#faq-accordion-two">
-                                <div class="accordion-body">
-                                    <p>To take a trivial example which undertakes laborious physical exercise except to
-                                        obtain some advantage pleasure annoying consequences</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
-                    {{-- <h3>Maps</h3>
+                    <h3>Maps</h3>
                     <div class="tour-map mt-30 mb-50">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
                             style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div> --}}
+                    </div>
 
                     <h3>Clients Reviews</h3>
                     <div id="partials_reviews">
@@ -294,8 +230,7 @@
                                 @csrf
                                 <div class="date mb-25">
                                     <b>Ngày bắt đầu</b>
-                                    <input type="text"
-                                        value="{{ date('d-m-Y', strtotime($tourDetail->startDate)) }}"
+                                    <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->startDate)) }}"
                                         name="startdate" disabled>
                                 </div>
                                 <div class="date mb-25">
@@ -320,40 +255,54 @@
                                     </li>
                                     <hr>
                                     <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
-                                        <span data-hover="Book Now">Book Now</span>
+                                        <span data-hover="Book Now">Đặt ngay</span>
                                         <i class="fal fa-arrow-right"></i>
                                     </button>
                                     <div class="text-center">
-                                        <a href="contact.html">Need some help?</a>
+                                        <a href="{{ route('contact.index') }}">Cần trợ giúp?</a>
                                     </div>
                             </form>
                         </div>
 
                         <div class="widget widget-contact" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
-                            <h5 class="widget-title">Need Help?</h5>
+                            <h5 class="widget-title">Cần trợ giúp?</h5>
                             <ul class="list-style-one">
                                 <li><i class="far fa-envelope"></i> <a
-                                        href="emilto:helpxample@gmail.com">helpxample@gmail.com</a></li>
+                                        href="emilto:ntwohp23@gmail.com">ntwohp23@gmail.com</a></li>
                                 <li><i class="far fa-phone-volume"></i> <a href="callto:+000(123)45688">+000 (123) 456
                                         88</a></li>
                             </ul>
                         </div>
 
-                        <div class="widget widget-cta" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="content text-white">
-                                <span class="h6">Explore The World</span>
-                                <h3>Best Tourist Place</h3>
-                                <a href="tour-grid.html" class="theme-btn style-two bgc-secondary">
-                                    <span data-hover="Explore Now">Explore Now</span>
-                                    <i class="fal fa-arrow-right"></i>
-                                </a>
+                        @if (!empty($tourRecommendations))
+                            <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
+                                <h6 class="widget-title">Tours tương tự</h6>
+                                @foreach ($tourRecommendations as $tour)
+                                    <div class="destination-item tour-grid style-three bgc-lighter">
+                                        <div class="image">
+                                            {{-- <span class="badge">10% Off</span> --}}
+                                            <img src="{{ asset('storage/images/' . $tour->images[0]) }}"
+                                                alt="Tour" style="max-height: 137px">
+                                        </div>
+                                        <div class="content">
+                                            <div class="destination-header">
+                                                <span class="location"><i class="fal fa-map-marker-alt"></i>
+                                                    {{ $tour->destination }}</span>
+                                                <div class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>({{ $tour->rating }})</span>
+                                                </div>
+                                            </div>
+                                            <h6><a
+                                                    href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="image">
-                                <img src="assets/images/widgets/cta-widget.png" alt="CTA">
-                            </div>
-                            <div class="cta-shape"><img src="assets/images/widgets/cta-shape3.png" alt="Shape"></div>
-                        </div>
+                        @endif
 
                     </div>
                 </div>
@@ -361,42 +310,4 @@
         </div>
     </section>
     <!-- Tour Details Area end -->
-
-
-    <!-- Newsletter Area start -->
-    <section class="newsletter-three bgc-primary py-100 rel z-1"
-        style="background-image: url(assets/images/newsletter/newsletter-bg-lines.png);">
-        <div class="container container-1500">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="newsletter-content-part text-white rmb-55" data-aos="zoom-in-right"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <div class="section-title counter-text-wrap mb-45">
-                            <h2>Subscribe Our Newsletter to Get more offer & Tips</h2>
-                            <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most
-                                popular experience you’ll remember</p>
-                        </div>
-                        <form class="newsletter-form mb-15" action="#">
-                            <input id="news-email" type="email" placeholder="Email Address" required>
-                            <button type="submit" class="theme-btn bgc-secondary style-two">
-                                <span data-hover="Subscribe">Subscribe</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </button>
-                        </form>
-                        <p>No credit card requirement. No commitments</p>
-                    </div>
-                    <div class="newsletter-bg-image" data-aos="zoom-in-up" data-aos-delay="100" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <img src="assets/images/newsletter/newsletter-bg-image.png" alt="Newsletter">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="newsletter-image-part bgs-cover"
-                        style="background-image: url(assets/images/newsletter/newsletter-two-right.jpg);"
-                        data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Newsletter Area end -->
 @endsection

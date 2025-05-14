@@ -6,12 +6,12 @@
         style="background-image: url(assets/images/banner/banner.jpg);">
         <div class="container">
             <div class="banner-inner text-white">
-                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Contact Us</h2>
+                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Liên hệ</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Contact Us</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Liên hệ</li>
                     </ol>
                 </nav>
             </div>
@@ -28,12 +28,13 @@
                     <div class="contact-info-content mb-30 rmb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>Let’s Talk Our Expert Travel Guides</h2>
+                            <h2>Trò chuyện với các chuyên gia du lịch</h2>
                         </div>
-                        <p>Our dedicated support team is always ready to assist you with any questions or issues, offering
-                            prompt and personalized solutions to meet your needs.</p>
+                        <p>Đội ngũ hỗ trợ tận tâm của chúng tôi luôn sẵn sàng hỗ trợ bạn giải đáp mọi thắc mắc hoặc vấn đề,
+                            cung cấp
+                            các giải pháp nhanh chóng và được cá nhân hóa để đáp ứng nhu cầu của bạn.</p>
                         <div class="features-team-box mt-40">
-                            <h6>85+ Expert Team member</h6>
+                            <h6>85+ Thành viên nhóm chuyên gia</h6>
                             <div class="feature-authors">
                                 <img src="assets/images/features/feature-author1.jpg" alt="Author">
                                 <img src="assets/images/features/feature-author2.jpg" alt="Author">
@@ -54,9 +55,9 @@
                                 data-aos-delay="50">
                                 <div class="icon"><i class="fas fa-envelope"></i></div>
                                 <div class="content">
-                                    <h5>Need Help & Support</h5>
+                                    <h5>Cần trợ giúp và hỗ trợ</h5>
                                     <div class="text"><i class="far fa-envelope"></i> <a
-                                            href="mailto:support@gmail.com">support@gmail.com</a></div>
+                                            href="mailto:ntwohp23@gmail.com">ntwohp23@gmail.com</a></div>
                                 </div>
                             </div>
                         </div>
@@ -65,9 +66,9 @@
                                 data-aos-delay="100">
                                 <div class="icon"><i class="fas fa-phone"></i></div>
                                 <div class="content">
-                                    <h5>Need Any Urgent</h5>
-                                    <div class="text"><i class="far fa-phone"></i> <a href="callto:+0001234588">+000 (123)
-                                            45 88</a></div>
+                                    <h5>Cần hỗ trợ ngay</h5>
+                                    <div class="text"><i class="far fa-phone"></i> <a
+                                            href="callto:+372840125">+372840125</a></div>
                                 </div>
                             </div>
                         </div>
@@ -76,9 +77,9 @@
                                 data-aos-delay="50">
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="content">
-                                    <h5>New York Branch</h5>
-                                    <div class="text"><i class="fal fa-map-marker-alt"></i> 55 East 10th Street, New York,
-                                        NY 10003, United States</div>
+                                    <h5>Chi nhánh Cầu Giấy</h5>
+                                    <div class="text"><i class="fal fa-map-marker-alt"></i>Số 2 Cầu Giấy, Láng Thượng,
+                                        Đống Đa, Hà Nội</div>
                                 </div>
                             </div>
                         </div>
@@ -87,9 +88,9 @@
                                 data-aos-delay="100">
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="content">
-                                    <h5>Main Office Address</h5>
-                                    <div class="text"><i class="fal fa-map-marker-alt"></i> 55 East 10th Street, New York,
-                                        NY 10003, United States</div>
+                                    <h5>Trụ sở chính</h5>
+                                    <div class="text"><i class="fal fa-map-marker-alt"></i>36 Khúc Thừa Dụ, Dịch Vọng, Cầu
+                                        Giấy, Hà Nội</div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +186,7 @@
     <!-- Contact Map Start -->
     <div class="contact-map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1842.774458355797!2d105.79300273101973!3d21.03362879331551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1svi!2s!4v1747238273456!5m2!1svi!2s"
             style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>

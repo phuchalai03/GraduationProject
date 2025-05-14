@@ -34,9 +34,8 @@
                 <div class="col-lg-12">
                     <div class="section-title text-white text-center counter-text-wrap mb-70" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Discover the World's Treasures with Ravelo</h2>
-                        <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most
-                            popular experience you’ll remember</p>
+                        <h2>Khám phá các điểm đến tuyệt vời với Travelday</h2>
+                        <p>Một trang web với <span class="count-text plus" data-speed="1000" data-stop="2300">0</span> trải nghiệm đáng nhớ từ người dùng!</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +47,7 @@
                                 <div class="ratting"><i class="fas fa-star"></i> {{ number_format($tour->rating, 1) }}</div>
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                 <img src="{{ asset('storage/images/' . ($tour->images[0] ?? 'images/default.jpg')) }}"
-                                    alt="Destination" style="width: 100%; height: 200px; object-fit: cover;">
+                                    alt="Destination" style="width: 100%; height: 280px; object-fit: cover;">
                             </div>
                             <div class="content">
                                 <span class="location">
@@ -82,29 +81,29 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-25">
-                            <h2>Travel with Confidence Top Reasons to Choose Our Agency</h2>
+                            <h2>Du lịch với sự tự tin Lý do hàng đầu để chọn công ty chúng tôi</h2>
                         </div>
-                        <p>We go above and beyond to make your travel dreams reality hidden gems and must-see attractions
+                        <p>Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn và những điểm tham quan không thể bỏ qua
                         </p>
-                        <div class="divider counter-text-wrap mt-45 mb-55"><span>We have <span><span class="count-text plus"
-                                        data-speed="3000" data-stop="25">0</span> Years</span> of
-                                experience</span></div>
+                        <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus"
+                                        data-speed="3000" data-stop="25">0</span> năm</span> kinh
+                                nghiệm</span></div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="counter-item counter-text-wrap">
                                     <span class="count-text k-plus" data-speed="3000" data-stop="3">0</span>
-                                    <span class="counter-title">Popular Destination</span>
+                                    <span class="counter-title">Địa điểm phổ biến</span>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="counter-item counter-text-wrap">
                                     <span class="count-text m-plus" data-speed="3000" data-stop="9">0</span>
-                                    <span class="counter-title">Satisfied Clients</span>
+                                    <span class="counter-title">Khách hàng hài lòng</span>
                                 </div>
                             </div>
                         </div>
                         <a href="{{ route('destination.index') }}" class="theme-btn mt-10 style-two">
-                            <span data-hover="Explore Destinations">Explore Destinations</span>
+                            <span data-hover="Explore Destinations">Khám phá các điểm đến</span>
                             <i class="fal fa-arrow-right"></i>
                         </a>
                     </div>
@@ -135,9 +134,8 @@
                     <div class="col-lg-12">
                         <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up"
                             data-aos-duration="1500" data-aos-offset="50">
-                            <h2>Explore Popular Destinations</h2>
-                            <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most
-                                popular experience</p>
+                            <h2>Khám phá các điểm đến thú vị</h2>
+                            <p>Trên trang web với hơn <span class="count-text plus" data-speed="300" data-stop="3450">0</span> trải nghiệm</p>
                         </div>
                     </div>
                 </div>
@@ -156,7 +154,7 @@
                             <div class="destination-item style-two" data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image" style="max-height: 250px">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                    <img src="{{ asset('storage/images/' . $tour->images->first()) }}" alt="Destination">
+                                    <img src="{{ asset('storage/images/' . $tour->images->first()) }}" alt="Destination" style="width: 100%; height: 230px; object-fit: cover;">
                                 </div>
                                 <div class="content">
                                     <h6 class="tour-title"><a

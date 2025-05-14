@@ -32,10 +32,11 @@ class TourController extends Controller
         return view('user.tour', compact('tours', 'domain_count', 'toursPopular'));
     }
 
-    public function tour_detail($id){
-        $tourDetail = $this->tours->getTourDetail($id);
-        return view('user.tour_detail', compact('tourDetail'));
-    }
+    // public function tour_detail($id){
+    //     $tourDetail = $this->tours->getTourDetail($id);
+    //     dd($tourDetail);
+    //     return view('user.tour_detail', compact('tourDetail'));
+    // }
 
     public function filterTours(Request $request)
     {
