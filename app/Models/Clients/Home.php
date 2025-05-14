@@ -13,7 +13,7 @@ class Home extends Model
     protected $table = 'tours';
 
     public function getHomeTour(){
-        $tours = DB::table($this->table)->get();
+        $tours = DB::table($this->table)->take(8)->get();
 
         foreach ($tours as $tour){
             $tour->images =  DB::table('images')
@@ -23,6 +23,9 @@ class Home extends Model
             $tour->timeline =  DB::table('timeline')
                 ->where('tourId', $tour->tourId)
                 ->pluck('title');
+
+            $toursModel = new Tour();
+            $tour->rating = $toursModel->reviewStats($tour->tourId)->averageRating;
         }
 
         return $tours;

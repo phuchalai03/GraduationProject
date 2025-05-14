@@ -188,7 +188,6 @@ class Tour extends Model
          }
  
          $toursRecom = DB::table($this->table)
-             ->where('availability', '1')
              ->whereIn('tourId', $ids)
              ->orderByRaw("FIELD(tourId, " . implode(',', array_map('intval', $ids)) . ")") // Chuyển tất cả các giá trị sang kiểu int và giữ thứ tự
              ->get();
