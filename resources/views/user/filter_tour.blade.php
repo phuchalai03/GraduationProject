@@ -25,7 +25,7 @@
                 <h6><a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}">
                         {{ $tour->title }} </a></h6>
                 <ul class="blog-meta">
-                    <li><i class="far fa-clock"></i> {{ $tour->description }}</li>
+                    <li><i class="far fa-clock"></i> {{ $tour->duration }}</li>
                     <li><i class="far fa-user"></i> {{ $tour->quantity }} guest</li>
                 </ul>
                 <div class="destination-footer">

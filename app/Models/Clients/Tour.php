@@ -159,12 +159,11 @@ class Tour extends Model
              $tours->where(function ($query) use ($data) {
                  $query->where('title', 'LIKE', '%' . $data['keyword'] . '%')
                      ->orWhere('description', 'LIKE', '%' . $data['keyword'] . '%')
-                     ->orWhere('time', 'LIKE', '%' . $data['keyword'] . '%')
+                     ->orWhere('duration', 'LIKE', '%' . $data['keyword'] . '%')
                      ->orWhere('destination', 'LIKE', '%' . $data['keyword'] . '%');
              });
          }
  
-         //$tours = $tours->where('availability', 1);
          $tours = $tours->limit(12)->get();
  
          foreach ($tours as $tour) {
@@ -256,7 +255,6 @@ class Tour extends Model
          }
  
          $tourSearch = DB::table($this->table)
-             ->where('availability', '1')
              ->whereIn('tourId', $ids)
              ->orderByRaw("FIELD(tourId, " . implode(',', array_map('intval', $ids)) . ")") // Chuyển tất cả các giá trị sang kiểu int và giữ thứ tự
              ->get();

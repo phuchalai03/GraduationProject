@@ -582,7 +582,7 @@ $(document).ready(function() {
                         data: formReviews,
                         success: function (response) {
                             if (response.success) {
-                                toastr.success(response.message);
+                                alert(response.message);
                                 $("#partials_reviews").html(response.data);
                                 $("#partials_reviews .comment-body").addClass(
                                     "aos-animate"
@@ -595,7 +595,7 @@ $(document).ready(function() {
                             }
                         },
                         error: function (xhr, status, error) {
-                            toastr.error("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                            alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
                             console.error("Error:", error);
                         },
                     });

@@ -117,6 +117,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/create-contact', [ContactController::class, 'createContact'])->name('create-contact');
 
         Route::get('/search', [SearchController::class, 'index'])->name('search');
+        Route::get('/search-text', [SearchController::class, 'searchTours'])->name('search-text');
     });
 
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google')->withoutMiddleware('auth');
