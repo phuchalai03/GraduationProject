@@ -7,7 +7,7 @@
                 <div class="logo-outer">
                     <div class="logo">
                         <a href="{{ route('home.index') }}">
-                            <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo">
+                            <img src="{{ asset('assets/images/logos/logo3.png') }}" alt="Logo" title="Logo" style="height:70px; border-radius: 5px">
                         </a>
                     </div>
                 </div>

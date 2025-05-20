@@ -295,26 +295,38 @@ $(document).ready(function () {
         // Hàm render lại toàn bộ timeline
         function renderTimeline() {
             const container = $('#timeline-container');
+
+            // 1. Lưu lại dữ liệu đang nhập trên giao diện vào window.timelineData
+            container.find('.timeline-day').each(function (idx) {
+                const title = $(this).find('input[name$="[title]"]').val();
+                const description = $(this).find('textarea[name$="[description]"]').val();
+                if (window.timelineData[idx]) {
+                    window.timelineData[idx].title = title;
+                    window.timelineData[idx].description = description;
+                }
+            });
+
+            // 2. Render lại giao diện
             container.empty();
             window.timelineData.forEach(function (timeline, idx) {
                 container.append(`
-                <div class="timeline-day mb-4 border rounded p-3" data-index="${idx}">
-                    <input type="hidden" name="timeline[${idx}][timelineId]" value="${timeline.timelineId || ''}">
-                    <div class="row mb-2">
-                        <label class="col-sm-2 col-form-label">Tiêu đề ngày ${idx + 1}</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="timeline[${idx}][title]" value="${timeline.title || ''}" required>
-                        </div>
+            <div class="timeline-day mb-4 border rounded p-3" data-index="${idx}">
+                <input type="hidden" name="timeline[${idx}][timelineId]" value="${timeline.timelineId || ''}">
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Tiêu đề ngày ${idx + 1}</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="timeline[${idx}][title]" value="${timeline.title || ''}" required>
                     </div>
-                    <div class="row mb-2">
-                        <label class="col-sm-2 col-form-label">Mô tả</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="timeline[${idx}][description]" rows="3" required>${timeline.description || ''}</textarea>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-danger btn-remove-timeline">Xóa ngày</button>
                 </div>
-            `);
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Mô tả</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="timeline[${idx}][description]" rows="3" required>${timeline.description || ''}</textarea>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger btn-remove-timeline">Xóa ngày</button>
+            </div>
+        `);
             });
         }
 
@@ -334,5 +346,5 @@ $(document).ready(function () {
             renderTimeline();
         });
     });
-    
+
 });

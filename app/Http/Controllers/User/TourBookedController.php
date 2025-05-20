@@ -56,7 +56,7 @@ class TourBookedController extends Controller
 
 
         $tour = $this->tour->getTourDetail($tourId);
-        $currentQuantity = $tour[0]->quantity;
+        $currentQuantity = $tour->quantity;
 
         // Tính toán số lượng trả lại
         $return_quantity = $quantityAdults + $quantityChildren;

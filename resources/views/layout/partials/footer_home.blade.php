@@ -5,7 +5,7 @@
                 <div class="col-xl-5 col-lg-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
                         <div class="footer-logo mb-25">
-                            <a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="assets/images/logos/logo2.png" alt="Logo"></a>
                         </div>
                         <p>We curate bespoke itineraries tailored to your preferences, ensuring every trip is seamless and enriching hidden gems beaten</p>
                         <div class="social-style-one mt-15">

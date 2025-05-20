@@ -21,7 +21,7 @@
                                                 <!-- Ảnh đại diện -->
                                                 <img src="{{ asset('storage/images/avatars/' . $user->avatar) }}"
                                                     alt="Avatar" class="rounded-circle mb-3"
-                                                    style="width: 100%; object-fit: cover;">
+                                                    style="width: 100%; height: 74px; object-fit: cover;">
 
                                                 <!-- Nút hành động -->
                                                 <div class="d-flex flex-column">

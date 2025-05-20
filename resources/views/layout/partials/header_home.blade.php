@@ -5,7 +5,7 @@
 
             <div class="header-inner rel d-flex align-items-center">
                 <div class="logo-outer">
-                    <div class="logo"><a href="{{ route('home.index') }}"><img src="assets/images/logos/logo.png" alt="Logo"
+                    <div class="logo"><a href="{{ route('home.index') }}"><img src="assets/images/logos/logo2.png" alt="Logo" style="height: 65px; border-radius: 5px;"
                                 title="Logo"></a></div>
                 </div>
 
