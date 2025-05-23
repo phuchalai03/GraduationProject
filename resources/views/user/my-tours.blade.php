@@ -8,11 +8,11 @@
                     <div class="shop-sidebar mb-30">
                         @if (!$toursPopular->isEmpty())
                             <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h6 class="widget-title">Phổ biến Tours</h6>
+                                <h6 class="widget-title">Tours phổ biến</h6>
                                 @foreach ($toursPopular as $tour)
                                     <div class="destination-item tour-grid style-three bgc-lighter">
                                         <div class="image">
-                                            <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images->first()) }}"
+                                            <img src="{{ asset('storage/images/' . $tour->images->first()) }}"
                                                 alt="Tour">
                                         </div>
                                         <div class="content">
@@ -72,7 +72,7 @@
                                 <h5><a
                                         href="{{ route('tour-booked', ['bookingId' => $tour->bookingId, 'checkoutId' => $tour->checkoutId]) }}">{{ $tour->title }}</a>
                                 </h5>
-                                <div class="truncate-3-lines">
+                                <div class="truncate-3-lines" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 3.6em;">
                                     {!! $tour->description !!}
                                 </div>
 

@@ -67,7 +67,7 @@ class TourController extends Controller
             $duration = [
                 '2n1d' => '2 ngày 1 đêm',
                 '3n2d' => '3 ngày 2 đêm',
-                '3n' => '3 ngày',
+                '4n3d' => '4 ngày 3 đêm',
             ];
             $conditions[] = ['duration', '=', $duration[$time]];
         }

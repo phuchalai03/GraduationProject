@@ -8,7 +8,7 @@
                             <a href="index.html"><img src="{{ asset('assets/images/logos/logo2.png') }}" alt="Logo"></a>
                         </div>
                         <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.9127840243723!2d105.80391057777379!3d21.02861560019877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab424a50fff9%3A0xbe3a7f3670c0a45f!2sUniversity%20of%20Transport%20and%20Communications!5e0!3m2!1sen!2s!4v1748008625564!5m2!1sen!2s" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -54,12 +54,12 @@
                 <div class="col col-md-6 col-10 col-small" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-contact">
                         <div class="footer-title">
-                            <h5>Get In Touch</h5>
+                            <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i> 578 Level, D-block 45 Street Melbourne, Australia</li>
-                            <li><i class="fal fa-envelope"></i> <a href="mailto:supportrevelo@gmail.com">supportrevelo @gmail.com</a></li>
-                            <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123) 345 88</a></li>
+                            <li><i class="fal fa-map-marked-alt"></i> Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội</li>
+                            <li><i class="fal fa-envelope"></i> <a href="mailto:ntwohp23@gmail.com">ntwohp23@gmail.com</a></li>
+                            <li><i class="fal fa-phone-volume"></i> <a href="callto:+372810621">+372810621</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
             <div class="row">
                <div class="col-lg-5">
                     <div class="copyright-text text-center text-lg-start">
-                        <p>@Copy 2024 <a href="index.html">Ravelo</a>, All rights reserved</p>
+                        <p>@Copy 2025 <a href="index.html">TravelDay</a>, All rights reserved</p>
                     </div>
                </div>
                <div class="col-lg-7 text-center text-lg-end">

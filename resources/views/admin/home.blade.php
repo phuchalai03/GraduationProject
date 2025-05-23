@@ -7,10 +7,7 @@
                 <div>
                     <h3 class="fw-bold mb-3">Dashboard</h3>
                 </div>
-                <div class="ms-md-auto py-2 py-md-0">
-                    <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
-                    <a href="#" class="btn btn-primary btn-round">Add Customer</a>
-                </div>
+
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -63,7 +60,7 @@
                                 <div class="col col-stats ms-3 ms-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Người dùng đăng ký</p>
-                                        <h4 class="card-title">1,345</h4>
+                                        <h4 class="card-title">12</h4>
                                     </div>
                                 </div>
                             </div>

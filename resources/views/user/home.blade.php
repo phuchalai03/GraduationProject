@@ -58,7 +58,7 @@
                                 </h5>
                                 <span class="time"> {{ $tour->duration }} </span>
                             </div>
-                            <div class="destination-footer">
+                            <div class="destination-footer" style="display: block;">
                                 <span class="price">
                                     <span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span>VND / Người
                                 </span>

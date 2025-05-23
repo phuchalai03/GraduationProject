@@ -112,34 +112,7 @@
                     <div class="tour-details-content">
                         <h3>Khám phá tour</h3>
                         <p>{!! $tourDetail->description !!}</p>
-                        <div class="row pb-55">
-                            <div class="col-md-6">
-                                <div class="tour-include-exclude mt-30">
-                                    <h5>Included and Excluded</h5>
-                                    <ul class="list-style-one check mt-25">
-                                        <li><i class="far fa-check"></i> Pick and Drop Services</li>
-                                        <li><i class="far fa-check"></i> 1 Meal Per Day</li>
-                                        <li><i class="far fa-check"></i> Cruise Dinner & Music Event</li>
-                                        <li><i class="far fa-check"></i> Visit 7 Best Places in the City</li>
-                                        <li><i class="far fa-check"></i> Bottled Water on Buses</li>
-                                        <li><i class="far fa-check"></i> Transportation Luxury Tour Bus</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tour-include-exclude mt-30">
-                                    <h5>Excluded</h5>
-                                    <ul class="list-style-one mt-25">
-                                        <li><i class="far fa-times"></i> Gratuities</li>
-                                        <li><i class="far fa-times"></i> Hotel pickup and drop-off</li>
-                                        <li><i class="far fa-times"></i> Lunch, Food & Drinks</li>
-                                        <li><i class="far fa-times"></i> Optional upgrade to a glass</li>
-                                        <li><i class="far fa-times"></i> Additional Services</li>
-                                        <li><i class="far fa-times"></i> Insurance</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <h3>Lịch trình</h3>
@@ -165,15 +138,13 @@
                         @endforeach
                     </div>
 
-                    <h3>Maps</h3>
+                    <h3>Bản đồ</h3>
                     <div class="tour-map mt-30 mb-50">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
-                            style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54655.39647930672!2d108.20356591256284!3d16.05052611161243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1747729058421!5m2!1svi!2s"
+                         width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
-                    <h3>Clients Reviews</h3>
+                    <h3>Đánh giá của khách hàng</h3>
                     <div id="partials_reviews">
                         @include('user.reviews')
                     </div>

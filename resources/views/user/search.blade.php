@@ -15,8 +15,8 @@
                                 <div class="image">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                     @if (count($tour->images) > 0)
-                                        <img src="{{ asset('storage/images/' . $tour->images[0]) }}"
-                                            alt="Tour List">
+                                        <img src="{{ asset('storage/images/' . $tour->images[0]) }}" alt="Tour List"
+                                            style="width:100%;height:270px;object-fit:cover;border-radius:8px;">
                                     @else
                                         <img src="{{ asset('admin/assets/images/no-image.jpg') }}" alt="No Image Available">
                                     @endif

@@ -3,8 +3,8 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
-                <img src="{{ asset('assets_admin/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
-                    class="navbar-brand" height="20" />
+                <img src="{{ asset('assets/images/logos/logo2.png') }}" alt="navbar brand"
+                    class="navbar-brand" height="60" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -32,25 +32,25 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.admin') }}">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-user-edit"></i>
                         <p>Quản lý Admin</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.users') }}">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-user-friends"></i>
                         <p>Quản lý người dùng</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.booking') }}">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-book"></i>
                         <p>Quản lý booking</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.list-contact') }}">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fa fa-envelope"></i>
                         <p>Liên hệ</p>
                     </a>
                 </li>

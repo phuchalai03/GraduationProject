@@ -3,15 +3,15 @@
 @section('content')
     <!-- Page Banner Start -->
     <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover"
-        style="background-image: url(assets/images/banner/banner.jpg);">
+        style="background-image: url(assets/images/banner/banner2.png);">
         <div class="container">
             <div class="banner-inner text-white mb-50">
-                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Tour</h2>
+                <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Tour du lịch</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
                         <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Tour</li>
+                        <li class="breadcrumb-item active">Tour du lịch</li>
                     </ol>
                 </nav>
             </div>
@@ -154,8 +154,8 @@
                                 </li>
                                 <li>
                                     <input class="form-check-input" type="radio" name="duration" id="duration3"
-                                        value="3n">
-                                    <label for="duration3">3 ngày</label>
+                                        value="4n3d">
+                                    <label for="duration3">4 ngày 3 đêm</label>
                                 </li>
                             </ul>
                         </div>
@@ -215,15 +215,15 @@
                             <li><a href="#"><i class="far fa-list"></i></a></li>
                         </ul>
                         <div class="sort-text mb-15 me-4 me-xl-auto">
-                            34 Tours found
+                            {{-- 34 Tours found --}}
                         </div>
                         <div class="sort-text mb-15 me-4">
-                            Sort By
+                            Sắp xếp theo:
                         </div>
                         <select id="sorting_tours">
-                            <option value="default" selected="">Short By</option>
-                            <option value="high-to-low">High To Low</option>
-                            <option value="low-to-high">Low To High</option>
+                            <option value="default" selected="">Sắp xếp theo</option>
+                            <option value="high-to-low">Giá cao đến thấp</option>
+                            <option value="low-to-high">Giá thấp đến cao</option>
                         </select>
                     </div>
 

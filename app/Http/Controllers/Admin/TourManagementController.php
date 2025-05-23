@@ -47,13 +47,8 @@ class TourManagementController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $end_date)->format('Y-m-d');
 
-        // Tính số ngày giữa start_date và end_date
         $days = Carbon::createFromFormat('Y-m-d', $startDate)->diffInDays(Carbon::createFromFormat('Y-m-d', $endDate));
-
-        // Tính số đêm: số ngày - 1
         $nights = $days - 1;
-
-        // Định dạng thời gian theo kiểu "X ngày Y đêm"
         $time = "{$days} ngày {$nights} đêm";
 
 
@@ -225,23 +220,35 @@ class TourManagementController extends Controller
         $destination = $request->input('destination');
         $domain = $request->input('domain');
         $quantity = $request->input('quantity');
+        $start_date = $request->input('startDate');
+        $end_date = $request->input('endDate');
         $price_adult = $request->input('priceAdult');
         $price_child = $request->input('priceChild');
         $description = $request->input('description');
 
+        $startDate = Carbon::createFromFormat('d/m/Y', $start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $end_date)->format('Y-m-d');
+        $days = Carbon::createFromFormat('Y-m-d', $startDate)->diffInDays(Carbon::createFromFormat('Y-m-d', $endDate));
+
+        $nights = $days - 1;
+        $time = "{$days} ngày {$nights} đêm";
+
         $dataTours = [
             'title'       => $name,
+            'duration'    => $time,
             'description' => $description,
             'quantity'    => $quantity,
             'priceAdult'  => $price_adult,
             'priceChild'  => $price_child,
             'destination' => $destination,
             'domain'      => $domain,
+            'startDate'   => $startDate,
+            'endDate'     => $endDate
         ];
 
         $updateTour = $this->tours->updateTour($tourId, $dataTours);
         // Tạo mảng tạm để lưu tên ảnh
-        $images = $request->input('images');  // Mảng các tên ảnh gửi lên từ request
+        $images = $request->input('images');
 
         if ($images && is_array($images)) {
             foreach ($images as $image) {

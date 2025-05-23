@@ -3,7 +3,7 @@
 @section('content')
     <!-- Page Banner Start -->
     <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover"
-        style="background-image: url(assets/images/banner/banner.jpg);">
+        style="background-image: url(assets/images/banner/banner4.png);">
         <div class="container">
             <div class="banner-inner text-white">
                 <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Liên hệ</h2>
@@ -172,8 +172,7 @@
                             </div>
                         </div>
                         <div class="circle-logo">
-                            <img src="assets/images/contact/icon.png" alt="Logo">
-                            <span class="title h2">Ravelo</span>
+                            <img src="assets/images/logos/logo3.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -186,7 +185,7 @@
     <!-- Contact Map Start -->
     <div class="contact-map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1842.774458355797!2d105.79300273101973!3d21.03362879331551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1svi!2s!4v1747238273456!5m2!1svi!2s"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1916.5488372154218!2d105.79274601048144!3d21.03363689863466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1748009272625!5m2!1sen!2s"
             style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
