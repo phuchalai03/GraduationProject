@@ -13,7 +13,7 @@ class Home extends Model
     protected $table = 'tours';
 
     public function getHomeTour(){
-        $tours = DB::table($this->table)->take(8)->get();
+        $tours = DB::table($this->table)->take(6)->get();
 
         foreach ($tours as $tour){
             $tour->images =  DB::table('images')

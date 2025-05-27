@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var lastChecked = null;
-    $('input[type="radio"]').on('click', function() {
+    $('input[type="radio"]').on('click', function () {
         if (lastChecked && lastChecked === this) {
-            $(this).prop('checked', false); 
+            $(this).prop('checked', false);
             lastChecked = null;
         } else {
             lastChecked = this;
@@ -16,22 +16,22 @@ $(document).ready(function() {
     $('input[name="domain"]').on('change', filterTours);
     $('input[name="star"]').on('change', filterTours);
     $('input[name="duration"]').on('change', filterTours);
-    $('input[type="checkbox"]').on('change', function() {
+    $('input[type="checkbox"]').on('change', function () {
         filterTours();
     });
 
     $('#sorting_tours').on('change', function () {
-        filterTours($(this).val()); 
+        filterTours($(this).val());
     });
 
-    function filterTours(sorting = 'default'){
+    function filterTours(sorting = 'default') {
         var min_price = $('#min_price').val();
         var max_price = $('#max_price').val();
         var domain = $('input[name="domain"]:checked').val();
         var star = $('input[name="star"]:checked').val();
         var duration = $('input[name="duration"]:checked').val();
         var sorting = $('#sorting_tours').val();
-        formDataFilter = { 
+        formDataFilter = {
             'min_price': min_price,
             'max_price': max_price,
             'domain': domain,
@@ -44,7 +44,7 @@ $(document).ready(function() {
             url: filterToursUrl,
             method: 'GET',
             data: formDataFilter,
-            success: function(res) {
+            success: function (res) {
                 $("#tours-container").html(res);
                 $('#tours-container .destination-item').addClass('aos-animate');
                 $("#tours-container .pagination-tours").addClass("aos-animate");
@@ -62,7 +62,7 @@ $(document).ready(function() {
             url: url,
             method: 'GET',
             data: formDataFilter,
-            success: function(res) {
+            success: function (res) {
                 $("#tours-container").html(res);
                 $('#tours-container .destination-item').addClass('aos-animate');
                 $("#tours-container .pagination-tours").addClass("aos-animate");
@@ -73,8 +73,15 @@ $(document).ready(function() {
         });
     });
 
+    $("#start_date, #end_date").datetimepicker({
+        format: "d/m/Y",
+        timepicker: false,
+        scrollInput: false,
+        lang: "vi"
+    });
+    
     //Update user profile
-    $('.updateUser').on('submit', function(e) {
+    $('.updateUser').on('submit', function (e) {
         e.preventDefault();
         var fullName = $('#inputFullName').val();
         var address = $('#inputLocation').val();
@@ -93,21 +100,21 @@ $(document).ready(function() {
             type: "POST",
             url: $(this).attr("action"),
             data: dataUpdate,
-            success: function(response) {
+            success: function (response) {
                 alert(response.message);
                 console.log(response.message);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 alert("Có lỗi xảy ra!");
             }
         });
     });
 
-    $('#update_password_profile').click(function() {
+    $('#update_password_profile').click(function () {
         $("#card_change_password").toggle();
     });
 
-    $('.change_password_profile').on('submit', function(e) {
+    $('.change_password_profile').on('submit', function (e) {
         e.preventDefault();
         var oldPass = $('#inputOldPass').val();
         var newPass = $('#inputNewPass').val();
@@ -122,11 +129,11 @@ $(document).ready(function() {
             type: "POST",
             url: $(this).attr("action"),
             data: updatePass,
-            success: function(response) {
+            success: function (response) {
                 alert(response.message);
                 console.log(response.message);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 alert("Có lỗi xảy ra!");
             }
         });
@@ -226,7 +233,7 @@ $(document).ready(function() {
         const totalChildren = parseInt($("#numChildren").val());
 
         // Kiểm tra nút tăng hay giảm
-        if ($(this).text() === "+") {   
+        if ($(this).text() === "+") {
             // Kiểm tra nếu đang tăng số lượng người lớn
             if (input.attr("id") === "numAdults") {
                 // Kiểm tra nếu tổng số người lớn và trẻ em không vượt quá số chỗ còn nhận
@@ -272,7 +279,7 @@ $(document).ready(function() {
                 (parseInt($("#numAdults").val()) *
                     $("#numAdults").data("price-adults") +
                     parseInt($("#numChildren").val()) *
-                        $("#numChildren").data("price-children"));
+                    $("#numChildren").data("price-children"));
             alert("Áp dụng mã giảm giá thành công!");
         } else {
             discount = 0;
@@ -391,7 +398,7 @@ $(document).ready(function() {
                             // Hiển thị thông tin thanh toán thành công
                             console.log(
                                 "Transaction completed by " +
-                                    details.payer.name.given_name
+                                details.payer.name.given_name
                             );
                             // Tạo input hidden mới
                             var hiddenInput = $("<input>", {
@@ -612,7 +619,7 @@ $(document).ready(function() {
         });
     });
 
-    $('#search_form').on('submit', function(event) {
+    $('#search_form').on('submit', function (event) {
         // Lấy giá trị các trường cần kiểm tra
         var destination = $('#destination').val();
         var startDate = $('#start_date').val();

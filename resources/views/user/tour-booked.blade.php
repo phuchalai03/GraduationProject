@@ -127,8 +127,7 @@
                        Đánh giá
                     </a>
                 @else
-                    <button type="submit" class="booking-btn btn-cancel-booking {{ $hide }}">Hủy
-                        Tour</button>
+                    <button type="submit" class="booking-btn btn-cancel-booking {{ $hide }}">Hủy Tour</button>
                 @endif
 
             </div>

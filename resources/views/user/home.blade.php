@@ -35,12 +35,13 @@
                     <div class="section-title text-white text-center counter-text-wrap mb-70" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>Khám phá các điểm đến tuyệt vời với Travelday</h2>
-                        <p>Một trang web với <span class="count-text plus" data-speed="1000" data-stop="2300">0</span> trải nghiệm đáng nhớ từ người dùng!</p>
+                        <p>Một trang web với <span class="count-text plus" data-speed="1000" data-stop="2300">0</span> trải
+                            nghiệm đáng nhớ từ người dùng!</p>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                @foreach ($tours as $tour)
+                @foreach ($toursPopular as $tour)
                     <div class="col-xxl-3 col-xl-4 col-md-6">
                         <div class="destination-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
@@ -54,7 +55,10 @@
                                     <i class="fal fa-map-marker-alt"></i> {{ $tour->destination ?? 'Unknown Location' }}
                                 </span>
                                 <h5>
-                                    <a href="destination-details.html">{{ $tour->title ?? 'Tour Title' }}</a>
+                                    <a href="destination-details.html"
+                                        style="display:inline-block; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                        {{ $tour->title ?? 'Tour Title' }}
+                                    </a>
                                 </h5>
                                 <span class="time"> {{ $tour->duration }} </span>
                             </div>
@@ -83,10 +87,11 @@
                         <div class="section-title mb-25">
                             <h2>Du lịch với sự tự tin Lý do hàng đầu để chọn công ty chúng tôi</h2>
                         </div>
-                        <p>Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn và những điểm tham quan không thể bỏ qua
+                        <p>Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn
+                            và những điểm tham quan không thể bỏ qua
                         </p>
-                        <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus"
-                                        data-speed="3000" data-stop="25">0</span> năm</span> kinh
+                        <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span
+                                        class="count-text plus" data-speed="3000" data-stop="25">0</span> năm</span> kinh
                                 nghiệm</span></div>
                         <div class="row">
                             <div class="col-6">
@@ -135,14 +140,15 @@
                         <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h2>Khám phá các điểm đến thú vị</h2>
-                            <p>Trên trang web với hơn <span class="count-text plus" data-speed="300" data-stop="3450">0</span> trải nghiệm</p>
+                            <p>Trên trang web với hơn <span class="count-text plus" data-speed="300"
+                                    data-stop="3450">0</span> trải nghiệm</p>
                         </div>
                     </div>
                 </div>
                 <div class="container">
                     <div class="row justify-content-center">
                         @php $count = 0; @endphp
-                        @foreach ($toursPopular as $tour)
+                        @foreach ($tours as $tour)
                             @if ($count == 2 || $count == 3)
                                 <!-- Cột thứ 3 và thứ 4 sẽ là col-md-6 -->
                                 <div class="col-md-6 item ">
@@ -154,7 +160,8 @@
                             <div class="destination-item style-two" data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image" style="max-height: 250px">
                                     <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                    <img src="{{ asset('storage/images/' . $tour->images->first()) }}" alt="Destination" style="width: 100%; height: 230px; object-fit: cover;">
+                                    <img src="{{ asset('storage/images/' . $tour->images->first()) }}" alt="Destination"
+                                        style="width: 100%; height: 230px; object-fit: cover;">
                                 </div>
                                 <div class="content">
                                     <h6 class="tour-title"><a
@@ -254,7 +261,7 @@
             <div class="row">
                 <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-duration="1500" data-aos-offset="50">
                     <div class="cta-item"
-                        style="background-image: url( {{ asset('clients/assets/images/cta/cta1.jpg') }});">
+                        style="background-image: url( {{ asset('storage/images/home/home1.png') }});">
                         <span class="category">Khám Phá Vẻ Đẹp Văn Hóa Việt</span>
                         <h2>Tìm hiểu những giá trị văn hóa độc đáo của các vùng miền Việt Nam.</h2>
                         <a href="{{ route('tour.index') }}" class="theme-btn style-two bgc-secondary">
@@ -266,7 +273,7 @@
                 <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="50" data-aos-duration="1500"
                     data-aos-offset="50">
                     <div class="cta-item"
-                        style="background-image: url( {{ asset('clients/assets/images/cta/cta2.jpg') }});">
+                        style="background-image: url( {{ asset('storage/images/home/home2.png') }});">
                         <span class="category">Bãi biển Sea</span>
                         <h2>Bãi trong xanh dạt dào ở Việt Nam</h2>
                         <a href="{{ route('tour.index') }}" class="theme-btn style-two">
@@ -278,7 +285,7 @@
                 <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
                     data-aos-offset="50">
                     <div class="cta-item"
-                        style="background-image: url( {{ asset('clients/assets/images/cta/cta3.jpg') }});">
+                        style="background-image: url( {{ asset('storage/images/home/home3.png') }});">
                         <span class="category">Thác nước</span>
                         <h2>Thác nước lớn nhất Việt Nam</h2>
                         <a href="{{ route('tour.index') }}" class="theme-btn style-two bgc-secondary">

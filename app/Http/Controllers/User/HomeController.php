@@ -47,12 +47,12 @@ class HomeController extends Controller
             $toursPopular = $this->tours->toursRecommendation($tourIds);
 
             if (empty($tourIds)) {
-                $toursPopular = $this->tours->toursPopular(6);
+                $toursPopular = $this->tours->toursPopular(8);
                 
             }
 
         }else {
-            $toursPopular = $this->tours->toursPopular(6);
+            $toursPopular = $this->tours->toursPopular(8);
         }
 
         //dd($tours);
