@@ -26,7 +26,7 @@ class MyTourController extends Controller
         $userId = auth()->user()->id;
         
         $myTours = $this->user->getMyTours($userId);
-        $userId = $this->getUserId();
+        //$userId = $this->getUserId();
         if ($userId) {
             // Gọi API Python để lấy danh sách tour được gợi ý cho từng người dùng 
             try {

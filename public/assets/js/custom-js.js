@@ -73,13 +73,6 @@ $(document).ready(function () {
         });
     });
 
-    $("#start_date, #end_date").datetimepicker({
-        format: "d/m/Y",
-        timepicker: false,
-        scrollInput: false,
-        lang: "vi"
-    });
-    
     //Update user profile
     $('.updateUser').on('submit', function (e) {
         e.preventDefault();
@@ -648,5 +641,12 @@ $(document).ready(function () {
                 return;
             }
         }
+    });
+
+    $("#start_date, #end_date").datetimepicker({
+        format: "d/m/Y",
+        timepicker: false,
+        scrollInput: false,
+        lang: "vi"
     });
 });

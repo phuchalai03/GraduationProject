@@ -55,7 +55,7 @@
                                     <i class="fal fa-map-marker-alt"></i> {{ $tour->destination ?? 'Unknown Location' }}
                                 </span>
                                 <h5>
-                                    <a href="destination-details.html"
+                                    <a href="{{ route('tour_detail', ['id' => $tour->tourId]) }}"
                                         style="display:inline-block; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                                         {{ $tour->title ?? 'Tour Title' }}
                                     </a>
