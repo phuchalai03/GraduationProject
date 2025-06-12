@@ -552,10 +552,10 @@ $(document).ready(function () {
 
         // Kiểm tra số sao và nội dung
         if (currentRating === 0) {
-            toastr.warning("Vui lòng chọn số sao để đánh giá.");
+            alert("Vui lòng chọn số sao để đánh giá.");
             return;
         } else if (message === "") {
-            toastr.warning("Vui lòng nhập nội dung phản hồi.");
+            alert("Vui lòng nhập nội dung phản hồi.");
             return;
         }
 
@@ -600,13 +600,13 @@ $(document).ready(function () {
                         },
                     });
                 } else {
-                    toastr.error(
+                    alert(
                         "Vui lòng đặt tour và trải nghiệm để có thể đánh giá!"
                     );
                 }
             },
             error: function (xhr, status, error) {
-                toastr.error("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
                 console.error("Error:", error);
             },
         });
@@ -620,7 +620,7 @@ $(document).ready(function () {
 
         if (destination === "") {
             event.preventDefault();
-            toastr.error('Vui lòng chọn điểm đến.');
+            alert('Vui lòng chọn điểm đến.');
             return;
         }
 
@@ -637,7 +637,7 @@ $(document).ready(function () {
             // Kiểm tra nếu "start_date" lớn hơn "end_date"
             if (startDateFormatted > endDateFormatted) {
                 event.preventDefault();
-                toastr.error('Ngày khởi hành không thể lớn hơn ngày kết thúc.');
+                alert('Ngày khởi hành không thể lớn hơn ngày kết thúc.');
                 return;
             }
         }
@@ -648,5 +648,14 @@ $(document).ready(function () {
         timepicker: false,
         scrollInput: false,
         lang: "vi"
+    });
+});
+
+$(document).ready(function () {
+    $('.btn-cancel-booking').on('click', function (e) {
+        const confirmed = confirm('Bạn có chắc chắn muốn hủy tour này không?');
+        if (!confirmed) {
+            e.preventDefault();
+        }
     });
 });

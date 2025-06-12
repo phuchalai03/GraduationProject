@@ -75,6 +75,6 @@ class TourBookedController extends Controller
             alert('Có lỗi xảy ra !', 'Thông báo');
         }
 
-        return redirect()->route('home.index');
+        return redirect()->route('my-tours');
     }
 }

@@ -10,11 +10,13 @@ use function Laravel\Prompts\alert;
 
 class ContactController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('user.contact');
     }
 
-    public function createContact(Request $req){
+    public function createContact(Request $req)
+    {
         $name = $req->name;
         $phone = $req->phone_number;
         $email = $req->email;
@@ -27,14 +29,12 @@ class ContactController extends Controller
             'message'     => $message
         ];
 
-        $createContact = DB::table('contact')->insert($dataContact); 
+        $createContact = DB::table('contact')->insert($dataContact);
 
-        if($createContact){
-            alert('Gửi thành công. Chúng tôi sẽ sớm liên hệ tới bạn!');
-        }else{
-            alert('Có lỗi xảy ra. Xin vui lòng thử lại');
+        if ($createContact) {
+            return redirect()->back()->with('success', 'Gửi thành công. Chúng tôi sẽ sớm liên hệ tới bạn!');
+        } else {
+            return redirect()->back()->with('error', 'Có lỗi xảy ra. Xin vui lòng thử lại');
         }
-        return redirect()->back();
-
     }
 }

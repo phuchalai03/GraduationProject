@@ -56,8 +56,7 @@ class TourDetailController extends Controller
         $id_toursRe = $relatedTours;
 
         $tourRecommendations = $this->tours->toursRecommendation($id_toursRe);
-        
-        $tourRecommendations = [];
+
         return view('user.tour_detail', compact('title', 'tourDetail', 'getReviews', 'avgStar', 'countReview', 'checkDisplay','tourRecommendations'));
     }
 

@@ -108,8 +108,28 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="comment-form bgc-lighter z-1 rel mb-30 rmb-55">
-                        <form id="contactForm" class="contactForm" name="contactForm" action="{{ route('create-contact') }}"
-                            method="post" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                        @if (session('success'))
+                            <div id="message" class="alert alert-success mt-3">{{ session('success') }}</div>
+                        @endif
+                        @if (session('error'))
+                            <div id="message" class="alert alert-danger mt-3">{{ session('error') }}</div>
+                        @endif
+                        @if (session('success') || session('error'))
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    var formSection = document.getElementById('message');
+                                    if (formSection) {
+                                        formSection.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'center'
+                                        });
+                                    }
+                                });
+                            </script>
+                        @endif
+                        <form id="contactForm" class="contactForm" name="contactForm"
+                            action="{{ route('create-contact') }}" method="post" data-aos="fade-left"
+                            data-aos-duration="1500" data-aos-offset="50">
                             @csrf
                             <div class="section-title">
                                 <h2>Liên hệ</h2>

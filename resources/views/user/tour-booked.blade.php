@@ -126,6 +126,8 @@
                     <a href="{{ route('tour_detail', ['id' => $tour_booked->tourId]) }}" class="booking-btn"style="display: inline-block; text-align: center;">
                        Đánh giá
                     </a>
+                @elseif ($tour_booked->bookingStatus == 'c')
+                    <button class="booking-btn btn-cancel-booking" disabled style="pointer-events: none; opacity: 0.7; cursor: not-allowed;">Đã hủy</button>
                 @else
                     <button type="submit" class="booking-btn btn-cancel-booking {{ $hide }}">Hủy Tour</button>
                 @endif

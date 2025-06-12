@@ -53,14 +53,6 @@
                             alt="Destination" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="gallery-more-btn">
-                        <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                            <span data-hover="See All Photos">Xem tất cả</span>
-                            <i class="fal fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -125,24 +117,18 @@
                                 <h5 class="accordion-header">
                                     <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo{{ $timeline->timelineId }}">
-                                        Ngày {{ $day++ }}
+                                        Ngày {{ $day++ }} : {{ $timeline->title }}
                                     </button>
                                 </h5>
                                 <div id="collapseTwo{{ $timeline->timelineId }}" class="accordion-collapse collapse"
                                     data-bs-parent="#faq-accordion-two">
                                     <div class="accordion-body">
-                                        <p>{!! $timeline->description !!}</p>
+                                        <p>{!! nl2br(e($timeline->description)) !!}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-
-                    <h3>Bản đồ</h3>
-                    <div class="tour-map mt-30 mb-50">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54655.39647930672!2d108.20356591256284!3d16.05052611161243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1747729058421!5m2!1svi!2s"
-                         width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    </div>                 
 
                     <h3>Đánh giá của khách hàng</h3>
                     <div id="partials_reviews">
@@ -255,7 +241,7 @@
                                         <div class="image">
                                             {{-- <span class="badge">10% Off</span> --}}
                                             <img src="{{ asset('storage/images/' . $tour->images[0]) }}"
-                                                alt="Tour" style="max-height: 137px">
+                                                alt="Tour" style="height: 210px">
                                         </div>
                                         <div class="content">
                                             <div class="destination-header">
@@ -267,7 +253,7 @@
                                                 </div>
                                             </div>
                                             <h6><a
-                                                    href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                                                    href="{{ route('tour_detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
                                             </h6>
                                         </div>
                                     </div>
